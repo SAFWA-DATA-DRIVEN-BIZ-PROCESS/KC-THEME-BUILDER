@@ -1,13 +1,38 @@
-# build environment
-FROM node:14-alpine as build
-WORKDIR /app
-COPY package.json yarn.lock ./
-RUN yarn install --frozen-lockfile
-COPY . .
-RUN yarn build
+# -------------- keycloak only -------------- #
+# FROM quay.io/keycloak/keycloak:latest as builder
 
-# production environment
-FROM nginx:stable-alpine
-COPY --from=build /app/build /usr/share/nginx/html
-COPY --from=build /app/nginx.conf /etc/nginx/conf.d/default.conf
-CMD nginx -g 'daemon off;'
+# WORKDIR /opt/keycloak
+# RUN /opt/keycloak/bin/kc.sh build
+
+# FROM quay.io/keycloak/keycloak:latest
+# COPY --from=builder /opt/keycloak/ /opt/keycloak/
+
+# ENV KC_HOSTNAME=localhost
+# ENTRYPOINT ["/opt/keycloak/bin/kc.sh", "start-dev"]
+
+# -------------- full build -------------- #
+
+FROM node:18 as keycloakify_jar_builder
+
+COPY ./package.json ./yarn.lock /opt/app/
+
+WORKDIR /opt/app
+
+RUN yarn install --frozen-lockfile
+
+COPY ./ /opt/app/
+
+RUN yarn build-keycloak-theme
+
+FROM quay.io/keycloak/keycloak:latest as builder
+
+WORKDIR /opt/keycloak
+
+COPY --from=keycloakify_jar_builder /opt/app/build_keycloak/target/keycloakify-starter-keycloak-theme-4.6.5.jar /opt/keycloak/providers/
+RUN /opt/keycloak/bin/kc.sh build
+
+
+FROM quay.io/keycloak/keycloak:latest
+COPY --from=builder /opt/keycloak/ /opt/keycloak/
+ENV KC_HOSTNAME=localhost
+ENTRYPOINT ["/opt/keycloak/bin/kc.sh", "start-dev"]
