@@ -1,53 +1,58 @@
-## [Reference link](https://willwill96.github.io/the-ui-dawg-static-site/en/keycloakify/)
+<p align="center">
+    <i>🚀 <a href="https://keycloakify.dev">Keycloakify</a> v11 starter 🚀</i>
+    <br/>
+    <br/>
+</p>
 
-# setup keycloak dev on docker
-
-to spin up the thang
-
-```
-docker build -t keycloak-app .
-docker run --name keycloak-app -e KEYCLOAK_ADMIN=admin -e KEYCLOAK_ADMIN_PASSWORD=admin -p 8080:8080 keycloak-app
-```
-
-to stop the thang
-
-```
-docker stop keycloak-app
-```
-
-to start the thang
-
-```
-docker start keycloak-app
-```
-
-
-# setup keycloakify app to create theme
+# Quick start
 
 ```bash
-yarn # install dependencies (it's like npm install)
-
-yarn storybook # Start Storybook
-               # This is by far the best way to develop your theme
-               # This enable to quickly see your pages in isolation and in different states.  
-               # You can create stories even for pages that you haven't explicitly overloaded. See src/keycloak-theme/login/pages/LoginResetPassword.stories.tsx
-               # See Keycloakify's storybook for if you need a starting point for your stories: https://github.com/keycloakify/keycloakify/tree/main/stories
-
-yarn start # See the Hello World app
-           # Uncomment line 97 of src/keycloak-theme/login/kcContext where it reads: `mockPageId: "login.ftl"`, reload https://localhost:3000
-           # You can now develop your Login pages. (Don't forget to comment it back when you're done)
-
-yarn build-keycloak-theme # Actually build the theme
-                          # Read the instruction printed on the console to see how to test
-                          # your theme on a real Keycloak instance.
-
-npx eject-keycloak-page # Prompt that let you select the pages you want to customize
-                        # This CLI tools is not guaranty to work, you can always copy pase pages 
-                        # from the Keycloakify repo.
-
-npx initialize-email-theme # For initializing your email theme
-                           # Note that Keycloakify does not feature React integration for email yet.
-
-npx download-builtin-keycloak-theme # For downloading the default theme (as a reference)
-                                    # Look for the files in build_keycloak/src/main/resources/theme/{base,keycloak}
+git clone https://github.com/keycloakify/keycloakify-starter
+cd keycloakify-starter
+yarn install # Or use an other package manager, just be sure to delete the yarn.lock if you use another package manager.
 ```
+
+# Testing the theme locally
+
+[Documentation](https://docs.keycloakify.dev/testing-your-theme)
+
+# How to customize the theme
+
+[Documentation](https://docs.keycloakify.dev/customization-strategies)
+
+# Building the theme
+
+You need to have [Maven](https://maven.apache.org/) installed to build the theme (Maven >= 3.1.1, Java >= 7).  
+The `mvn` command must be in the $PATH.
+
+-   On macOS: `brew install maven`
+-   On Debian/Ubuntu: `sudo apt-get install maven`
+-   On Windows: `choco install openjdk` and `choco install maven` (Or download from [here](https://maven.apache.org/download.cgi))
+
+```bash
+npm run build-keycloak-theme
+```
+
+Note that by default Keycloakify generates multiple .jar files for different versions of Keycloak.  
+You can customize this behavior, see documentation [here](https://docs.keycloakify.dev/targeting-specific-keycloak-versions).
+
+# Initializing the account theme
+
+```bash
+npx keycloakify initialize-account-theme
+```
+
+# Initializing the email theme
+
+```bash
+npx keycloakify initialize-email-theme
+```
+
+# GitHub Actions
+
+The starter comes with a generic GitHub Actions workflow that builds the theme and publishes
+the jars [as GitHub releases artifacts](https://github.com/keycloakify/keycloakify-starter/releases/tag/v10.0.0).  
+To release a new version **just update the `package.json` version and push**.
+
+To enable the workflow go to your fork of this repository on GitHub then navigate to:
+`Settings` > `Actions` > `Workflow permissions`, select `Read and write permissions`.
