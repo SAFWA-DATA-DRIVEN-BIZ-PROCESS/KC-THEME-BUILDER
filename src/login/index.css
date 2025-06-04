@@ -1,8 +1,10 @@
 @import url(./assets/fonts/geist/index.css);
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+    --color-mint-500: oklch(0.72 0.11 178);
+}
 
 body.kcBodyClass {
     @apply bg-[url(./assets/img/background.jpg)] bg-no-repeat bg-center bg-fixed;
