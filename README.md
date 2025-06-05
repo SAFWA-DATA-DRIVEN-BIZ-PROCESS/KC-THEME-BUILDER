@@ -18,6 +18,10 @@ yarn install # Or use an other package manager, just be sure to delete the yarn.
 
 [Documentation](https://docs.keycloakify.dev/testing-your-theme)
 
+## testing with `https://www.keycloak.org/app`
+
+[Documentation](https://www.keycloak.org/getting-started/getting-started-zip)
+
 # How to customize the theme
 
 [Documentation](https://docs.keycloakify.dev/customization-strategies)

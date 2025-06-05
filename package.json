@@ -10,9 +10,11 @@
     "scripts": {
         "dev": "vite",
         "build": "tsc && vite build",
-        "build-keycloak-theme": "npm run build && keycloakify build",
+        "build-keycloak-theme": "pnpm build && keycloakify build",
+        "start": "keycloakify start-keycloak",
         "storybook": "storybook dev -p 6006",
-        "format": "prettier . --write"
+        "format": "prettier . --write",
+        "flush-keycloak": "rm -rf ./dist_keycloak"
     },
     "license": "MIT",
     "keywords": [],
