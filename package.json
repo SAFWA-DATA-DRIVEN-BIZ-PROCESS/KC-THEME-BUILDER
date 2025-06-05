@@ -10,7 +10,7 @@
     "scripts": {
         "dev": "vite",
         "build": "tsc && vite build",
-        "build-keycloak-theme": "npm run build && keycloakify build",
+        "build-keycloak-theme": "pnpm run build && keycloakify build",
         "start": "keycloakify start-keycloak",
         "storybook": "storybook dev -p 6006",
         "format": "prettier . --write",
