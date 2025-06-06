@@ -4,13 +4,15 @@ import type { ClassKey } from "keycloakify/login";
 import type { KcContext } from "./KcContext";
 import { useI18n } from "./i18n";
 import DefaultPage from "keycloakify/login/DefaultPage";
-import Template from "keycloakify/login/Template";
-//import { twMerge } from "tailwind-merge";
+import Template from "./Template";
+import { twMerge } from "tailwind-merge";
 
 const UserProfileFormFields = lazy(
     () => import("keycloakify/login/UserProfileFormFields")
 );
 const Login = lazy(() => import("./pages/Login"));
+const LoginResetPassword = lazy(() => import("./pages/LoginResetPassword"));
+const LoginUpdatePassword = lazy(() => import("./pages/LoginUpdatePassword"));
 
 const doMakeUserConfirmPassword = true;
 
@@ -31,12 +33,33 @@ export default function KcPage(props: { kcContext: KcContext }) {
                                 doUseDefaultCss={true}
                             />
                         );
+                    case "login-reset-password.ftl": return (
+                        <LoginResetPassword
+                            {...{ kcContext, i18n, classes }}
+                            Template={Template}
+                            doUseDefaultCss={true}
+                        />
+                    );
+                    case "login-update-password.ftl": return (
+                        <LoginUpdatePassword
+                            {...{ kcContext, i18n, classes }}
+                            Template={Template}
+                            doUseDefaultCss={true}
+                        />
+                    );
                     default:
                         return (
                             <DefaultPage
                                 kcContext={kcContext}
                                 i18n={i18n}
-                                classes={classes}
+                                classes={{
+                                    kcBodyClass: twMerge(
+                                        kcContext.themeName === "custom-theme-1" || kcContext.themeName === "custom-theme-2" ? "!bg-[url(./assets/img/background.jpg)]" :
+                                            kcContext.themeName === "ContractorLogin-06062025-1" ? "!bg-[url(./assets/img/vlado-paunovic.jpg)]" : "",
+                                        "bg-no-repeat bg-center bg-fixed",
+                                        "font-geist"
+                                    ),
+                                }}
                                 Template={Template}
                                 doUseDefaultCss={true}
                                 UserProfileFormFields={UserProfileFormFields}
