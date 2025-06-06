@@ -9,7 +9,7 @@ export default defineConfig({
         react(),
         tailwindcss(),
         keycloakify({
-            themeName: ["custom-theme-1", "custom-theme-2"],
+            themeName: ["custom-theme-1", "custom-theme-2", "ContractorLogin-06062025-1"],
             accountThemeImplementation: "none"
         })
     ]
