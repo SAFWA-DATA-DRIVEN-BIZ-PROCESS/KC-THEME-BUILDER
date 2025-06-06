@@ -28,21 +28,21 @@ export default function KcPage(props: { kcContext: KcContext }) {
                     case "login.ftl":
                         return (
                             <Login
-                                {...{ kcContext, i18n, classes }}
+                                {...{ kcContext, i18n, classes: classes(kcContext) }}
                                 Template={Template}
                                 doUseDefaultCss={true}
                             />
                         );
                     case "login-reset-password.ftl": return (
                         <LoginResetPassword
-                            {...{ kcContext, i18n, classes }}
+                            {...{ kcContext, i18n, classes: classes(kcContext) }}
                             Template={Template}
                             doUseDefaultCss={true}
                         />
                     );
                     case "login-update-password.ftl": return (
                         <LoginUpdatePassword
-                            {...{ kcContext, i18n, classes }}
+                            {...{ kcContext, i18n, classes: classes(kcContext) }}
                             Template={Template}
                             doUseDefaultCss={true}
                         />
@@ -52,14 +52,7 @@ export default function KcPage(props: { kcContext: KcContext }) {
                             <DefaultPage
                                 kcContext={kcContext}
                                 i18n={i18n}
-                                classes={{
-                                    kcBodyClass: twMerge(
-                                        kcContext.themeName === "custom-theme-1" || kcContext.themeName === "custom-theme-2" ? "!bg-[url(./assets/img/background.jpg)]" :
-                                            kcContext.themeName === "ContractorLogin-06062025-1" ? "!bg-[url(./assets/img/vlado-paunovic.jpg)]" : "",
-                                        "bg-no-repeat bg-center bg-fixed",
-                                        "font-geist"
-                                    ),
-                                }}
+                                classes={classes(kcContext)}
                                 Template={Template}
                                 doUseDefaultCss={true}
                                 UserProfileFormFields={UserProfileFormFields}
@@ -72,7 +65,7 @@ export default function KcPage(props: { kcContext: KcContext }) {
     );
 }
 
-const classes = {
+const classes = (kcContext: KcContext) => ({
     /* 
     This is commended out because the same rules are applied in the index.css file
     and applying the tailwind utility classes in the CSS file is recommended over applying them here.
@@ -81,9 +74,10 @@ const classes = {
     In the index.css I can simply use `body.kcBodyClass` or `.kcBodyClass.kcBodyClass` instead of just `.kcBodyClass` 
     to increase the specificity and avoid using `!important`.  
     */
-    //kcBodyClass: twMerge(
-    //    "!bg-[url(./assets/img/background.jpg)] bg-no-repeat bg-center bg-fixed",
-    //    "font-geist"
-    //),
+    kcBodyClass: twMerge(
+        kcContext.themeName === "ContractorLogin-06062025-1" ? "!bg-[url(./assets/img/vlado-paunovic.jpg)]" : "!bg-[url(./assets/img/background.jpg)]",
+        "bg-no-repeat bg-center bg-fixed",
+        "font-geist"
+    ),
     //kcHeaderWrapperClass: twMerge("text-3xl font-bold underline")
-} satisfies { [key in ClassKey]?: string };
+} satisfies { [key in ClassKey]?: string });

@@ -10,7 +10,11 @@ export default defineConfig({
         tailwindcss(),
         keycloakify({
             themeName: ["custom-theme-1", "custom-theme-2", "ContractorLogin-06062025-1"],
-            accountThemeImplementation: "none"
+            accountThemeImplementation: "none",
+            keycloakVersionTargets: {
+                "22-to-25": false,
+                "all-other-versions": `${new Date().toISOString().replace(/[-:T.Z]/g, "").slice(0, 14)}.jar`
+            },
         })
     ]
 });

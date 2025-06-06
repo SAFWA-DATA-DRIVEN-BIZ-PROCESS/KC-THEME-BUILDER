@@ -8,7 +8,7 @@
 }
 
 body.kcBodyClass {
-    @apply bg-[url(./assets/img/background.jpg)] bg-no-repeat bg-center bg-fixed;
+    @apply bg-[url(./assets/img/vlado-paunovic.jpg)] bg-no-repeat bg-center bg-fixed;
     @apply font-geist;
 }
 
