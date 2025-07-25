@@ -408,9 +408,9 @@
     "otpPolicyPeriod": 30,
     "otpPolicyCodeReusable": false,
     "otpSupportedApplications": [
-        "totpAppGoogleName",
         "totpAppMicrosoftAuthenticatorName",
-        "totpAppFreeOTPName"
+        "totpAppFreeOTPName",
+        "totpAppGoogleName"
     ],
     "webAuthnPolicyRpEntityName": "keycloak",
     "webAuthnPolicySignatureAlgorithms": ["ES256"],
@@ -442,7 +442,7 @@
             "emailVerified": true,
             "firstName": "Test",
             "lastName": "User",
-            "email": "testuser@gmail.com",
+            "email": "adhamaa92@gmail.com",
             "credentials": [
                 {
                     "id": "60e992d6-6c7a-45a2-af0e-28d84c86629f",
@@ -1356,11 +1356,24 @@
         "xXSSProtection": "1; mode=block",
         "strictTransportSecurity": "max-age=31536000; includeSubDomains"
     },
-    "smtpServer": {},
-    "loginTheme": "custom-theme-1",
+    "smtpServer": {
+        "auth": "true",
+        "envelopeFrom": "",
+        "from": "adhamaa92@gmail.com",
+        "fromDisplayName": "",
+        "host": "smtp-relay.brevo.com",
+        "password": "gZPLNkzn6aME7r45",
+        "port": "587",
+        "replyTo": "",
+        "replyToDisplayName": "",
+        "ssl": "false",
+        "starttls": "false",
+        "user": "919431001@smtp-brevo.com"
+    },
+    "loginTheme": "custom-email",
     "accountTheme": "",
     "adminTheme": "",
-    "emailTheme": "",
+    "emailTheme": "custom-email",
     "eventsEnabled": false,
     "eventsListeners": ["keycloakify-logging", "jboss-logging"],
     "enabledEventTypes": [],
@@ -1378,13 +1391,13 @@
                 "subComponents": {},
                 "config": {
                     "allowed-protocol-mapper-types": [
-                        "oidc-usermodel-attribute-mapper",
-                        "oidc-full-name-mapper",
+                        "saml-user-property-mapper",
                         "saml-user-attribute-mapper",
-                        "oidc-address-mapper",
+                        "oidc-full-name-mapper",
                         "oidc-sha256-pairwise-sub-mapper",
                         "oidc-usermodel-property-mapper",
-                        "saml-user-property-mapper",
+                        "oidc-address-mapper",
+                        "oidc-usermodel-attribute-mapper",
                         "saml-role-list-mapper"
                     ]
                 }
@@ -1434,14 +1447,14 @@
                 "subComponents": {},
                 "config": {
                     "allowed-protocol-mapper-types": [
-                        "saml-role-list-mapper",
-                        "oidc-sha256-pairwise-sub-mapper",
-                        "saml-user-attribute-mapper",
-                        "saml-user-property-mapper",
                         "oidc-full-name-mapper",
+                        "oidc-sha256-pairwise-sub-mapper",
+                        "oidc-usermodel-property-mapper",
+                        "saml-user-property-mapper",
                         "oidc-usermodel-attribute-mapper",
                         "oidc-address-mapper",
-                        "oidc-usermodel-property-mapper"
+                        "saml-role-list-mapper",
+                        "saml-user-attribute-mapper"
                     ]
                 }
             },
