@@ -9,6 +9,13 @@
     --font-geist: "Geist", sans-serif;
 }
 
+a > span {
+    @apply text-[#ed1b23];
+}
+a > span:hover {
+    @apply text-[#ed1b23] underline;
+}
+
 .kcHeaderClass,
 .kcLocaleMainClass {
     @apply hidden;
@@ -23,7 +30,7 @@
 }
 
 #kc-page-title {
-    @apply font-bold text-left text-[#363636] py-4;
+    @apply font-bold text-left text-[#363636] pt-1;
 }
 
 body.kcBodyClass {
@@ -44,8 +51,23 @@ body.kcBodyClass {
 }
 
 .backgroundWrapperClass {
-    @apply w-1/2 bg-cover bg-center;
-    @apply bg-[image:var(--background-image)];
+    @apply relative w-1/2/*  bg-cover bg-center */;
+    /* @apply bg-[image:var(--background-image)]; */
+}
+
+.backgroundWrapperClass img {
+    @apply absolute w-full h-full object-cover;
+}
+
+.appTitle {
+    @apply absolute bottom-0 w-full p-4 z-10;
+}
+
+.appTitle h2 {
+    @apply font-bold text-white;
+}
+.appTitle p {
+    @apply !text-white;
 }
 
 .kcInfoAreaWrapperClass {

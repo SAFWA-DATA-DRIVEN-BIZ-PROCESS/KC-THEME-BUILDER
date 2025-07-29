@@ -62,7 +62,13 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
                 </div>
             </div>
             <div className={kcClsx("kcFormCardClass")}>
-                <div className="backgroundWrapperClass"></div>
+                <div className="backgroundWrapperClass">
+                    <div className="appTitle">
+                        <h2>SAFWA Global Venture</h2>
+                        <p>E-Tender System (Contractor)</p>
+                    </div>
+                    <img src={bgJpgUrl} alt="background" />
+                </div>
                 <div className="formWrapperClass">
                     <header className={kcClsx("kcFormHeaderClass")}>
                         {enabledLanguages.length > 1 && (

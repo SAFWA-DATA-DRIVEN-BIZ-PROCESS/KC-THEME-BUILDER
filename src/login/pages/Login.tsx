@@ -28,8 +28,12 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
             doUseDefaultCss={doUseDefaultCss}
             classes={classes}
             displayMessage={!messagesPerField.existsError("username", "password")}
-            headerNode={"Welcome Back!" /* || msg("loginAccountTitle") */}
-            displayInfo={realm.password && realm.registrationAllowed && !registrationDisabled}
+            headerNode={
+                <div>
+                    <h2 className="!font-bold !text-2xl !text-[#606f7b]">Welcome Back!</h2>
+                    <p className="text-xs font-normal text-[#606f7b]"> Sign In to continue</p>
+                </div>}
+            // displayInfo={realm.password && realm.registrationAllowed && !registrationDisabled}
             infoNode={
                 <div id="kc-registration-container">
                     <div id="kc-registration">
@@ -190,7 +194,7 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                                 />
                             </div>
 
-                            <footer className="text-center p-4 text-[#606f7b] text-xs">Powered By Schinkels Technik</footer>
+                            <footer className="text-center pb-2 pt-8 text-[#606f7b] text-xs">Powered By Schinkels Technik</footer>
                         </form>
                     )}
                 </div>
