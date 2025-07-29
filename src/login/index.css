@@ -29,6 +29,10 @@ a > span:hover {
     @apply flex w-full max-w-md p-6 bg-white shadow-lg;
 }
 
+.kcInputClass::placeholder {
+    @apply text-[#999] text-sm italic opacity-70;
+}
+
 #kc-page-title {
     @apply font-bold text-left text-[#363636] pt-1;
 }

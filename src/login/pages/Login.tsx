@@ -96,12 +96,13 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                                         {!realm.loginWithEmailAllowed
                                             ? msg("username")
                                             : !realm.registrationEmailAsUsername
-                                                ? msg("usernameOrEmail")
+                                                ? "UserID/ Email*" /* || msg("usernameOrEmail") */
                                                 : msg("email")}
                                     </label>
                                     <input
                                         tabIndex={2}
                                         id="username"
+                                        placeholder="UserID/ Email"
                                         className={kcClsx("kcInputClass")}
                                         name="username"
                                         defaultValue={login.username ?? ""}
@@ -124,13 +125,14 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                             )}
 
                             <div className={kcClsx("kcFormGroupClass")}>
-                                <label htmlFor="password" className={kcClsx("kcLabelClass")}>
+                                {/* <label htmlFor="password" className={kcClsx("kcLabelClass")}>
                                     {msg("password")}
-                                </label>
+                                </label> */}
                                 <PasswordWrapper kcClsx={kcClsx} i18n={i18n} passwordInputId="password">
                                     <input
                                         tabIndex={3}
                                         id="password"
+                                        placeholder="Password"
                                         className={kcClsx("kcInputClass")}
                                         name="password"
                                         type="password"
@@ -190,7 +192,7 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                                     name="login"
                                     id="kc-login"
                                     type="submit"
-                                    value={msgStr("doLogIn")}
+                                    value={"Log In" /* || msgStr("doLogIn") */}
                                 />
                             </div>
 
