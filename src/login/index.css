@@ -3,15 +3,80 @@
 @import "tailwindcss";
 
 @theme {
+    --background-image: url(./assets/img/login-bg-sign-1.jpg);
+    --background-color: oklch(0.968 0.0059 239.82);
     --color-mint-500: oklch(0.72 0.11 178);
     --font-geist: "Geist", sans-serif;
 }
 
+.kcHeaderClass,
+.kcLocaleMainClass {
+    @apply hidden;
+}
+
+.kcLoginClass {
+    @apply flex flex-col items-center justify-center h-screen;
+}
+
+.kcFormCardClass {
+    @apply flex w-full max-w-md p-6 bg-white shadow-lg;
+}
+
+#kc-page-title {
+    @apply font-bold text-left text-[#363636] py-4;
+}
+
 body.kcBodyClass {
-    @apply bg-[url(./assets/img/vlado-paunovic.jpg)] bg-no-repeat bg-center bg-fixed;
+    background: var(--background-color);
     @apply font-geist;
 }
 
 .kcHeaderWrapperClass {
     @apply text-3xl font-bold underline;
 }
+
+.kcFormCardClass {
+    @apply relative rounded-md border-t-0 max-w-[750px] !p-0 overflow-hidden;
+}
+
+.formWrapperClass {
+    @apply w-1/2 px-8 py-4 flex flex-col;
+}
+
+.backgroundWrapperClass {
+    @apply w-1/2 bg-cover bg-center;
+    @apply bg-[image:var(--background-image)];
+}
+
+.kcInfoAreaWrapperClass {
+    @apply bg-none;
+}
+
+.kcButtonClass {
+    @apply bg-[#0339a5] bg-none h-[45px] border-none rounded;
+}
+
+#kc-info {
+    @apply !m-0;
+}
+#kc-info-wrapper {
+    @apply !bg-transparent;
+}
+
+.kcLabelClass {
+    @apply text-[#ed1b23] text-sm font-semibold mb-2;
+}
+
+.kcInputClass {
+    @apply w-full h-[45px] px-3 border border-solid border-[#d9d9d9] rounded;
+    @apply focus:outline-none focus:border-[#0339a5];
+}
+
+/*
+.kcFormPasswordVisibilityIconHide {
+    @apply absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5;
+}
+
+.kcFormPasswordVisibilityIconShow {
+    @apply absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5;
+} */

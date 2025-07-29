@@ -28,7 +28,7 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
             doUseDefaultCss={doUseDefaultCss}
             classes={classes}
             displayMessage={!messagesPerField.existsError("username", "password")}
-            headerNode={msg("loginAccountTitle")}
+            headerNode={"Welcome Back!" /* || msg("loginAccountTitle") */}
             displayInfo={realm.password && realm.registrationAllowed && !registrationDisabled}
             infoNode={
                 <div id="kc-registration-container">
@@ -92,8 +92,8 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                                         {!realm.loginWithEmailAllowed
                                             ? msg("username")
                                             : !realm.registrationEmailAsUsername
-                                              ? msg("usernameOrEmail")
-                                              : msg("email")}
+                                                ? msg("usernameOrEmail")
+                                                : msg("email")}
                                     </label>
                                     <input
                                         tabIndex={2}
@@ -189,6 +189,8 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                                     value={msgStr("doLogIn")}
                                 />
                             </div>
+
+                            <footer className="text-center p-4 text-[#606f7b] text-xs">Powered By Schinkels Technik</footer>
                         </form>
                     )}
                 </div>

@@ -78,11 +78,11 @@ const classes = (kcContext: KcContext) =>
     to increase the specificity and avoid using `!important`.  
     */
         kcBodyClass: twMerge(
-            kcContext.themeName === "ContractorLogin-06062025-1"
-                ? "!bg-[url(./assets/img/vlado-paunovic.jpg)]"
-                : "!bg-[url(./assets/img/background.jpg)]",
-            "bg-no-repeat bg-center bg-fixed",
-            "font-geist"
+            // kcContext.themeName === "ContractorLogin-06062025-1"
+            //     ? "!bg-[url(./assets/img/vlado-paunovic.jpg)]"
+            //     : "!bg-[url(./assets/img/background.jpg)]",
+            // "bg-no-repeat bg-center bg-fixed",
+            // "font-geist"
         )
         //kcHeaderWrapperClass: twMerge("text-3xl font-bold underline")
     }) satisfies { [key in ClassKey]?: string };
