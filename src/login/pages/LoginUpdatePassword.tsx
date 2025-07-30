@@ -25,7 +25,10 @@ export default function LoginUpdatePassword(props: PageProps<Extract<KcContext, 
             doUseDefaultCss={doUseDefaultCss}
             classes={classes}
             displayMessage={!messagesPerField.existsError("password", "password-confirm")}
-            headerNode={msg("updatePasswordTitle")}
+            headerNode={
+                <div>
+                    <h2 className="!font-bold !text-2xl !text-[#606f7b]">Update Password!</h2>
+                </div>/* msg("updatePasswordTitle") */}
         >
             <form id="kc-passwd-update-form" className={kcClsx("kcFormClass")} action={url.loginAction} method="post">
                 <div className={kcClsx("kcFormGroupClass")}>
@@ -115,6 +118,7 @@ export default function LoginUpdatePassword(props: PageProps<Extract<KcContext, 
                         )}
                     </div>
                 </div>
+                <footer className="text-center pb-2 pt-8 text-[#606f7b] text-xs">Powered By Schinkels Technik</footer>
             </form>
         </Template>
     );

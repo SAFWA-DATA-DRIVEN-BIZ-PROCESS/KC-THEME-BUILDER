@@ -32,7 +32,7 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                 <div>
                     <h2 className="!font-bold !text-2xl !text-[#606f7b]">Welcome Back!</h2>
                     <p className="text-xs font-normal text-[#606f7b]"> Sign In to continue</p>
-                </div>}
+                </div> /* msg("loginAccountTitle") */}
             // displayInfo={realm.password && realm.registrationAllowed && !registrationDisabled}
             infoNode={
                 <div id="kc-registration-container">

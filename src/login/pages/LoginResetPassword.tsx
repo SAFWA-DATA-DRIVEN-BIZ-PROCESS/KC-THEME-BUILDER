@@ -22,14 +22,18 @@ export default function LoginResetPassword(props: PageProps<Extract<KcContext, {
             i18n={i18n}
             doUseDefaultCss={doUseDefaultCss}
             classes={classes}
-            displayInfo
+            // displayInfo
             displayMessage={!messagesPerField.existsError("username")}
             infoNode={realm.duplicateEmailsAllowed ? msg("emailInstructionUsername") : msg("emailInstruction")}
-            headerNode={msg("emailForgotTitle")}
+            headerNode={
+                <div>
+                    <h2 className="!font-bold !text-2xl !text-[#606f7b]">Reset Password?</h2>
+                    <p className="text-xs font-normal text-[#606f7b]">To reset your password. Enter your UserID/ Email</p>
+                </div>/* msg("emailForgotTitle") */}
         >
             <form id="kc-reset-password-form" className={kcClsx("kcFormClass")} action={url.loginAction} method="post">
                 <div className={kcClsx("kcFormGroupClass")}>
-                    <div className={kcClsx("kcLabelWrapperClass")}>
+                    {/* <div className={kcClsx("kcLabelWrapperClass")}>
                         <label htmlFor="username" className={kcClsx("kcLabelClass")}>
                             {!realm.loginWithEmailAllowed
                                 ? msg("username")
@@ -37,11 +41,12 @@ export default function LoginResetPassword(props: PageProps<Extract<KcContext, {
                                   ? msg("usernameOrEmail")
                                   : msg("email")}
                         </label>
-                    </div>
+                    </div> */}
                     <div className={kcClsx("kcInputWrapperClass")}>
                         <input
                             type="text"
                             id="username"
+                            placeholder="UserID/ Email"
                             name="username"
                             className={kcClsx("kcInputClass")}
                             autoFocus
@@ -77,6 +82,7 @@ export default function LoginResetPassword(props: PageProps<Extract<KcContext, {
                         />
                     </div>
                 </div>
+                <footer className="text-center pb-2 pt-8 text-[#606f7b] text-xs">Powered By Schinkels Technik</footer>
             </form>
         </Template>
     );
