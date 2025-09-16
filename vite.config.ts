@@ -9,7 +9,7 @@ export default defineConfig({
         react(),
         tailwindcss(),
         keycloakify({
-            themeName: ["custom-email", "e-tender"],
+            themeName: ["custom-email", "swifto"],
             accountThemeImplementation: "none",
             keycloakVersionTargets: {
                 "22-to-25": false,

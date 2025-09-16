@@ -8,10 +8,18 @@
 }
 
 body.kcBodyClass {
-    @apply bg-[url(./assets/img/vlado-paunovic.jpg)] bg-no-repeat bg-center bg-fixed;
+    @apply bg-white bg-no-repeat bg-center bg-fixed;
     @apply font-geist;
 }
 
 .kcHeaderWrapperClass {
     @apply text-3xl font-bold underline;
 }
+
+.kcLoginClass {
+    @apply flex h-screen;
+}
+
+/* .kcLoginIllustrationClass {
+    @apply z-50 bg-cover bg-center !bg-[url(./assets/img/Civil-Road-Works.jpg)];
+} */
