@@ -7,6 +7,10 @@
     --font-geist: "Geist", sans-serif;
 }
 
+.kcHeaderClass {
+    @apply hidden;
+}
+
 body.kcBodyClass {
     @apply bg-white bg-no-repeat bg-center bg-fixed;
     @apply font-geist;
@@ -17,9 +21,41 @@ body.kcBodyClass {
 }
 
 .kcLoginClass {
-    @apply flex h-screen;
+    @apply flex h-screen pt-0;
 }
 
-/* .kcLoginIllustrationClass {
-    @apply z-50 bg-cover bg-center !bg-[url(./assets/img/Civil-Road-Works.jpg)];
-} */
+.kcFormWrapperClass {
+    @apply flex flex-col;
+}
+
+.kcFormCardClass {
+    @apply h-full border-0;
+}
+
+.kcLoginIllustrationClass {
+    @apply relative flex-1;
+}
+
+.kcLoginIllustrationImageClass {
+    @apply object-cover w-full h-full;
+}
+
+.kcFooterClass {
+    @apply bg-white text-center p-4 text-sm text-gray-500;
+}
+
+#kc-login {
+    @apply bg-[#F6D68D] text-[#473306] font-semibold rounded px-4 py-2 hover:bg-[#F2C45A] transition-all duration-200;
+}
+
+a.kc-registration-link {
+    @apply block text-[#473306] no-underline bg-white border-2 border-[#473306] font-semibold rounded px-3.5 py-1.5 !m-0 hover:text-[#473306] w-full;
+}
+
+.kcFormGroupClass.kcFormSettingClass {
+    @apply items-center;
+}
+
+.kcInfoAreaWrapperClass {
+    @apply !bg-transparent !px-10;
+}

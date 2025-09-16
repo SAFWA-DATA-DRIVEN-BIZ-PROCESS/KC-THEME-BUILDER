@@ -1,4 +1,4 @@
-import { useState, useEffect, useReducer } from "react";
+import { useState, useEffect, useReducer, useId } from "react";
 import { kcSanitize } from "keycloakify/lib/kcSanitize";
 import { assert } from "keycloakify/tools/assert";
 import { clsx } from "keycloakify/tools/clsx";
@@ -28,19 +28,47 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
             doUseDefaultCss={doUseDefaultCss}
             classes={classes}
             displayMessage={!messagesPerField.existsError("username", "password")}
-            headerNode={msg("loginAccountTitle")}
+            headerNode={
+                <div className="text-center">
+                    <img
+                        className="mx-auto mb-4 h-16"
+                        src={"/logo.svg"}
+                    />
+
+                    {msg("loginAccountTitle")}
+                </div>
+            }
             displayInfo={realm.password && realm.registrationAllowed && !registrationDisabled}
             infoNode={
-                <div id="kc-registration-container">
-                    <div id="kc-registration">
-                        <span>
-                            {msg("noAccount")}{" "}
-                            <a tabIndex={8} href={url.registrationUrl}>
-                                {msg("doRegister")}
+                <>
+                    {/* <div id="kc-registration-container">
+                        <div id="kc-registration">
+                            <span>
+                                {msg("noAccount")}{" "}
+                                <a tabIndex={8} href={url.registrationUrl}>
+                                    {msg("doRegister")}
+                                </a>
+                            </span>
+                        </div>
+                    </div> */}
+
+                    <div id="kc-registration-container">
+                        <OrSeparator />
+                        <div id="kc-registration">
+                            <a tabIndex={8} className="kc-registration-link" href={url.registrationUrl}>
+                                {"Sign Up"/* msg("doRegister") */}
                             </a>
-                        </span>
+                        </div>
                     </div>
-                </div>
+                </>
+            }
+            displayFooter={true}
+            footerNode={
+                <span className="text-xs text-gray-500">
+                    Designed by EZDOM Technology
+                    <br />
+                    Deployed by Schinkels Technik
+                </span>
             }
             socialProvidersNode={
                 <>
@@ -92,8 +120,8 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                                         {!realm.loginWithEmailAllowed
                                             ? msg("username")
                                             : !realm.registrationEmailAsUsername
-                                              ? msg("usernameOrEmail")
-                                              : msg("email")}
+                                                ? msg("usernameOrEmail")
+                                                : msg("email")}
                                     </label>
                                     <input
                                         tabIndex={2}
@@ -147,7 +175,8 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                             </div>
 
                             <div className={kcClsx("kcFormGroupClass", "kcFormSettingClass")}>
-                                <div id="kc-form-options">
+                                <RememberMeSwitch realm={realm} usernameHidden={!!usernameHidden} login={login} msg={msg} />
+                                {/* <div id="kc-form-options">
                                     {realm.rememberMe && !usernameHidden && (
                                         <div className="checkbox">
                                             <label>
@@ -162,7 +191,7 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                                             </label>
                                         </div>
                                     )}
-                                </div>
+                                </div> */}
                                 <div className={kcClsx("kcFormOptionsWrapperClass")}>
                                     {realm.resetPasswordAllowed && (
                                         <span>
@@ -189,6 +218,7 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                                     value={msgStr("doLogIn")}
                                 />
                             </div>
+
                         </form>
                     )}
                 </div>
@@ -227,3 +257,46 @@ function PasswordWrapper(props: { kcClsx: KcClsx; i18n: I18n; passwordInputId: s
         </div>
     );
 }
+
+const RememberMeSwitch = ({ realm, usernameHidden, login, msg }: {
+    realm: KcContext["realm"];
+    usernameHidden: boolean;
+    login: Extract<KcContext, { pageId: "login.ftl" }>["login"];
+    msg: (key: string) => string;
+}) => {
+    const inputId = useId(); // Generate unique ID for accessibility
+
+    return (
+        <div id="kc-form-options" className="">
+            {"rememberMe" in realm && realm.rememberMe && !usernameHidden && (
+                <div className="flex items-center space-x-3">
+                    <label htmlFor={inputId} className="flex items-center cursor-pointer">
+                        <div className="relative">
+                            <input
+                                id={inputId}
+                                name="rememberMe"
+                                type="checkbox"
+                                tabIndex={5}
+                                defaultChecked={!!login.rememberMe}
+                                className="sr-only peer" // Add peer class for Tailwind toggle
+                            />
+                            <div className="w-10 h-6 border border-[#E5E5E5] bg-[#F2F2F2] rounded-full shadow-inner transition-colors duration-300 ease-in-out peer-checked:bg-[#F6D68D]"></div>
+                            <div className="absolute w-4 h-4 bg-white rounded-full shadow top-1 left-1 transition-transform duration-300 ease-in-out peer-checked:translate-x-4"></div>
+                        </div>
+                    </label>
+                    <span className="text-xs text-gray-700">{msg("rememberMe")}</span>
+                </div>
+            )}
+        </div>
+    );
+};
+
+const OrSeparator = () => {
+    return (
+        <div className="flex items-center justify-center mb-8">
+            <div className="flex-grow border-t border-[#E2E8F0]"></div>
+            <span className="flex-shrink-0 px-4 text-[#E2E8F0] text-sm">Or</span>
+            <div className="flex-grow border-t border-[#E2E8F0]"></div>
+        </div>
+    );
+};

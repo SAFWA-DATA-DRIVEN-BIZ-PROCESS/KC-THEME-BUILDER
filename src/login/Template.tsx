@@ -8,12 +8,19 @@ import { useInitialize } from "keycloakify/login/Template.useInitialize";
 import type { I18n } from "./i18n";
 import type { KcContext } from "./KcContext";
 
-export default function Template(props: TemplateProps<KcContext, I18n>) {
+interface Props extends TemplateProps<KcContext, I18n> {
+    displayFooter?: boolean;
+    footerNode?: React.ReactNode;
+}
+
+export default function Template(props: Props) {
     const {
         displayInfo = false,
+        displayFooter = false,
         displayMessage = true,
         displayRequiredFields = false,
         headerNode,
+        footerNode = null,
         socialProvidersNode = null,
         infoNode = null,
         documentTitle,
@@ -53,7 +60,7 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
 
     return (
         <div className={kcClsx("kcLoginClass")}>
-            <div className={"kcFormWrapperClass" + "flex flex-col"}>
+            <div className={"kcFormWrapperClass" + ""}>
                 <div id="kc-header" className={kcClsx("kcHeaderClass")}>
                     <div id="kc-header-wrapper" className={kcClsx("kcHeaderWrapperClass")}>
                         {msg("loginTitleHtml", realm.displayNameHtml)}
@@ -61,7 +68,7 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
                 </div>
                 <div className={kcClsx("kcFormCardClass")}>
                     <header className={kcClsx("kcFormHeaderClass")}>
-                        {enabledLanguages.length > 1 && (
+                        {/* {enabledLanguages.length > 1 && (
                             <div className={kcClsx("kcLocaleMainClass")} id="kc-locale">
                                 <div id="kc-locale-wrapper" className={kcClsx("kcLocaleWrapperClass")}>
                                     <div id="kc-locale-dropdown" className={clsx("menu-button-links", kcClsx("kcLocaleDropDownClass"))}>
@@ -94,7 +101,7 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
                                     </div>
                                 </div>
                             </div>
-                        )}
+                        )} */}
                         {(() => {
                             const node = !(auth !== undefined && auth.showUsername && !auth.showResetCredentials) ? (
                                 <h1 id="kc-page-title">{headerNode}</h1>
@@ -179,10 +186,15 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
                         </div>
                     </div>
                 </div>
+                {displayFooter && <div className="kcFooterClass">
+                    <footer className="kcFooterWrapperClass">
+                        {footerNode}
+                    </footer>
+                </div>}
             </div>
             {/* image on right side */}
-            <div className={"kcLoginIllustrationClass" + "!bg-amber-600 flex-1"}>
-                <img src="/Civil-Road-Works.jpg" alt="Civil Road Works" className="object-cover w-full h-full" />
+            <div className={"kcLoginIllustrationClass" + ""}>
+                <img src="/Civil-Road-Works.jpg" alt="Civil Road Works" className="kcLoginIllustrationImageClass" />
             </div>
         </div>
     );
