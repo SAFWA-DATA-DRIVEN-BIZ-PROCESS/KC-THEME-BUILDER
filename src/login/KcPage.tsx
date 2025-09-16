@@ -77,12 +77,8 @@ const classes = (kcContext: KcContext) =>
     In the index.css I can simply use `body.kcBodyClass` or `.kcBodyClass.kcBodyClass` instead of just `.kcBodyClass` 
     to increase the specificity and avoid using `!important`.  
     */
-        // kcBodyClass: twMerge(
-        //     kcContext.themeName === "ContractorLogin-06062025-1"
-        //         ? "!bg-[url(./assets/img/vlado-paunovic.jpg)]"
-        //         : "!bg-[url(./assets/img/background.jpg)]",
-        //     "bg-no-repeat bg-center bg-fixed",
-        //     "font-geist"
-        // )
-        //kcHeaderWrapperClass: twMerge("text-3xl font-bold underline")
+        kcBodyClass: twMerge(
+            kcContext.themeName === "swifto" ? "" : ""
+        ),
+        kcHeaderWrapperClass: twMerge("text-3xl font-bold underline")
     }) satisfies { [key in ClassKey]?: string };

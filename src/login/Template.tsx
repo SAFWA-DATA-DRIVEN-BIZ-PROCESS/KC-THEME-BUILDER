@@ -8,12 +8,12 @@ import { useInitialize } from "keycloakify/login/Template.useInitialize";
 import type { I18n } from "./i18n";
 import type { KcContext } from "./KcContext";
 
-interface Props extends TemplateProps<KcContext, I18n> {
+export interface TemplateExtendedProps extends TemplateProps<KcContext, I18n> {
     displayFooter?: boolean;
     footerNode?: React.ReactNode;
 }
 
-export default function Template(props: Props) {
+export default function Template(props: TemplateExtendedProps) {
     const {
         displayInfo = false,
         displayFooter = false,
@@ -68,7 +68,7 @@ export default function Template(props: Props) {
                 </div>
                 <div className={kcClsx("kcFormCardClass")}>
                     <header className={kcClsx("kcFormHeaderClass")}>
-                        {/* {enabledLanguages.length > 1 && (
+                        {enabledLanguages.length > 1 && (
                             <div className={kcClsx("kcLocaleMainClass")} id="kc-locale">
                                 <div id="kc-locale-wrapper" className={kcClsx("kcLocaleWrapperClass")}>
                                     <div id="kc-locale-dropdown" className={clsx("menu-button-links", kcClsx("kcLocaleDropDownClass"))}>
@@ -101,7 +101,7 @@ export default function Template(props: Props) {
                                     </div>
                                 </div>
                             </div>
-                        )} */}
+                        )}
                         {(() => {
                             const node = !(auth !== undefined && auth.showUsername && !auth.showResetCredentials) ? (
                                 <h1 id="kc-page-title">{headerNode}</h1>

@@ -16,7 +16,8 @@
         "storybook": "storybook dev -p 6006",
         "format": "prettier . --write",
         "flush-keycloak": "rm -rf ./dist_keycloak",
-        "eject-page": "keycloakify eject-page"
+        "eject-page": "keycloakify eject-page",
+        "extract-jar": "node extract-jar.js"
     },
     "license": "MIT",
     "keywords": [],

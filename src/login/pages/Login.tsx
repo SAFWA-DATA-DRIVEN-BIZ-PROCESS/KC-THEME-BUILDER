@@ -6,7 +6,6 @@ import type { PageProps } from "keycloakify/login/pages/PageProps";
 import { getKcClsx, type KcClsx } from "keycloakify/login/lib/kcClsx";
 import type { KcContext } from "../KcContext";
 import type { I18n } from "../i18n";
-
 import { Icon } from '@iconify-icon/react';
 
 export default function Login(props: PageProps<Extract<KcContext, { pageId: "login.ftl" }>, I18n>) {
@@ -37,7 +36,7 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                         src={"/logo.svg"}
                     />
 
-                    {msg("loginAccountTitle")}
+                    {/* {msg("loginAccountTitle")} */}
                 </div>
             }
             displayInfo={realm.password && realm.registrationAllowed && !registrationDisabled}
@@ -53,6 +52,8 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                     </div>
                 </>
             }
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            //@ts-ignore
             displayFooter={true}
             footerNode={
                 <span className="text-xs text-gray-500">
@@ -166,7 +167,7 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                             </div>
 
                             <div className={kcClsx("kcFormGroupClass", "kcFormSettingClass")}>
-                                <RememberMeSwitch realm={realm} usernameHidden={!!usernameHidden} login={login} msg={msg} />
+                                <RememberMeSwitch realm={realm} usernameHidden={!!usernameHidden} login={login} msg={msg as never} />
                                 <div className={kcClsx("kcFormOptionsWrapperClass")}>
                                     {realm.resetPasswordAllowed && (
                                         <span>

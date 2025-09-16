@@ -28,7 +28,7 @@
     "oauth2DeviceCodeLifespan": 600,
     "oauth2DevicePollingInterval": 5,
     "enabled": true,
-    "sslRequired": "external",
+    "sslRequired": "none",
     "registrationAllowed": true,
     "registrationEmailAsUsername": false,
     "rememberMe": true,
@@ -409,8 +409,8 @@
     "otpPolicyCodeReusable": false,
     "otpSupportedApplications": [
         "totpAppMicrosoftAuthenticatorName",
-        "totpAppFreeOTPName",
-        "totpAppGoogleName"
+        "totpAppGoogleName",
+        "totpAppFreeOTPName"
     ],
     "webAuthnPolicyRpEntityName": "keycloak",
     "webAuthnPolicySignatureAlgorithms": ["ES256"],
@@ -699,7 +699,7 @@
                 "display.on.consent.screen": "false",
                 "oauth2.device.authorization.grant.enabled": "false",
                 "backchannel.logout.revoke.offline.tokens": "false",
-                "login_theme": "custom-theme-1"
+                "login_theme": "swifto"
             },
             "authenticationFlowBindingOverrides": {},
             "fullScopeAllowed": true,
@@ -1370,10 +1370,10 @@
         "starttls": "false",
         "user": "919431001@smtp-brevo.com"
     },
-    "loginTheme": "custom-email",
+    "loginTheme": "swifto",
     "accountTheme": "",
     "adminTheme": "",
-    "emailTheme": "custom-email",
+    "emailTheme": "swifto",
     "eventsEnabled": false,
     "eventsListeners": ["keycloakify-logging", "jboss-logging"],
     "enabledEventTypes": [],
@@ -1391,14 +1391,14 @@
                 "subComponents": {},
                 "config": {
                     "allowed-protocol-mapper-types": [
-                        "saml-user-property-mapper",
-                        "saml-user-attribute-mapper",
-                        "oidc-full-name-mapper",
                         "oidc-sha256-pairwise-sub-mapper",
-                        "oidc-usermodel-property-mapper",
+                        "saml-user-property-mapper",
+                        "saml-role-list-mapper",
+                        "oidc-full-name-mapper",
                         "oidc-address-mapper",
                         "oidc-usermodel-attribute-mapper",
-                        "saml-role-list-mapper"
+                        "saml-user-attribute-mapper",
+                        "oidc-usermodel-property-mapper"
                     ]
                 }
             },
@@ -1447,14 +1447,14 @@
                 "subComponents": {},
                 "config": {
                     "allowed-protocol-mapper-types": [
-                        "oidc-full-name-mapper",
-                        "oidc-sha256-pairwise-sub-mapper",
                         "oidc-usermodel-property-mapper",
-                        "saml-user-property-mapper",
+                        "oidc-sha256-pairwise-sub-mapper",
                         "oidc-usermodel-attribute-mapper",
+                        "saml-user-attribute-mapper",
+                        "oidc-full-name-mapper",
+                        "saml-user-property-mapper",
                         "oidc-address-mapper",
-                        "saml-role-list-mapper",
-                        "saml-user-attribute-mapper"
+                        "saml-role-list-mapper"
                     ]
                 }
             },
@@ -1546,7 +1546,7 @@
             }
         ]
     },
-    "internationalizationEnabled": true,
+    "internationalizationEnabled": false,
     "supportedLocales": [
         "de",
         "no",

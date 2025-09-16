@@ -9,7 +9,7 @@ export default defineConfig({
         react(),
         tailwindcss(),
         keycloakify({
-            themeName: ["custom-email", "swifto"],
+            themeName: ["swifto"],
             accountThemeImplementation: "none",
             keycloakVersionTargets: {
                 "22-to-25": false,
@@ -17,7 +17,7 @@ export default defineConfig({
                     .toISOString()
                     .replace(/[-:T.Z]/g, "")
                     .slice(0, 14)}.jar`
-            }
+            },
         })
     ]
 });
