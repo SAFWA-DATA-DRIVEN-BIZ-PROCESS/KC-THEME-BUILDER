@@ -59,3 +59,23 @@ a.kc-registration-link {
 .kcInfoAreaWrapperClass {
     @apply !bg-transparent !px-10;
 }
+
+.kcInputClass {
+    @apply bg-[#F2F2F2] border-0 rounded px-3.5 py-1.5 !m-0;
+}
+
+.kcInputGroup {
+    @apply relative;
+}
+
+/* .kcFormPasswordVisibilityButtonClass.pf-c-button.pf-c-button {
+    @apply bg-[#F2F2F2] border-0 text-[#473306] hover:text-[#473306] transition-all duration-200;
+} */
+
+.kcInputGroup > i {
+    @apply absolute top-1/2 right-3 -translate-y-1/2 text-[#473306] hover:text-[#473306] cursor-pointer !z-[100];
+}
+
+iconify-icon.kcFormPasswordVisibilityIcon {
+    @apply absolute top-1/2 right-3 -translate-y-1/2 text-[#4D4D4D] hover:text-[#473306] cursor-pointer !z-[100];
+}

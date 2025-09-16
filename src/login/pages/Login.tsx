@@ -7,6 +7,8 @@ import { getKcClsx, type KcClsx } from "keycloakify/login/lib/kcClsx";
 import type { KcContext } from "../KcContext";
 import type { I18n } from "../i18n";
 
+import { Icon } from '@iconify-icon/react';
+
 export default function Login(props: PageProps<Extract<KcContext, { pageId: "login.ftl" }>, I18n>) {
     const { kcContext, i18n, doUseDefaultCss, Template, classes } = props;
 
@@ -245,18 +247,19 @@ function PasswordWrapper(props: { kcClsx: KcClsx; i18n: I18n; passwordInputId: s
     return (
         <div className={kcClsx("kcInputGroup")}>
             {children}
-            <button
-                type="button"
-                className={kcClsx("kcFormPasswordVisibilityButtonClass")}
+            <Icon
+                icon={isPasswordRevealed ? "heroicons-solid:eye-off" : "heroicons-solid:eye"}
+                width={16}
+                height={16}
+                className="kcFormPasswordVisibilityIcon"
                 aria-label={msgStr(isPasswordRevealed ? "hidePassword" : "showPassword")}
                 aria-controls={passwordInputId}
                 onClick={toggleIsPasswordRevealed}
-            >
-                <i className={kcClsx(isPasswordRevealed ? "kcFormPasswordVisibilityIconHide" : "kcFormPasswordVisibilityIconShow")} aria-hidden />
-            </button>
+                aria-hidden
+            />
         </div>
     );
-}
+};
 
 const RememberMeSwitch = ({ realm, usernameHidden, login, msg }: {
     realm: KcContext["realm"];

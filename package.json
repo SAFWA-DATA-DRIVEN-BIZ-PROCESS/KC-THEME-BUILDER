@@ -21,6 +21,7 @@
     "license": "MIT",
     "keywords": [],
     "dependencies": {
+        "@keycloakify/email-native": "~260007.0.0",
         "@tailwindcss/vite": "^4.1.8",
         "autoprefixer": "^10.4.19",
         "keycloakify": "^11.8.22",
@@ -28,11 +29,11 @@
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "tailwind-merge": "^3.3.0",
-        "tailwindcss": "^4.1.8",
-        "@keycloakify/email-native": "~260007.0.0"
+        "tailwindcss": "^4.1.8"
     },
     "devDependencies": {
         "@eslint/js": "^9.15.0",
+        "@iconify-icon/react": "^3.0.1",
         "@storybook/react": "^8.1.10",
         "@storybook/react-vite": "^8.1.10",
         "@types/react": "^18.2.43",
