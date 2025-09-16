@@ -43,17 +43,6 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
             displayInfo={realm.password && realm.registrationAllowed && !registrationDisabled}
             infoNode={
                 <>
-                    {/* <div id="kc-registration-container">
-                        <div id="kc-registration">
-                            <span>
-                                {msg("noAccount")}{" "}
-                                <a tabIndex={8} href={url.registrationUrl}>
-                                    {msg("doRegister")}
-                                </a>
-                            </span>
-                        </div>
-                    </div> */}
-
                     <div id="kc-registration-container">
                         <OrSeparator />
                         <div id="kc-registration">
@@ -178,22 +167,6 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
 
                             <div className={kcClsx("kcFormGroupClass", "kcFormSettingClass")}>
                                 <RememberMeSwitch realm={realm} usernameHidden={!!usernameHidden} login={login} msg={msg} />
-                                {/* <div id="kc-form-options">
-                                    {realm.rememberMe && !usernameHidden && (
-                                        <div className="checkbox">
-                                            <label>
-                                                <input
-                                                    tabIndex={5}
-                                                    id="rememberMe"
-                                                    name="rememberMe"
-                                                    type="checkbox"
-                                                    defaultChecked={!!login.rememberMe}
-                                                />{" "}
-                                                {msg("rememberMe")}
-                                            </label>
-                                        </div>
-                                    )}
-                                </div> */}
                                 <div className={kcClsx("kcFormOptionsWrapperClass")}>
                                     {realm.resetPasswordAllowed && (
                                         <span>
@@ -283,7 +256,7 @@ const RememberMeSwitch = ({ realm, usernameHidden, login, msg }: {
                                 defaultChecked={!!login.rememberMe}
                                 className="sr-only peer" // Add peer class for Tailwind toggle
                             />
-                            <div className="w-10 h-6 border border-[#E5E5E5] bg-[#F2F2F2] rounded-full shadow-inner transition-colors duration-300 ease-in-out peer-checked:bg-[#F6D68D]"></div>
+                            <div className="w-10 h-6 border border-[#E5E5E5] bg-[#F2F2F2] rounded-full transition-colors duration-300 ease-in-out peer-checked:bg-[#F6D68D]"></div>
                             <div className="absolute w-4 h-4 bg-white rounded-full shadow top-1 left-1 transition-transform duration-300 ease-in-out peer-checked:translate-x-4"></div>
                         </div>
                     </label>

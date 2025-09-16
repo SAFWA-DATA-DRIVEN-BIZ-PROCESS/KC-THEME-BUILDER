@@ -61,16 +61,12 @@ a.kc-registration-link {
 }
 
 .kcInputClass {
-    @apply bg-[#F2F2F2] border-0 rounded px-3.5 py-1.5 !m-0;
+    @apply border border-[#F2F2F2] bg-[#F2F2F2] shadow-xs rounded px-3.5 py-1.5 !m-0 has-focus-visible:outline outline-[#F2C45A];
 }
 
 .kcInputGroup {
     @apply relative;
 }
-
-/* .kcFormPasswordVisibilityButtonClass.pf-c-button.pf-c-button {
-    @apply bg-[#F2F2F2] border-0 text-[#473306] hover:text-[#473306] transition-all duration-200;
-} */
 
 .kcInputGroup > i {
     @apply absolute top-1/2 right-3 -translate-y-1/2 text-[#473306] hover:text-[#473306] cursor-pointer !z-[100];
