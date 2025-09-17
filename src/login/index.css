@@ -33,7 +33,7 @@ body.kcBodyClass {
 }
 
 .kcLoginIllustrationClass {
-    @apply relative flex-1;
+    @apply relative flex-1 bg-[url(./assets/img/Civil-Road-Works.jpg)] bg-cover bg-center hidden sm:block;
 }
 
 .kcLoginIllustrationImageClass {

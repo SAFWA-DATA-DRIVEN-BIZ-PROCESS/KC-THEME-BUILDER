@@ -194,7 +194,7 @@ export default function Template(props: TemplateExtendedProps) {
             </div>
             {/* image on right side */}
             <div className={"kcLoginIllustrationClass" + ""}>
-                <img src="/Civil-Road-Works.jpg" alt="Civil Road Works" className="kcLoginIllustrationImageClass" />
+                {/* <img src="/Civil-Road-Works.jpg" alt="Civil Road Works" className="kcLoginIllustrationImageClass" /> */}
             </div>
         </div>
     );

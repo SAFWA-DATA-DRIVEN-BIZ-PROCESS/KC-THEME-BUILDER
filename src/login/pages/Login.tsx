@@ -30,11 +30,11 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
             classes={classes}
             displayMessage={!messagesPerField.existsError("username", "password")}
             headerNode={
-                <div className="text-center">
-                    <img
+                <div className="text-center bg-[url(./assets/img/logo.svg)] bg-no-repeat bg-center pt-20 pb-10">
+                    {/* <img
                         className="mx-auto mb-4 h-16"
                         src={"/logo.svg"}
-                    />
+                    /> */}
 
                     {/* {msg("loginAccountTitle")} */}
                 </div>
