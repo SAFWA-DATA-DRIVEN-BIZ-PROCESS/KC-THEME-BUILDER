@@ -57,9 +57,7 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
             displayFooter={true}
             footerNode={
                 <span className="text-xs text-gray-500">
-                    Designed by EZDOM Technology
-                    <br />
-                    Deployed by Schinkels Technik
+                    Powered by Schinkels Technik
                 </span>
             }
             socialProvidersNode={
