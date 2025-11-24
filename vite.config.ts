@@ -9,7 +9,7 @@ export default defineConfig({
         react(),
         tailwindcss(),
         keycloakify({
-            themeName: ["swifto"],
+            themeName: ["c-user-management"],
             accountThemeImplementation: "none",
             keycloakVersionTargets: {
                 "22-to-25": false,
