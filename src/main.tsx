@@ -12,7 +12,9 @@ if (import.meta.env.DEV) {
         pageId: "login-update-password.ftl",
         overrides: {}
     });
-} */
+}
+*/
+>>>>>>> upstream/main
 
 createRoot(document.getElementById("root")!).render(
     <StrictMode>

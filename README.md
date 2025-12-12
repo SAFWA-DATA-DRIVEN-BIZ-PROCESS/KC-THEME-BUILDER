@@ -4,23 +4,17 @@
     <br/>
 </p>
 
-This starter is based on Vite. There is also [a Webpack based starter](https://github.com/keycloakify/keycloakify-starter-webpack).
-
 # Quick start
 
 ```bash
 git clone https://github.com/keycloakify/keycloakify-starter
 cd keycloakify-starter
-yarn install # Or use an other package manager, just be sure to delete the yarn.lock if you do.
+yarn install # Or use an other package manager, just be sure to delete the yarn.lock if you use another package manager.
 ```
 
 # Testing the theme locally
 
 [Documentation](https://docs.keycloakify.dev/testing-your-theme)
-
-## testing with `https://www.keycloak.org/app`
-
-[Documentation](https://www.keycloak.org/getting-started/getting-started-zip)
 
 # How to customize the theme
 
@@ -40,7 +34,19 @@ npm run build-keycloak-theme
 ```
 
 Note that by default Keycloakify generates multiple .jar files for different versions of Keycloak.  
-You can customize this behavior, see documentation [here](https://docs.keycloakify.dev/targeting-specific-keycloak-versions).
+You can customize this behavior, see documentation [here](https://docs.keycloakify.dev/features/compiler-options/keycloakversiontargets).
+
+# Initializing the account theme
+
+```bash
+npx keycloakify initialize-account-theme
+```
+
+# Initializing the email theme
+
+```bash
+npx keycloakify initialize-email-theme
+```
 
 # GitHub Actions
 
