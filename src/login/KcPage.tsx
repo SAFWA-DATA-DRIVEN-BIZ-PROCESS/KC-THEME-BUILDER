@@ -6,6 +6,7 @@ import { useI18n } from "./i18n";
 import DefaultPage from "keycloakify/login/DefaultPage";
 import Template from "./Template";
 import { twMerge } from "tailwind-merge";
+import { getBodyClasses } from "./themeConfig";
 
 const UserProfileFormFields = lazy(
     () => import("keycloakify/login/UserProfileFormFields")
@@ -78,11 +79,8 @@ const classes = (kcContext: KcContext) =>
     to increase the specificity and avoid using `!important`.  
     */
         kcBodyClass: twMerge(
-            kcContext.themeName === "ContractorLogin-06062025-1"
-                ? "!bg-[url(./assets/img/vlado-paunovic.jpg)]"
-                : "!bg-[url(./assets/img/background.jpg)]",
-            "bg-no-repeat bg-center bg-fixed",
-            "font-geist"
+            // Dynamically apply theme-specific styling from themeConfig
+            getBodyClasses(kcContext)
         )
         //kcHeaderWrapperClass: twMerge("text-3xl font-bold underline")
     }) satisfies { [key in ClassKey]?: string };

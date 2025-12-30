@@ -7,6 +7,8 @@ import { useSetClassName } from "keycloakify/tools/useSetClassName";
 import { useInitialize } from "keycloakify/login/Template.useInitialize";
 import type { I18n } from "./i18n";
 import type { KcContext } from "./KcContext";
+import { getThemeConfig } from "./themeConfig";
+import MaintenancePage from "./pages/MaintenancePage";
 
 export default function Template(props: TemplateProps<KcContext, I18n>) {
     const {
@@ -30,10 +32,17 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
     const { msg, msgStr, currentLanguage, enabledLanguages } = i18n;
 
     const { realm, auth, url, message, isAppInitiatedAction } = kcContext;
+    
+    const themeConfig = getThemeConfig(kcContext);
 
     useEffect(() => {
         document.title = documentTitle ?? msgStr("loginTitle", realm.displayName);
     }, []);
+    
+    // Show maintenance page if configured
+    if (themeConfig.mode === "maintenance" && !themeConfig.showLoginForm) {
+        return <MaintenancePage kcContext={kcContext} themeConfig={themeConfig} />;
+    }
 
     useSetClassName({
         qualifiedName: "html",
@@ -53,6 +62,18 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
 
     return (
         <div className={kcClsx("kcLoginClass")}>
+            {/* Restricted/Warning Banner */}
+            {themeConfig.bannerMessage && (
+                <div 
+                    className={`w-full py-3 px-4 text-center font-semibold ${
+                        themeConfig.bannerType === "error" ? "bg-red-600 text-white" :
+                        themeConfig.bannerType === "warning" ? "bg-orange-500 text-white" :
+                        "bg-blue-500 text-white"
+                    }`}
+                >
+                    {themeConfig.bannerMessage}
+                </div>
+            )}
             <div id="kc-header" className={kcClsx("kcHeaderClass")}>
                 <div id="kc-header-wrapper" className={kcClsx("kcHeaderWrapperClass")}>
                     {msg("loginTitleHtml", realm.displayNameHtml)}

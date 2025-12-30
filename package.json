@@ -33,7 +33,6 @@
     },
     "devDependencies": {
         "@eslint/js": "^9.15.0",
-        "storybook": "^8.1.10",
         "@storybook/react": "^8.1.10",
         "@storybook/react-vite": "^8.1.10",
         "@types/react": "^18.2.43",
