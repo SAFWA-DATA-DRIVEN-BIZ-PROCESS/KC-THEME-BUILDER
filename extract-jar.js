@@ -24,7 +24,7 @@ function getOutputDir(jarFile) {
 }
 
 function selectJarFile(files) {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     if (files.length === 0) {
       console.error("No JAR file found in dist_keycloak directory.");
       process.exit(1);
