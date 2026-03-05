@@ -37,6 +37,13 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                     /> */}
 
                     {/* {msg("loginAccountTitle")} */}
+
+                    {/* Organization-specific branding */}
+                    {kcContext.organization && (
+                        <div className="organization-info text-sm text-gray-600 mt-4 border-t pt-4">
+                            <p>Signing in to: <strong>{kcContext.organization.name}</strong></p>
+                        </div>
+                    )}
                 </div>
             }
             displayInfo={realm.password && realm.registrationAllowed && !registrationDisabled}

@@ -26,13 +26,23 @@ export function createKcPageStory<PageId extends KcContext["pageId"]>(params: {
     const { pageId } = params;
 
     function KcPageStory(props: {
-        kcContext?: DeepPartial<Extract<KcContext, { pageId: PageId }>>;
+        kcContext?: DeepPartial<Extract<KcContext, { pageId: PageId }>> & {
+            // Allow organization and realm extensions for organizations feature
+            realm?: DeepPartial<Extract<KcContext, { pageId: PageId }>["realm"]> & {
+                organizationsEnabled?: boolean;
+                [key: string]: unknown;
+            };
+            organization?: {
+                name: string;
+                [key: string]: unknown;
+            };
+        };
     }) {
         const { kcContext: overrides } = props;
 
         const kcContextMock = getKcContextMock({
             pageId,
-            overrides
+            overrides: overrides as any
         });
 
         return <KcPage kcContext={kcContextMock} />;

@@ -45,6 +45,13 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
             headerNode={
                 <div className="text-center bg-[url(./assets/img/logo.svg)] bg-no-repeat bg-center pt-20 pb-10">
                     {/* Logo centered via background image */}
+
+                    {/* Organization-specific branding (if coming from org-specific link) */}
+                    {kcContext.organization && (
+                        <div className="organization-info text-sm text-gray-600 mt-4 border-t pt-4">
+                            <p>You are signing in to: <strong>{kcContext.organization.name}</strong></p>
+                        </div>
+                    )}
                 </div>
             }
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment

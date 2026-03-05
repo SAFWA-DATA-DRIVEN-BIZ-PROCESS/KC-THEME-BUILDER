@@ -92,15 +92,13 @@ export const WithPresetUsername: Story = {
     )
 };
 
-export const WithImmutablePresetUsername: Story = {
+export const WithPresetUsernameEditable: Story = {
     render: () => (
         <KcPageStory
             kcContext={{
-                auth: {
-                    attemptedUsername: "max.mustermann@mail.com",
-                    showUsername: true
+                login: {
+                    username: "max.mustermann@mail.com"
                 },
-                usernameHidden: true,
                 message: {
                     type: "info",
                     summary: "Please re-authenticate to continue"
@@ -358,3 +356,4 @@ export const WithSocialProvidersAndWithoutRememberMe: Story = {
         />
     )
 };
+

@@ -5,8 +5,14 @@ import type { KcEnvName, ThemeName } from "../kc.gen";
 export type KcContextExtension = {
     themeName: ThemeName;
     properties: Record<KcEnvName, string> & {};
+    // Organization feature support
+    organization?: {
+        name: string;
+        [key: string]: unknown;
+    };
 };
 
 export type KcContextExtensionPerPage = {};
 
 export type KcContext = ExtendKcContext<KcContextExtension, KcContextExtensionPerPage>;
+

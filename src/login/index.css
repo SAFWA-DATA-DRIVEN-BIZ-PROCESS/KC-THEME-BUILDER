@@ -49,7 +49,7 @@ body.kcBodyClass {
 }
 
 .kcLoginClass .kcFormCardClass {
-    @apply max-w-md m-auto p-10;
+    @apply max-w-md min-w-[420px] m-auto p-10;
 }
 
 a.kc-registration-link {
