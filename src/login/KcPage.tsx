@@ -6,6 +6,7 @@ import { useI18n } from "./i18n";
 import DefaultPage from "keycloakify/login/DefaultPage";
 import Template from "./Template";
 import { twMerge } from "tailwind-merge";
+import { getBodyClasses } from "./themeConfig";
 
 const UserProfileFormFields = lazy(
     () => import("keycloakify/login/UserProfileFormFields")
