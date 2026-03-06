@@ -12,7 +12,16 @@ export type KcContextExtension = {
     };
 };
 
-export type KcContextExtensionPerPage = {};
+export type KcContextExtensionPerPage = {
+    "select-organization.ftl": {
+        user: {
+            organizations?: Array<{
+                alias: string;
+                name: string;
+            }>;
+        };
+    };
+};
 
 export type KcContext = ExtendKcContext<KcContextExtension, KcContextExtensionPerPage>;
 

@@ -15,6 +15,7 @@ const Login = lazy(() => import("./pages/Login"));
 const LoginResetPassword = lazy(() => import("./pages/LoginResetPassword"));
 const LoginUpdatePassword = lazy(() => import("./pages/LoginUpdatePassword"));
 const LoginUsername = lazy(() => import("./pages/LoginUsername"));
+const SelectOrganization = lazy(() => import("./pages/SelectOrganization"));
 
 const doMakeUserConfirmPassword = true;
 
@@ -53,6 +54,13 @@ export default function KcPage(props: { kcContext: KcContext }) {
                         );
                     case "login-username.ftl": return (
                         <LoginUsername
+                            {...{ kcContext, i18n, classes: classes(kcContext) }}
+                            Template={Template}
+                            doUseDefaultCss={true}
+                        />
+                    );
+                    case "select-organization.ftl": return (
+                        <SelectOrganization
                             {...{ kcContext, i18n, classes: classes(kcContext) }}
                             Template={Template}
                             doUseDefaultCss={true}
