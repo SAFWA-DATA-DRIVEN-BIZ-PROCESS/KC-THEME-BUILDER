@@ -4,14 +4,18 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "start": "npx keycloakify start-keycloak",
     "postinstall": "keycloakify sync-extensions",
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "build-keycloak-theme": "npm run build && keycloakify build",
+    "build-keycloak-theme": "yarn run build && keycloakify build",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "flush-keycloak": "rm -rf ./dist_keycloak",
+    "eject-page": "keycloakify eject-page",
+    "extract-jar": "node extract-jar.js"
   },
   "dependencies": {
     "@oussemasahbeni/keycloakify-login-shadcn": "^250004.0.20",
