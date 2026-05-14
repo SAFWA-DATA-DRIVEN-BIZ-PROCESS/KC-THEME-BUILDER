@@ -1,6 +1,8 @@
 # This file is managed by Keycloakify, do not edit it manually.
 
 # === Owned files start ===
+# login/pages/login/Form.tsx
+# login/pages/login/Page.tsx
 # === Owned files end =====
 
 # === @keycloakify/login-ui-storybook v250004.2.0 ===
@@ -121,11 +123,9 @@
 /login/pages/link-idp-action/index.ts
 /login/pages/link-idp-action/Page.stories.tsx
 /login/pages/link-idp-action/Page.tsx
-/login/pages/login/Form.tsx
 /login/pages/login/index.ts
 /login/pages/login/Info.tsx
 /login/pages/login/Page.stories.tsx
-/login/pages/login/Page.tsx
 /login/pages/login/SocialProviders.tsx
 /login/pages/login/useProviderLogos.tsx
 /login/pages/login-config-totp/index.ts
