@@ -10,6 +10,7 @@ export default defineConfig({
         react(),
         tailwindcss(),
         keycloakify({
+            themeName: ["swifto"],
             accountThemeImplementation: "none"
         })
     ],

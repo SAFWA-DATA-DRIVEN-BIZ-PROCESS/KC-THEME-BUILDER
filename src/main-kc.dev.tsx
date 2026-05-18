@@ -4,8 +4,13 @@ import { KcPage } from "./kc.gen";
 import { getKcContextMock } from "./login/mocks/getKcContextMock";
 
 const kcContext = getKcContextMock({
-    pageId: "login.ftl",
-    overrides: {}
+    pageId: "login-password.ftl",
+    overrides: {
+        auth: {
+            showUsername: true,
+            attemptedUsername: "testuser",
+        }
+    }
 });
 
 createRoot(document.getElementById("root")!).render(
