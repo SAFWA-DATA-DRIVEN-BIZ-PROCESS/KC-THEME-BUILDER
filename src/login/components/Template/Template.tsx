@@ -80,7 +80,7 @@ export function Template(props: {
 
             {/* Frosted-glass card */}
             <div className="relative z-10 w-full max-w-sm mx-4">
-                <div className="rounded-2xl shadow-2xl overflow-hidden bg-white/40 backdrop-blur-lg">
+                <div className="rounded-2xl shadow-2xl overflow-hidden bg-white/40 backdrop-blur-lg text-gray-900">
                     <div className="px-8 pt-8 pb-8 space-y-5">
 
                         {/* Logo + header */}

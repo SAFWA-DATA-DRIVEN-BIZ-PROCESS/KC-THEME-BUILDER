@@ -1,6 +1,8 @@
 # This file is managed by Keycloakify, do not edit it manually.
 
 # === Owned files start ===
+# login/index.css
+# login/styleLevelCustomization.tsx
 # login/components/Template/Template.tsx
 # login/pages/login/Form.tsx
 # login/pages/login/Page.tsx
@@ -52,10 +54,8 @@
 # === @oussemasahbeni/keycloakify-login-shadcn v250004.0.20 ===
 /components/ThemeProvider.tsx
 /login/i18n.ts
-/login/index.css
 /login/KcContext.ts
 /login/KcPage.tsx
-/login/styleLevelCustomization.tsx
 /components/lib/utils.ts
 /components/ui/alert.tsx
 /components/ui/button.tsx
