@@ -10,7 +10,14 @@ export default defineConfig({
         react(),
         tailwindcss(),
         keycloakify({
-            accountThemeImplementation: "none"
+            accountThemeImplementation: "none",
+             keycloakVersionTargets: {
+                "22-to-25": false,
+                "all-other-versions": `${new Date()
+                    .toISOString()
+                    .replace(/[-:T.Z]/g, "")
+                    .slice(0, 14)}.jar`
+            },
         })
     ],
     resolve: {
