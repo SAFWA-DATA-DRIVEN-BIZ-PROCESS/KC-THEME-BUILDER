@@ -1,8 +1,11 @@
 # This file is managed by Keycloakify, do not edit it manually.
 
 # === Owned files start ===
+# login/components/Template/Template.tsx
 # login/pages/login/Form.tsx
 # login/pages/login/Page.tsx
+# login/pages/login-reset-password/Form.tsx
+# login/pages/login-reset-password/Page.tsx
 # === Owned files end =====
 
 # === @keycloakify/login-ui-storybook v250004.2.0 ===
@@ -79,7 +82,6 @@
 /login/assets/img/auth-logo.svg
 /login/assets/img/shape.svg
 /login/components/Template/index.ts
-/login/components/Template/Template.tsx
 /login/components/Template/useAuthChecker.ts
 /login/components/Template/useInitializeTemplate.ts
 /login/components/ui/Langauges.tsx
@@ -169,10 +171,8 @@
 /login/pages/login-reset-otp/index.ts
 /login/pages/login-reset-otp/Page.stories.tsx
 /login/pages/login-reset-otp/Page.tsx
-/login/pages/login-reset-password/Form.tsx
 /login/pages/login-reset-password/index.ts
 /login/pages/login-reset-password/Page.stories.tsx
-/login/pages/login-reset-password/Page.tsx
 /login/pages/login-update-password/index.ts
 /login/pages/login-update-password/Page.stories.tsx
 /login/pages/login-update-password/Page.tsx
