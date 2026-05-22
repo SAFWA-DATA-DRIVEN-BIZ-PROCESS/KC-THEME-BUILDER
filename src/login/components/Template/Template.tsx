@@ -88,6 +88,9 @@ export function Template(props: {
                             <div className="rounded flex items-center justify-center">
                                 <img src={companyLogo} alt="Logo" className="w-20 h-20" />
                             </div>
+                            <div className="text-sm font-medium text-white mt-1">
+                                {kcContext.realm.displayName || kcContext.realm.name}
+                            </div>
 
                             {(() => {
                                 const node = !(
