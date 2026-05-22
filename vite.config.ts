@@ -10,7 +10,7 @@ export default defineConfig({
         react(),
         tailwindcss(),
         keycloakify({
-            themeName: "cdlui-v8",
+            themeName: "cdlui-v9",
             accountThemeImplementation: "none",
              keycloakVersionTargets: {
                 "22-to-25": false,

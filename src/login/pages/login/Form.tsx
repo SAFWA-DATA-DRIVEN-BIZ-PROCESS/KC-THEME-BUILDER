@@ -54,6 +54,7 @@ export function Form() {
                                                 : msg("username")}
                                     </FieldLabel>
                                     <Input
+                                    className="bg-white! text-gray-900! border-gray-300! focus:ring-primary-500! focus:border-primary-500!"
                                         tabIndex={2}
                                         type="text"
                                         id="username"
@@ -92,7 +93,7 @@ export function Form() {
                                 <FieldLabel htmlFor="password">
                                     {msg("password")}
                                 </FieldLabel>
-                                <InputGroup>
+                                <InputGroup className="bg-white! text-gray-900! border-gray-300! focus-within:ring-primary-500! focus-within:border-primary-500!">
                                     <InputGroupInput
                                         tabIndex={3}
                                         type="password"
