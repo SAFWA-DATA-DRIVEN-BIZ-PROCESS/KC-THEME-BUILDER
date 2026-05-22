@@ -40,7 +40,6 @@ export function Template(props: {
         displayInfo = false,
         displayMessage = true,
         displayRequiredFields = false,
-        headerNode,
         socialProvidersNode = null,
         documentTitle,
         bodyClassName,
@@ -76,7 +75,7 @@ export function Template(props: {
     return (
         <div className="grid min-h-svh lg:grid-cols-[2fr_3fr]">
             {/* Main content */}
-            <div className="flex flex-col gap-4 px-0 py-0 pb-6 lg:p-6 lg:md:p-10 lg:pt-10 min-h-screen lg:min-h-0">
+            <div className="flex flex-col gap-4 px-0 py-0 pb-6 lg:p-6 lg:md:p-10 lg:pt-10 min-h-screen lg:min-h-0 bg-white">
                 <div className="flex flex-1 items-start lg:items-center justify-center flex-col ">
                     <div className="w-full max-w-xl">
 
@@ -95,7 +94,7 @@ export function Template(props: {
                                             auth.showUsername &&
                                             !auth.showResetCredentials
                                         ) ? (
-                                            <h1 className="text-xl">{headerNode}</h1>
+                                            <div><div className="text-xl font-semibold">Welcome!</div><div className="text-sm text-muted-foreground font-light">Sign in to continue.</div></div>
                                         ) : (
                                             <div
                                                 id="kc-username"
