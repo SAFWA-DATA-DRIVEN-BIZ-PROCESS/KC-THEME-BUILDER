@@ -64,7 +64,7 @@ export function Page() {
                     </span>
                 </div>
             }
-            headerNode={msg("doLogIn")}
+            headerNode={<div><div className="text-xl font-semibold">Welcome!</div><div className="text-sm text-muted-foreground font-light">Sign in to continue.</div></div>}
             socialProvidersNode={realm.password && social !== undefined && <SocialProviders />}
         >
             <div>

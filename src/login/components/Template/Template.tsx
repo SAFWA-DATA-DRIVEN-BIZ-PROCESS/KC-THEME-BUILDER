@@ -42,7 +42,8 @@ export function Template(props: {
         socialProvidersNode = null,
         documentTitle,
         bodyClassName,
-        children
+        children,
+        headerNode
     } = props;
 
     const { kcContext } = useKcContext();
@@ -93,7 +94,7 @@ export function Template(props: {
                                             auth.showUsername &&
                                             !auth.showResetCredentials
                                         ) ? (
-                                            <div><div className="text-xl font-semibold">Welcome!</div><div className="text-sm text-muted-foreground font-light">Sign in to continue.</div></div>
+                                            <h1 className="text-xl">{headerNode}</h1>
                                         ) : (
                                             <div
                                                 id="kc-username"
