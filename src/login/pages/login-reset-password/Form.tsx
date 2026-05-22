@@ -27,7 +27,7 @@ export function Form() {
             method="post"
         >
             <Field>
-                <FieldLabel htmlFor="username">
+                <FieldLabel htmlFor="username" className="text-black">
                     {" "}
                     {!kcContext.realm.loginWithEmailAllowed
                         ? msg("username")
@@ -42,6 +42,7 @@ export function Form() {
                     autoFocus
                     defaultValue={kcContext.auth.attemptedUsername ?? ""}
                     aria-invalid={kcContext.messagesPerField.existsError("username")}
+                    className="text-black"
                 />
                 {kcContext.messagesPerField.existsError("username") && (
                     <FieldError>
