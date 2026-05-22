@@ -37,7 +37,6 @@ export function Template(props: {
     children: ReactNode;
 }) {
     const {
-        displayInfo = false,
         displayMessage = true,
         displayRequiredFields = false,
         socialProvidersNode = null,
@@ -225,14 +224,12 @@ export function Template(props: {
                                                 </div>
                                             </form>
                                         )}
-                                    {displayInfo && (
-                                        <div className="text-center text-sm mt-12">
+                                    <div className="text-center text-sm mt-12">
                                             <div className="mb-4">
                                                 <div> For more information visit our website <a href="https://schinkelstechnik.com/" target="_blank" rel="noopener noreferrer" className="underline hover:text-[#62929E] text-[#62929E]">SCHINKELS TECHNIK</a></div>
                                             </div>
                                             <div>Powered By Schinkels Technik</div>
                                         </div>
-                                    )}
                                 </div>
                             </CardContent>
                         </Card>
