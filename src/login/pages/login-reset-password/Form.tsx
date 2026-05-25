@@ -13,11 +13,84 @@ import { assert } from "tsafe/assert";
 import { useKcContext } from "../../KcContext";
 import { useI18n } from "../../i18n";
 
-export function Form() {
+import { useState } from "react";
+
+interface FormProps {
+    view: "form" | "success" | "resend";
+    onSubmitted: () => void;
+    onRetry: () => void;
+    onResent: () => void;
+}
+
+export function Form({ view, onSubmitted, onRetry, onResent }: FormProps) {
     const { kcContext } = useKcContext();
     assert(kcContext.pageId === "login-reset-password.ftl");
 
-    const { msg, msgStr } = useI18n();
+    const { msg } = useI18n();
+
+    const [storedUsername, setStoredUsername] = useState(kcContext.auth.attemptedUsername ?? "");
+
+    const submitToKeycloak = async (username: string) => {
+        const formData = new FormData();
+        formData.append("username", username);
+        try {
+            await fetch(kcContext.url.loginAction, { method: "POST", body: formData });
+        } catch {
+            // ignore redirect/network errors — email was still triggered
+        }
+    };
+
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        const form = e.currentTarget;
+        const username = (form.elements.namedItem("username") as HTMLInputElement).value;
+        setStoredUsername(username);
+        await submitToKeycloak(username);
+        onSubmitted();
+    };
+
+    const handleResend = async () => {
+        await submitToKeycloak(storedUsername);
+        onResent();
+    };
+
+    if (view === "success") {
+        return (
+            <div className="space-y-4 text-center py-4">
+                <h2 className="text-xl font-bold text-gray-800">
+                    We've Sent you an email with a link to reset your password.
+                </h2>
+                <p className="text-sm text-gray-600">
+                    Check your spam and promotion folder if it doesn't appear in your main mailbox.
+                </p>
+                <button
+                    type="button"
+                    className="text-sm text-[#62929E] underline hover:opacity-80"
+                    onClick={onRetry}
+                >
+                    Didn't receive the email?
+                </button>
+            </div>
+        );
+    }
+
+    if (view === "resend") {
+        return (
+            <div className="space-y-6 py-4">
+                <div className="space-y-2">
+                    <h2 className="text-2xl font-bold text-gray-800">
+                        Do you need us to resend the link?
+                    </h2>
+                    <p className="text-sm text-gray-600">
+                        Please, allow 60 seconds for the email to arrive before requesting another link.
+                    </p>
+                </div>
+                <Button className="w-full bg-white! text-gray-800 border border-gray-300 hover:bg-gray-50" variant="outline" onClick={handleResend}>
+                    Resend link
+                </Button>
+            </div>
+        );
+    }
 
     return (
         <form
@@ -25,6 +98,7 @@ export function Form() {
             className="space-y-4"
             action={kcContext.url.loginAction}
             method="post"
+            onSubmit={handleSubmit}
         >
             <Field>
                 <FieldLabel htmlFor="username">
@@ -59,8 +133,8 @@ export function Form() {
                 )}
             </Field>
 
-            <Button className="w-full" type="submit">
-                {msgStr("doSubmit")}
+            <Button className="w-full bg-[#62929E]" type="submit">
+                Send Link
             </Button>
 
             <div className="flex justify-end">

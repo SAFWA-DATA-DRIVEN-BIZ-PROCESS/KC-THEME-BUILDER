@@ -8,6 +8,8 @@
 # login/pages/login/Form.tsx
 # login/pages/login/Page.tsx
 # login/pages/login-reset-password/Form.tsx
+# login/pages/login-reset-password/Page.tsx
+# login/pages/login-update-password/Page.tsx
 # login/pages/login-username/Page.tsx
 # === Owned files end =====
 
@@ -173,10 +175,8 @@
 /login/pages/login-reset-otp/Page.tsx
 /login/pages/login-reset-password/index.ts
 /login/pages/login-reset-password/Page.stories.tsx
-/login/pages/login-reset-password/Page.tsx
 /login/pages/login-update-password/index.ts
 /login/pages/login-update-password/Page.stories.tsx
-/login/pages/login-update-password/Page.tsx
 /login/pages/login-update-profile/index.ts
 /login/pages/login-update-profile/Page.stories.tsx
 /login/pages/login-update-profile/Page.tsx
