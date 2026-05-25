@@ -57,7 +57,7 @@ export function Template(props: {
     useEffect(() => {
         document.title =
             documentTitle ??
-            msgStr("loginTitle", "Pavion Admin");
+            msgStr("loginTitle", "Pavion Contractor");
     }, []);
 
     useSetClassName({
@@ -79,7 +79,7 @@ export function Template(props: {
                 <div className="flex flex-1 items-start lg:items-center justify-center flex-col ">
                     <div className="w-full max-w-xl">
 
-                        <Card className="shadow-none bg-transparent lg:bg-card border-0 lg:rounded-lg lg:border lg:shadow-sm rounded-t-2xl" style={{ background: "#DFE9EC" }}>
+                        <Card className="shadow-none bg-transparent lg:bg-card border-0 lg:rounded-lg lg:border lg:shadow-sm rounded-t-2xl" style={{ background: "#F9E6B8" }}>
                             <CardHeader>
                                 <CardTitle>
                                     {/* Logo visible on all screen sizes */}
