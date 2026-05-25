@@ -57,7 +57,7 @@ export function Template(props: {
     useEffect(() => {
         document.title =
             documentTitle ??
-            msgStr("loginTitle", kcContext.realm.displayName || kcContext.realm.name);
+            msgStr("loginTitle", "Pavion Admin");
     }, []);
 
     useSetClassName({

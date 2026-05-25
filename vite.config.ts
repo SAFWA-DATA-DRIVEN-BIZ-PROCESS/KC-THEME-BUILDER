@@ -10,7 +10,7 @@ export default defineConfig({
         react(),
         tailwindcss(),
         keycloakify({
-            themeName: ["ctui-v11"],
+            themeName: ["ctui-v14"],
             accountThemeImplementation: "none",
             keycloakVersionTargets: {
                 "22-to-25": false,
