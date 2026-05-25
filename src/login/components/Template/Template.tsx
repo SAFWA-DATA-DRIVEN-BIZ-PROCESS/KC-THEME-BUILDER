@@ -54,8 +54,8 @@ export function Template(props: {
     useEffect(() => {
         document.title =
             documentTitle ??
-            msgStr("loginTitle", kcContext.realm.displayName || kcContext.realm.name);
-    }, [documentTitle, kcContext.realm.displayName, kcContext.realm.name, msgStr]);
+            msgStr("loginTitle","Athenaeum");
+    }, [documentTitle, msgStr]);
 
     useSetClassName({
         qualifiedName: "html",
