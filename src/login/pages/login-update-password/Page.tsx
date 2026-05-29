@@ -53,7 +53,7 @@ export function Page() {
             >
                 <Field>
                     <FieldLabel htmlFor="password-new">{msg("passwordNew")}</FieldLabel>
-                    <InputGroup className="bg-white!">
+                    <InputGroup>
                         <InputGroupInput
                             type="password"
                             id="password-new"
@@ -110,7 +110,7 @@ export function Page() {
                     <FieldLabel htmlFor="password-confirm">
                         {msg("passwordConfirm")}
                     </FieldLabel>
-                    <InputGroup className="bg-white!">
+                    <InputGroup>
                         <InputGroupInput
                             type="password"
                             id="password-confirm"

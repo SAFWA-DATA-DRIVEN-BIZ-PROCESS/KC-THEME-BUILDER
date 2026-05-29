@@ -85,7 +85,7 @@ export function Form({ view, onSubmitted, onRetry, onResent }: FormProps) {
                         Please, allow 60 seconds for the email to arrive before requesting another link.
                     </p>
                 </div>
-                <Button className="w-full bg-white! text-gray-800 border border-gray-300 hover:bg-gray-50" variant="outline" onClick={handleResend}>
+                <Button className="w-full" variant="outline" onClick={handleResend}>
                     Resend link
                 </Button>
             </div>
@@ -110,7 +110,6 @@ export function Form({ view, onSubmitted, onRetry, onResent }: FormProps) {
                             : msg("email")}
                 </FieldLabel>
                 <Input
-                    className="bg-white! text-gray-900! border-gray-300 focus:ring-primary-500 focus:border-primary-500 block w-full rounded-md sm:text-sm focus:ring-1"
                     type="text"
                     id="username"
                     name="username"

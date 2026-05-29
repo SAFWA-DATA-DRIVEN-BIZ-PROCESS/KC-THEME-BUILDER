@@ -95,7 +95,6 @@ export function Page() {
                                     defaultValue={login.username ?? ""}
                                     name="username"
                                     autoFocus
-                                    className="bg-white!"
                                     autoComplete={enableWebAuthnConditionalUI ? "username webauthn" : "username"}
                                     aria-invalid={messagesPerField.existsError(
                                         "username"
