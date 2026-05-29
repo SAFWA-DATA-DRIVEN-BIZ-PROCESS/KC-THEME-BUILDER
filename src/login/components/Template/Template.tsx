@@ -83,7 +83,7 @@ export function Template(props: {
       auth.showUsername &&
       !auth.showResetCredentials
     ) ? (
-      <h1 className={isFlowcraft ? "" : "text-xl"}>{headerNode}</h1>
+      <h1 data-flowcraft-region="login-heading">{headerNode}</h1>
     ) : (
       <div id="kc-username" className="flex items-center justify-between gap-2">
         <div className="flex gap-4 items-center">

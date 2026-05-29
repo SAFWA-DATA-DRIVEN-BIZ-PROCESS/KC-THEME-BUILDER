@@ -63,7 +63,7 @@ export function Form() {
                           : msg("username")}
                   </FieldLabel>
                   <Input
-                    className={isFlowcraft ? undefined : "bg-white!"}
+                    data-flowcraft-region="username-input"
                     tabIndex={2}
                     type="text"
                     id="username"
@@ -107,7 +107,7 @@ export function Form() {
 
               <Field>
                 <FieldLabel htmlFor="password">{msg("password")}</FieldLabel>
-                <InputGroup className={isFlowcraft ? undefined : "bg-white!"}>
+                <InputGroup data-flowcraft-region="password-input-group">
                   <InputGroupInput
                     tabIndex={3}
                     type="password"
@@ -149,23 +149,13 @@ export function Form() {
               </Field>
 
               <div
-                data-flowcraft-region={
-                  isFlowcraft ? "login-options" : undefined
-                }
-                className={
-                  isFlowcraft
-                    ? "flex justify-between gap-2"
-                    : "space-y-1 flex justify-between text-xs"
-                }
+                data-flowcraft-region="login-options"
+                className="flex justify-between gap-2"
               >
                 {kcContext.realm.rememberMe && !kcContext.usernameHidden && (
                   <div className="flex items-center space-x-2 ">
                     <Switch
-                      className={
-                        isFlowcraft
-                          ? undefined
-                          : "data-[state=checked]:bg-primary"
-                      }
+                      data-flowcraft-region="remember-me-switch"
                       tabIndex={5}
                       id="rememberMe"
                       name="rememberMe"
@@ -174,36 +164,21 @@ export function Form() {
 
                     <Label
                       htmlFor="rememberMe"
-                      className={
-                        isFlowcraft
-                          ? "cursor-pointer"
-                          : "text-sm font-medium cursor-pointer"
-                      }
+                      className="cursor-pointer"
+                      data-flowcraft-region="remember-me-label"
                     >
                       {msg("rememberMe")}
                     </Label>
                   </div>
                 )}
-                <div className="link-style ">
+                <div className="link-style" data-flowcraft-region="forgot-password-link">
                   {kcContext.realm.resetPasswordAllowed && (
-                    <span
-                      className={
-                        isFlowcraft
-                          ? "hover:underline"
-                          : " underline-offset-4 hover:underline text-red-500 underline"
-                      }
-                    >
+                    <span className="hover:underline">
                       <a
                         tabIndex={6}
                         href={kcContext.url.loginResetCredentialsUrl}
                       >
-                        <Label
-                          className={
-                            isFlowcraft
-                              ? "cursor-pointer"
-                              : "text-sm font-medium cursor-pointer"
-                          }
-                        >
+                        <Label className="cursor-pointer">
                           {msg("doForgotPassword")}
                         </Label>
                       </a>
@@ -221,11 +196,8 @@ export function Form() {
                 />
 
                 <Button
-                  className={
-                    isFlowcraft
-                      ? "mt-3 w-full"
-                      : "bg-[#62929E] hover:bg-[#62929E]/90 text-white font-medium w-full"
-                  }
+                  className="mt-3 w-full"
+                  data-flowcraft-region="login-button"
                   disabled={isLoginButtonDisabled}
                   tabIndex={7}
                   name="login"

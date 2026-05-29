@@ -8,6 +8,9 @@
   --flowcraft-muted-text: #444444;
   --flowcraft-link: #007aff;
   --flowcraft-focus-ring: rgba(151, 71, 255, 0.42);
+  --flowcraft-social-border: #d6dce5;
+  --flowcraft-social-hover-bg: #f7f3ff;
+  --flowcraft-social-separator: #dfe5ee;
   --flowcraft-switch-height: 1.125rem;
   --flowcraft-switch-width: 2.25rem;
   --flowcraft-switch-thumb-size: 0.875rem;
@@ -154,6 +157,170 @@
   [data-slot="button"][data-variant="link"],
 [data-theme-implementation="flowcraft"] .link-style a {
   color: var(--flowcraft-link) !important;
+}
+
+[data-theme-implementation="flowcraft"] #kc-social-providers {
+  width: 100%;
+}
+
+[data-theme-implementation="flowcraft"]
+  #kc-social-providers
+  [data-slot="button"][data-variant="outline"] {
+  height: 38px !important;
+  min-height: 38px !important;
+  border: 1px solid var(--flowcraft-social-border) !important;
+  background-color: #ffffff !important;
+  color: var(--flowcraft-text) !important;
+  font-size: 0.875rem !important;
+  font-weight: 600 !important;
+  box-shadow: none !important;
+}
+
+[data-theme-implementation="flowcraft"]
+  #kc-social-providers
+  [data-slot="button"][data-variant="outline"]:hover {
+  border-color: var(--flowcraft-primary) !important;
+  background-color: var(--flowcraft-social-hover-bg) !important;
+  color: var(--flowcraft-text) !important;
+}
+
+[data-theme-implementation="flowcraft"]
+  #kc-social-providers
+  [data-slot="button"][data-variant="outline"]:focus-visible {
+  border-color: var(--flowcraft-primary) !important;
+  outline: none !important;
+  box-shadow: 0 0 0 2px var(--flowcraft-focus-ring) !important;
+}
+
+[data-theme-implementation="flowcraft"]
+  #kc-social-providers
+  [data-slot="button"][data-variant="outline"]
+  > div {
+  display: flex;
+  height: 1.25rem;
+  width: 1.25rem;
+  flex: 0 0 1.25rem;
+  align-items: center;
+  justify-content: center;
+}
+
+[data-theme-implementation="flowcraft"]
+  #kc-social-providers
+  [data-slot="button"][data-variant="outline"]
+  img {
+  max-height: 1.25rem;
+  object-fit: contain;
+}
+
+[data-theme-implementation="flowcraft"]
+  #kc-social-providers
+  [data-slot="button"][data-variant="outline"]
+  i {
+  width: 1.25rem;
+  font-size: 1.125rem;
+  line-height: 1;
+  text-align: center;
+}
+
+[data-theme-implementation="flowcraft"]
+  #kc-social-providers
+  [data-slot="button"][data-variant="outline"]
+  > span {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+[data-theme-implementation="flowcraft"] #kc-social-providers > div {
+  color: var(--flowcraft-muted-text) !important;
+  font-size: 0.75rem !important;
+  font-weight: 500 !important;
+  line-height: 1rem !important;
+}
+
+[data-theme-implementation="flowcraft"]
+  #kc-social-providers
+  > div
+  > div:first-child,
+[data-theme-implementation="flowcraft"]
+  #kc-social-providers
+  > div
+  > div:last-child {
+  border-color: var(--flowcraft-social-separator) !important;
+}
+
+[data-theme-implementation="flowcraft"] #kc-social-providers li > div > span {
+  right: -0.5rem !important;
+  left: auto !important;
+  max-width: calc(100% - 0.75rem);
+  overflow: hidden;
+  border-radius: 9999px !important;
+  background-color: var(--flowcraft-primary) !important;
+  color: #ffffff !important;
+  font-size: 0.625rem !important;
+  font-weight: 700 !important;
+  line-height: 0.875rem !important;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  box-shadow: 0 0 0 2px #ffffff !important;
+}
+
+/* Flowcraft form styling */
+[data-theme-implementation="flowcraft"]
+  [data-flowcraft-region="username-input"],
+[data-theme-implementation="flowcraft"]
+  [data-flowcraft-region="password-input-group"] {
+  background-color: transparent !important;
+}
+
+[data-theme-implementation="flowcraft"]
+  [data-flowcraft-region="login-options"] {
+  gap: 0.5rem !important;
+}
+
+[data-theme-implementation="flowcraft"]
+  [data-flowcraft-region="login-options"]
+  [data-slot="label"],
+[data-theme-implementation="flowcraft"]
+  [data-flowcraft-region="remember-me-label"] {
+  color: var(--flowcraft-muted-text) !important;
+  font-size: 0.75rem !important;
+  font-weight: 500 !important;
+}
+
+[data-theme-implementation="flowcraft"]
+  [data-flowcraft-region="forgot-password-link"] {
+  color: var(--flowcraft-muted-text) !important;
+  font-size: 0.75rem !important;
+  font-weight: 500 !important;
+}
+
+[data-theme-implementation="flowcraft"]
+  [data-flowcraft-region="forgot-password-link"]
+  span {
+  color: var(--flowcraft-link) !important;
+  text-decoration: none !important;
+}
+
+[data-theme-implementation="flowcraft"]
+  [data-flowcraft-region="forgot-password-link"]
+  span:hover {
+  text-decoration: underline !important;
+}
+
+[data-theme-implementation="flowcraft"]
+  [data-flowcraft-region="login-button"] {
+  margin-top: 0.75rem !important;
+  width: 100% !important;
+}
+
+[data-theme-implementation="flowcraft"]
+  [data-flowcraft-region="login-heading"] {
+  color: var(--flowcraft-text) !important;
+  font-size: 1.25rem !important;
+  font-weight: 700 !important;
+  line-height: 1.75rem !important;
 }
 
 [data-theme-implementation="flowcraft"] [data-slot="radio-group-item"] {
