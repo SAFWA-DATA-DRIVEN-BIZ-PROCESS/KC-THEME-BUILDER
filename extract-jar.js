@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
-import { readdirSync, existsSync, mkdirSync } from "fs";
-import { join } from "path";
-import { execSync } from "child_process";
+import { readdirSync, existsSync, mkdirSync, rmSync } from "fs";
+import { join, resolve } from "path";
+import { execSync, execFileSync } from "child_process";
 import { createInterface } from "readline";
 
 const distDir = "./dist_keycloak";
@@ -57,6 +57,51 @@ function selectJarFile(files) {
   });
 }
 
+function canRunCommand(command) {
+  try {
+    const checker = process.platform === "win32" ? "where" : "which";
+    execSync(`${checker} ${command}`, { stdio: "ignore" });
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+function extractJar(jarFile, outputDir) {
+  const jarPath = resolve(distDir, jarFile);
+  const destinationPath = resolve(outputDir);
+
+  if (canRunCommand("jar")) {
+    execFileSync("jar", ["-xf", jarPath], { cwd: destinationPath, stdio: "inherit" });
+    return;
+  }
+
+  if (process.platform === "win32") {
+    rmSync(destinationPath, { recursive: true, force: true });
+    mkdirSync(destinationPath, { recursive: true });
+
+    const jarPathPs = jarPath.replace(/'/g, "''");
+    const destinationPathPs = destinationPath.replace(/'/g, "''");
+    const command = [
+      "$ErrorActionPreference = 'Stop'",
+      "Add-Type -AssemblyName System.IO.Compression.FileSystem",
+      `[System.IO.Compression.ZipFile]::ExtractToDirectory('${jarPathPs}', '${destinationPathPs}')`,
+    ].join("; ");
+
+    execFileSync("powershell", ["-NoProfile", "-Command", command], { stdio: "inherit" });
+    return;
+  }
+
+  if (canRunCommand("unzip")) {
+    execFileSync("unzip", ["-o", jarPath, "-d", destinationPath], { stdio: "inherit" });
+    return;
+  }
+
+  throw new Error(
+    "No extractor found. Install Java (jar) or unzip, or run on Windows with PowerShell available."
+  );
+}
+
 (async () => {
   const jarFiles = readdirSync(distDir).filter(file => file.endsWith(".jar"));
   const jarFile = await selectJarFile(jarFiles);
@@ -69,7 +114,7 @@ function selectJarFile(files) {
 
   console.log(`Extracting ${jarFile} to ${outputDir}...`);
   try {
-    execSync(`cd ${outputDir} && jar -xf "${join("..", jarFile)}"`, { stdio: "inherit" });
+    extractJar(jarFile, outputDir);
   } catch (error) {
     console.error(`Failed to extract ${jarFile}:`, error.message);
     process.exit(1);
