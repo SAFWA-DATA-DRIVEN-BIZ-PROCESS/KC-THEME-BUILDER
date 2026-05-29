@@ -5,6 +5,7 @@
   --flowcraft-placeholder: #a9b6c7;
   --flowcraft-text: #1f1f1f;
   --flowcraft-label: #242424;
+  --flowcraft-muted-text: #444444;
   --flowcraft-link: #007aff;
   --flowcraft-focus-ring: rgba(151, 71, 255, 0.42);
   --flowcraft-switch-height: 1.125rem;
@@ -21,6 +22,21 @@
   [data-flowcraft-region="footer"]
   a:not([data-slot="button"]) {
   color: var(--flowcraft-primary) !important;
+}
+
+[data-theme-implementation="flowcraft"]
+  [data-flowcraft-region="login-options"] {
+  color: var(--flowcraft-muted-text) !important;
+  font-size: 0.75rem !important;
+  line-height: 1rem !important;
+}
+
+[data-theme-implementation="flowcraft"]
+  [data-flowcraft-region="login-options"]
+  [data-slot="label"] {
+  color: inherit !important;
+  font-size: inherit !important;
+  font-weight: 500 !important;
 }
 
 [data-theme-implementation="flowcraft"] [data-slot="field-label"] {

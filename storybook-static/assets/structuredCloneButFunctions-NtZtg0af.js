@@ -1,0 +1,1 @@
+import"./i18n-CydF6okz.js";function e(t){return!(t instanceof Object)||typeof t==`function`?t:t instanceof Array?t.map(e):Object.fromEntries(Object.entries(t).map(([t,n])=>[t,e(n)]))}export{e as t};

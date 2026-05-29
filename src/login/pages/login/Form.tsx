@@ -49,7 +49,7 @@ export function Form() {
               }}
               action={kcContext.url.loginAction}
               method="post"
-              className={isFlowcraft ? "space-y-4" : "space-y-4"}
+              className="space-y-4"
             >
               {!kcContext.usernameHidden && (
                 <Field>
@@ -149,9 +149,12 @@ export function Form() {
               </Field>
 
               <div
+                data-flowcraft-region={
+                  isFlowcraft ? "login-options" : undefined
+                }
                 className={
                   isFlowcraft
-                    ? "flex justify-between gap-2 text-xs text-[#444444]"
+                    ? "flex justify-between gap-2"
                     : "space-y-1 flex justify-between text-xs"
                 }
               >
@@ -173,7 +176,7 @@ export function Form() {
                       htmlFor="rememberMe"
                       className={
                         isFlowcraft
-                          ? "cursor-pointer text-xs font-medium text-[#444444]"
+                          ? "cursor-pointer"
                           : "text-sm font-medium cursor-pointer"
                       }
                     >
@@ -197,7 +200,7 @@ export function Form() {
                         <Label
                           className={
                             isFlowcraft
-                              ? "cursor-pointer text-xs font-medium"
+                              ? "cursor-pointer"
                               : "text-sm font-medium cursor-pointer"
                           }
                         >
