@@ -53,14 +53,7 @@ export function Form() {
             >
               {!kcContext.usernameHidden && (
                 <Field>
-                  <FieldLabel
-                    htmlFor="username"
-                    className={
-                      isFlowcraft
-                        ? "text-xs font-bold text-[#242424]"
-                        : undefined
-                    }
-                  >
+                  <FieldLabel htmlFor="username">
                     {isFlowcraft
                       ? "Login"
                       : !kcContext.realm.loginWithEmailAllowed
@@ -70,11 +63,7 @@ export function Form() {
                           : msg("username")}
                   </FieldLabel>
                   <Input
-                    className={
-                      isFlowcraft
-                        ? "h-10 border-0 bg-[#efefef]! px-3 text-sm text-[#1f1f1f] shadow-none placeholder:text-[#a9b6c7] focus-visible:!ring-2 focus-visible:!ring-[#8756f0]/50 focus-visible:!border-transparent focus:!ring-2 focus:!ring-[#8756f0]/50 focus:!border-transparent focus-within:!ring-2 focus-within:!ring-[#8756f0]/50 focus-within:!border-transparent"
-                        : "bg-white!"
-                    }
+                    className={isFlowcraft ? undefined : "bg-white!"}
                     tabIndex={2}
                     type="text"
                     id="username"
@@ -117,27 +106,9 @@ export function Form() {
               )}
 
               <Field>
-                <FieldLabel
-                  htmlFor="password"
-                  className={
-                    isFlowcraft ? "text-xs font-bold text-[#242424]" : undefined
-                  }
-                >
-                  {msg("password")}
-                </FieldLabel>
-                <InputGroup
-                  className={
-                    isFlowcraft
-                      ? "h-10 border-0 bg-[#efefef]! shadow-none focus-within:!ring-2 focus-within:!ring-[#8756f0]/50 focus-within:!border-transparent has-[[data-slot=input-group-control]:focus-visible]:!ring-2 has-[[data-slot=input-group-control]:focus-visible]:!ring-[#8756f0]/50 has-[[data-slot=input-group-control]:focus-visible]:!border-transparent"
-                      : "bg-white!"
-                  }
-                >
+                <FieldLabel htmlFor="password">{msg("password")}</FieldLabel>
+                <InputGroup className={isFlowcraft ? undefined : "bg-white!"}>
                   <InputGroupInput
-                    className={
-                      isFlowcraft
-                        ? "text-sm placeholder:text-[#a9b6c7]"
-                        : undefined
-                    }
                     tabIndex={3}
                     type="password"
                     id="password"
@@ -180,7 +151,7 @@ export function Form() {
               <div
                 className={
                   isFlowcraft
-                    ? "flex justify-between gap-2 text-[10px] text-[#444444]"
+                    ? "flex justify-between gap-2 text-xs text-[#444444]"
                     : "space-y-1 flex justify-between text-xs"
                 }
               >
@@ -189,7 +160,7 @@ export function Form() {
                     <Switch
                       className={
                         isFlowcraft
-                          ? "data-[state=unchecked]:bg-[#ededed] data-[state=checked]:bg-[#8756f0]"
+                          ? undefined
                           : "data-[state=checked]:bg-primary"
                       }
                       tabIndex={5}
@@ -202,7 +173,7 @@ export function Form() {
                       htmlFor="rememberMe"
                       className={
                         isFlowcraft
-                          ? "cursor-pointer text-[10px] font-medium text-[#444444]"
+                          ? "cursor-pointer text-xs font-medium text-[#444444]"
                           : "text-sm font-medium cursor-pointer"
                       }
                     >
@@ -215,7 +186,7 @@ export function Form() {
                     <span
                       className={
                         isFlowcraft
-                          ? "text-[#168cff] hover:underline"
+                          ? "hover:underline"
                           : " underline-offset-4 hover:underline text-red-500 underline"
                       }
                     >
@@ -226,7 +197,7 @@ export function Form() {
                         <Label
                           className={
                             isFlowcraft
-                              ? "cursor-pointer text-[10px] font-medium"
+                              ? "cursor-pointer text-xs font-medium"
                               : "text-sm font-medium cursor-pointer"
                           }
                         >
@@ -249,7 +220,7 @@ export function Form() {
                 <Button
                   className={
                     isFlowcraft
-                      ? "mt-3 h-[38px] w-full rounded-sm bg-[#8756f0] text-sm font-bold text-white shadow-none hover:bg-[#7b4de6]"
+                      ? "mt-3 w-full"
                       : "bg-[#62929E] hover:bg-[#62929E]/90 text-white font-medium w-full"
                   }
                   disabled={isLoginButtonDisabled}

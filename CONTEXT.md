@@ -10,6 +10,15 @@ This is a **Keycloak authentication theme builder** using Keycloakify, React, an
 
 **Theme** — A set of templates and static assets that Keycloak renders for authentication flows (login, registration, password reset, etc.). Keycloak themes are packaged as JAR files.
 
+**Theme Implementation** — The React pages, layout, components, and assets for one named Keycloak theme.
+_Avoid_: Theme folder, skin
+
+**Theme Selection** — The choice of active Theme Implementation from the Keycloak-provided theme name.
+_Avoid_: Mock switch, Storybook switch
+
+**Mock Theme** — The preview-only theme name used to render pages outside a running Keycloak server.
+_Avoid_: Runtime theme, selected realm theme
+
 **Keycloakify** — A TypeScript/React framework that compiles React components into Keycloak-compatible theme artifacts. It bridges React development (modern DX) with Keycloak's theme format (JAR output).
 
 **KcContext** — React Context containing Keycloak-provided runtime data: user state, available authentication methods, form fields, internationalization data, etc. Components read KcContext to render page-specific content.
@@ -39,24 +48,34 @@ Browser
 ### Layers
 
 **1. Page Layer** (`src/login/pages/`)
+
 - Individual page components (login, register, password-reset, etc.)
 - Each receives `KcContext` and renders Keycloak-compatible markup
 - Pages are ejected from Keycloakify or custom-built
 
 **2. Context Layer** (`src/login/`)
+
 - `KcContext.ts` — Keycloak runtime data type (user, available methods, form fields)
 - `KcPage.tsx` — Root wrapper providing KcContext, I18nProvider, style customization
 - `i18n.ts` — Internationalization provider
 
 **3. Component Layer** (`src/components/`)
+
 - Reusable UI components from shadcn (Button, Input, Card, etc.)
 - `ThemeProvider.tsx` — Theming provider (dark/light mode, etc.)
 - `lib/utils.ts` — Utility functions (class merging, etc.)
 
 **4. Style Layer**
+
 - `styleLevelCustomization.tsx` — Runtime CSS loading and customization hooks
 - `index.css` — Global styles
 - Tailwind config at root
+
+### Theme relationships
+
+- A **Theme Implementation** provides a shared shell and base form styling for every **Page** rendered under that theme.
+- **Theme Selection** chooses exactly one **Theme Implementation** for a rendered Keycloak page.
+- A **Mock Theme** previews one **Theme Implementation** without changing runtime Keycloak configuration.
 
 ### Key Files
 
@@ -119,3 +138,7 @@ Browser
 - KcContext shape is determined by Keycloakify and Keycloak; custom extensions require careful type management
 - CSS is scoped to theme; global styles may conflict with Keycloak's admin theme
 - JAR output is immutable once deployed to Keycloak; updates require JAR replacement and server restart
+
+## Flagged ambiguities
+
+- "Switch in the mocks" was used to mean **Theme Selection**; resolved: mocks choose the **Mock Theme** for previews only, while runtime selection comes from Keycloak's active theme name.
