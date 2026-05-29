@@ -17,6 +17,15 @@
   --flowcraft-switch-width: 2.25rem;
   --flowcraft-switch-thumb-size: 0.875rem;
   --flowcraft-switch-thumb-translate: 1.125rem;
+  --flowcraft-error: #dc2626;
+  --flowcraft-error-bg: #fef2f2;
+  --flowcraft-error-border: #fecaca;
+  --flowcraft-warning: #ea580c;
+  --flowcraft-warning-bg: #fffbeb;
+  --flowcraft-warning-border: #fcd34d;
+  --flowcraft-success: #16a34a;
+  --flowcraft-success-bg: #f0fdf4;
+  --flowcraft-success-border: #d1f2d5;
 }
 
 [data-theme-implementation="flowcraft"] a:not([data-slot="button"]) {
@@ -379,21 +388,21 @@
 }
 
 [data-theme-implementation="flowcraft"] [data-slot="alert"][data-variant="success"] {
-  border: 1px solid #d1f2d5 !important;
-  background-color: #f0fdf4 !important;
-  color: #166534 !important;
+  border: 1px solid var(--flowcraft-success-border) !important;
+  background-color: var(--flowcraft-success-bg) !important;
+  color: var(--flowcraft-success) !important;
 }
 
 [data-theme-implementation="flowcraft"] [data-slot="alert"][data-variant="warning"] {
-  border: 1px solid #fcd34d !important;
-  background-color: #fffbeb !important;
-  color: #92400e !important;
+  border: 1px solid var(--flowcraft-warning-border) !important;
+  background-color: var(--flowcraft-warning-bg) !important;
+  color: var(--flowcraft-warning) !important;
 }
 
 [data-theme-implementation="flowcraft"] [data-slot="alert"][data-variant="error"] {
-  border: 1px solid #fecaca !important;
-  background-color: #fef2f2 !important;
-  color: #991b1b !important;
+  border: 1px solid var(--flowcraft-error-border) !important;
+  background-color: var(--flowcraft-error-bg) !important;
+  color: var(--flowcraft-error) !important;
 }
 
 [data-theme-implementation="flowcraft"] [data-slot="alert"] svg {
@@ -428,9 +437,26 @@
 }
 
 /* Text content styling */
-[data-theme-implementation="flowcraft"] p,
-[data-theme-implementation="flowcraft"] div {
+[data-theme-implementation="flowcraft"] p:not(.text-destructive):not(.text-warning):not(.text-success),
+[data-theme-implementation="flowcraft"] div:not(.text-destructive):not(.text-warning):not(.text-success) {
   color: var(--flowcraft-text) !important;
+}
+
+/* Error and validation message styling */
+[data-theme-implementation="flowcraft"] .text-destructive,
+[data-theme-implementation="flowcraft"] #input-error,
+[data-theme-implementation="flowcraft"] [role="alert"] {
+  color: #dc2626 !important;
+  font-size: 0.875rem !important;
+  font-weight: 500 !important;
+}
+
+[data-theme-implementation="flowcraft"] .text-warning {
+  color: #ea580c !important;
+}
+
+[data-theme-implementation="flowcraft"] .text-success {
+  color: #16a34a !important;
 }
 
 [data-theme-implementation="flowcraft"] .instruction {
