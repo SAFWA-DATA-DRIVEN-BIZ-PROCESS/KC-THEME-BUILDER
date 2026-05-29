@@ -16,13 +16,20 @@ export function Page() {
     const { kcContext } = useKcContext();
     assert(kcContext.pageId === "login.ftl");
 
+    const isFlowcraft = kcContext.themeName === "flowcraft";
 
     return (
         <Template
             displayMessage={
                 !kcContext.messagesPerField.existsError("username", "password")
             }
-            headerNode={<div><div className="text-xl font-semibold">Welcome!</div><div className="text-sm text-muted-foreground font-light">Sign in to continue.</div></div>}
+            headerNode={
+                isFlowcraft ? (
+                    <div className="text-xl font-bold text-[#1f1f1f]">Nice to see you again</div>
+                ) : (
+                    <div><div className="text-xl font-semibold">Welcome!</div><div className="text-sm text-muted-foreground font-light">Sign in to continue.</div></div>
+                )
+            }
             displayInfo={
                 kcContext.realm.password &&
                 kcContext.realm.registrationAllowed &&

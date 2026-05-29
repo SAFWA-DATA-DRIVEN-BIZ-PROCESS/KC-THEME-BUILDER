@@ -10,7 +10,7 @@
 /* eslint-disable */
 
 import { Button } from "@/components/ui/button";
-import { Checkbox } from "@/components/ui/checkbox";
+import { Switch } from "@/components/ui/switch";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useState } from "react";
@@ -121,8 +121,8 @@ export function Page() {
 
                         {realm.rememberMe && !usernameHidden && (
                             <div className="flex items-center space-x-2">
-                                <Checkbox
-                                    className="border-black data-[state=checked]:bg-primary"
+                                <Switch
+                                    className="data-[state=checked]:bg-primary"
                                     tabIndex={3}
                                     id="rememberMe"
                                     name="rememberMe"
