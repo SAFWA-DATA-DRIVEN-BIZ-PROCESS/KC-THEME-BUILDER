@@ -39,6 +39,14 @@
   font-weight: 500 !important;
 }
 
+[data-theme-implementation="flowcraft"]
+  [data-flowcraft-region="login-heading"] {
+  color: var(--flowcraft-text) !important;
+  font-size: 1.25rem !important;
+  font-weight: 700 !important;
+  line-height: 1.75rem !important;
+}
+
 [data-theme-implementation="flowcraft"] [data-slot="field-label"] {
   color: var(--flowcraft-label) !important;
   font-size: 0.75rem !important;
