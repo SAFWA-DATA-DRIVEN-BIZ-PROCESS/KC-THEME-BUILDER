@@ -13,11 +13,11 @@ export function FlowcraftTemplate(props: {
   return (
     <div
       data-theme-implementation="flowcraft"
-      className="flex min-h-svh justify-center bg-white p-1 font-geist"
+      className="flex min-h-svh justify-center bg-white font-geist"
     >
-      <div className="mx-auto grid min-h-[calc(100svh-0.5rem)] w-full max-w-400 overflow-hidden rounded-2xl bg-white lg:grid-cols-[1fr_456px]">
+      <div className="mx-auto grid min-h-[calc(100svh-0.5rem)] w-full overflow-hidden rounded-2xl bg-white lg:grid-cols-[1fr_456px]">
         <div
-          className="hidden min-h-[calc(100svh-0.5rem)] bg-cover bg-center lg:block"
+          className="hidden min-h-[calc(100svh-0.5rem)] bg-cover bg-top lg:block"
           style={{ backgroundImage: `url(${flowcraftHero})` }}
         />
         <main className="flex min-h-[calc(100svh-0.5rem)] flex-col items-center justify-center bg-white px-7 py-11 sm:px-10 lg:px-10">
