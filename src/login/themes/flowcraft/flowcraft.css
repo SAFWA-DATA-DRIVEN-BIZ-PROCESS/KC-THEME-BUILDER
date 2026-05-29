@@ -364,3 +364,189 @@
   translate: none !important;
   transform: translateX(var(--flowcraft-switch-thumb-translate)) !important;
 }
+
+/* Alert and message styling */
+[data-theme-implementation="flowcraft"] [data-slot="alert"] {
+  border-radius: 6px !important;
+  padding: 1rem !important;
+}
+
+[data-theme-implementation="flowcraft"] [data-slot="alert"][data-variant="info"],
+[data-theme-implementation="flowcraft"] [data-slot="alert"]:not([data-variant]) {
+  border: 1px solid var(--flowcraft-input-border) !important;
+  background-color: #f8f9fb !important;
+  color: var(--flowcraft-text) !important;
+}
+
+[data-theme-implementation="flowcraft"] [data-slot="alert"][data-variant="success"] {
+  border: 1px solid #d1f2d5 !important;
+  background-color: #f0fdf4 !important;
+  color: #166534 !important;
+}
+
+[data-theme-implementation="flowcraft"] [data-slot="alert"][data-variant="warning"] {
+  border: 1px solid #fcd34d !important;
+  background-color: #fffbeb !important;
+  color: #92400e !important;
+}
+
+[data-theme-implementation="flowcraft"] [data-slot="alert"][data-variant="error"] {
+  border: 1px solid #fecaca !important;
+  background-color: #fef2f2 !important;
+  color: #991b1b !important;
+}
+
+[data-theme-implementation="flowcraft"] [data-slot="alert"] svg {
+  flex-shrink: 0;
+}
+
+/* Page headings and typography */
+[data-theme-implementation="flowcraft"] h1,
+[data-theme-implementation="flowcraft"] h2,
+[data-theme-implementation="flowcraft"] h3 {
+  color: var(--flowcraft-text) !important;
+  font-weight: 700 !important;
+}
+
+[data-theme-implementation="flowcraft"] h1 {
+  font-size: 1.25rem !important;
+  line-height: 1.75rem !important;
+}
+
+[data-theme-implementation="flowcraft"] h2 {
+  font-size: 1.125rem !important;
+  line-height: 1.5rem !important;
+  margin-top: 1.5rem !important;
+  margin-bottom: 0.75rem !important;
+}
+
+[data-theme-implementation="flowcraft"] h3 {
+  font-size: 0.875rem !important;
+  line-height: 1.25rem !important;
+  margin-top: 1rem !important;
+  margin-bottom: 0.5rem !important;
+}
+
+/* Text content styling */
+[data-theme-implementation="flowcraft"] p,
+[data-theme-implementation="flowcraft"] div {
+  color: var(--flowcraft-text) !important;
+}
+
+[data-theme-implementation="flowcraft"] .instruction {
+  color: var(--flowcraft-text) !important;
+  font-size: 0.875rem !important;
+  line-height: 1.5rem !important;
+}
+
+/* Form group spacing and structure */
+[data-theme-implementation="flowcraft"] [role="group"] {
+  gap: 1rem !important;
+}
+
+[data-theme-implementation="flowcraft"] .space-y-4 {
+  gap: 1rem !important;
+}
+
+/* Checkbox and radio styling */
+[data-theme-implementation="flowcraft"] [data-slot="checkbox"] {
+  border-color: var(--flowcraft-input-border) !important;
+  background-color: var(--flowcraft-input-bg) !important;
+}
+
+[data-theme-implementation="flowcraft"]
+  [data-slot="checkbox"][data-state="checked"] {
+  border-color: var(--flowcraft-primary) !important;
+  background-color: var(--flowcraft-primary) !important;
+}
+
+[data-theme-implementation="flowcraft"] [data-slot="checkbox"]:focus-visible {
+  box-shadow: 0 0 0 2px var(--flowcraft-focus-ring) !important;
+}
+
+/* Select and dropdown styling */
+[data-theme-implementation="flowcraft"] [data-slot="select-trigger"] {
+  border: 0.5px solid var(--flowcraft-input-border) !important;
+  background-color: var(--flowcraft-input-bg) !important;
+}
+
+[data-theme-implementation="flowcraft"] [data-slot="select-content"] {
+  border: 1px solid var(--flowcraft-input-border) !important;
+  background-color: #ffffff !important;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+}
+
+[data-theme-implementation="flowcraft"]
+  [data-slot="select-item"][data-highlighted] {
+  background-color: var(--flowcraft-social-hover-bg) !important;
+  color: var(--flowcraft-text) !important;
+}
+
+/* Tooltip styling */
+[data-theme-implementation="flowcraft"] [data-slot="tooltip-content"] {
+  background-color: var(--flowcraft-text) !important;
+  color: #ffffff !important;
+  border-radius: 4px !important;
+}
+
+/* List and item styling */
+[data-theme-implementation="flowcraft"] ul,
+[data-theme-implementation="flowcraft"] ol {
+  color: var(--flowcraft-text) !important;
+}
+
+[data-theme-implementation="flowcraft"] li {
+  color: var(--flowcraft-text) !important;
+  margin-bottom: 0.5rem !important;
+}
+
+/* Code block styling */
+[data-theme-implementation="flowcraft"] code {
+  background-color: var(--flowcraft-input-bg) !important;
+  color: var(--flowcraft-text) !important;
+  border-radius: 4px !important;
+  padding: 0.25rem 0.5rem !important;
+  font-family: "Courier New", monospace !important;
+}
+
+/* Strong and emphasis styling */
+[data-theme-implementation="flowcraft"] strong,
+[data-theme-implementation="flowcraft"] b {
+  font-weight: 700 !important;
+  color: var(--flowcraft-text) !important;
+}
+
+[data-theme-implementation="flowcraft"] em,
+[data-theme-implementation="flowcraft"] i {
+  font-style: italic !important;
+  color: var(--flowcraft-text) !important;
+}
+
+/* General card and container styling */
+[data-theme-implementation="flowcraft"] [data-slot="card"] {
+  border: none !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+[data-theme-implementation="flowcraft"] [data-slot="card-header"] {
+  padding: 0 !important;
+  margin-bottom: 1.5rem !important;
+}
+
+[data-theme-implementation="flowcraft"] [data-slot="card-content"] {
+  padding: 0 !important;
+}
+
+/* Button secondary variant styling */
+[data-theme-implementation="flowcraft"]
+  [data-slot="button"][data-variant="secondary"] {
+  background-color: #f3f4f6 !important;
+  color: var(--flowcraft-text) !important;
+  border: 1px solid var(--flowcraft-input-border) !important;
+}
+
+[data-theme-implementation="flowcraft"]
+  [data-slot="button"][data-variant="secondary"]:hover {
+  background-color: #e5e7eb !important;
+}
