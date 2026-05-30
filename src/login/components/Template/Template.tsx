@@ -27,6 +27,7 @@ import { useI18n } from "../../i18n";
 import { useKcContext } from "../../KcContext";
 import { CtuiTemplate } from "../../themes/ctui/CtuiTemplate";
 import { FlowcraftTemplate } from "../../themes/flowcraft/FlowcraftTemplate";
+import { SwiftoTemplate } from "../../themes/swifto/SwiftoTemplate";
 import { useInitializeTemplate } from "./useInitializeTemplate";
 
 export function Template(props: {
@@ -41,9 +42,11 @@ export function Template(props: {
   children: ReactNode;
 }) {
   const {
+    displayInfo = false,
     displayMessage = true,
     displayRequiredFields = false,
     socialProvidersNode = null,
+    infoNode = null,
     documentTitle,
     bodyClassName,
     children,
@@ -56,6 +59,7 @@ export function Template(props: {
   const themeName = String(kcContext.themeName);
   const isCtui = themeName === "CTUI";
   const isFlowcraft = themeName === "flowcraft";
+  const isSwifto = themeName === "swifto";
 
   const { msg, msgStr } = useI18n();
 
@@ -77,7 +81,7 @@ export function Template(props: {
 
   useInitializeTemplate();
 
-  if (import.meta.env.DEV && !isCtui && !isFlowcraft) {
+  if (import.meta.env.DEV && !isCtui && !isFlowcraft && !isSwifto) {
     throw new Error(`Unsupported Theme Implementation: ${themeName}`);
   }
 
@@ -185,6 +189,15 @@ export function Template(props: {
           </div>
         </form>
       )}
+      {displayInfo && (
+        <div
+          className="text-center text-sm"
+          data-auth-region="registration"
+          data-swifto-region={isSwifto ? "registration" : undefined}
+        >
+          {infoNode}
+        </div>
+      )}
     </div>
   );
 
@@ -194,6 +207,12 @@ export function Template(props: {
         headerContent={headerContent}
         mainContent={mainContent}
       />
+    );
+  }
+
+  if (isSwifto) {
+    return (
+      <SwiftoTemplate headerContent={headerContent} mainContent={mainContent} />
     );
   }
 

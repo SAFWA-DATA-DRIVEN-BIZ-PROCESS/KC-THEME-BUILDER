@@ -4,10 +4,10 @@ import { KcPage } from "./kc.gen";
 import { getKcContextMock } from "./login/mocks/getKcContextMock";
 
 const kcContext = getKcContextMock({
-    pageId: "login-username.ftl",
-    // overrides: {
-    //     themeName: "flowcraft"
-    // }
+    pageId: "login.ftl",
+    overrides: {
+        themeName: "swifto"
+    }
 });
 
 createRoot(document.getElementById("root")!).render(

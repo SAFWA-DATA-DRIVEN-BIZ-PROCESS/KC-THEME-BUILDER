@@ -10,7 +10,7 @@ export default defineConfig({
         react(),
         tailwindcss(),
         keycloakify({
-            themeName: ["CTUI", "flowcraft"],
+            themeName: ["CTUI", "flowcraft", "swifto"],
             accountThemeImplementation: "none",
             keycloakVersionTargets: {
                 "22-to-25": false,

@@ -1,6 +1,50 @@
 import type { Preview } from "@storybook/react-vite";
+import { themeNames, type ThemeName } from "../src/kc.gen";
+
+const themeToolbarItems = themeNames.map(themeName => ({
+    value: themeName,
+    title: themeName
+}));
+
+function isThemeName(value: unknown): value is ThemeName {
+    return typeof value === "string" && themeNames.includes(value as ThemeName);
+}
+
+const withThemeName: NonNullable<Preview["decorators"]>[number] = (Story, context) => {
+    const selectedThemeName = isThemeName(context.globals.themeName)
+        ? context.globals.themeName
+        : themeNames[0];
+    const kcContext =
+        typeof context.args.kcContext === "object" && context.args.kcContext !== null
+            ? context.args.kcContext
+            : {};
+
+    return Story({
+        ...context,
+        args: {
+            ...context.args,
+            kcContext: {
+                ...kcContext,
+                themeName: selectedThemeName
+            }
+        }
+    });
+};
 
 const preview: Preview = {
+    decorators: [withThemeName],
+    globalTypes: {
+        themeName: {
+            name: "Theme",
+            description: "Keycloak theme implementation",
+            defaultValue: "CTUI" satisfies ThemeName,
+            toolbar: {
+                icon: "paintbrush",
+                items: themeToolbarItems,
+                dynamicTitle: true
+            }
+        }
+    },
     parameters: {
         controls: {
             matchers: {
