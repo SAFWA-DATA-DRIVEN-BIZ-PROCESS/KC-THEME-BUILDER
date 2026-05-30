@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-import { readdirSync, existsSync, mkdirSync } from "fs";
+import { readdirSync, existsSync, mkdirSync, rmSync } from "fs";
 import { join, resolve } from "path";
 import { createInterface } from "readline";
 import AdmZip from "adm-zip";
@@ -13,16 +13,28 @@ const shouldAutoSelectNewest =
   process.env.CI === "1" ||
   process.env.CI === "true";
 
+function getArgValue(flag) {
+  const index = args.indexOf(flag);
+  if (index === -1 || index + 1 >= args.length) {
+    return undefined;
+  }
+  return args[index + 1];
+}
+
+const selectedTheme = getArgValue("--theme") || process.env.KEYCLOAK_THEME_SELECTED_THEME;
+
 function getOutputDir(jarFile) {
   const timestampMatch = jarFile.match(/^(\d{14})\.jar$/);
   if (timestampMatch) {
     const ts = timestampMatch[1];
     const formattedDate = `${ts.slice(0,4)}-${ts.slice(4,6)}-${ts.slice(6,8)}_${ts.slice(8,10)}-${ts.slice(10,12)}-${ts.slice(12,14)}`;
-    return join(distDir, `extracted_${formattedDate}`);
+    const themeSuffix = selectedTheme ? `_${selectedTheme}` : "";
+    return join(distDir, `extracted_${formattedDate}${themeSuffix}`);
   }
   // Fallback: use filename stem as output dir name
   const stem = jarFile.replace(/\.jar$/i, "");
-  return join(distDir, `extracted_${stem}`);
+  const themeSuffix = selectedTheme ? `_${selectedTheme}` : "";
+  return join(distDir, `extracted_${stem}${themeSuffix}`);
 }
 
 function selectJarFile(files) {
@@ -74,6 +86,41 @@ function extractJar(jarFile, outputDir) {
   zip.extractAllTo(destinationPath, true);
 }
 
+function keepOnlySelectedTheme(outputDir, themeName) {
+  const themeRoot = resolve(outputDir, "theme");
+
+  if (!existsSync(themeRoot)) {
+    console.warn(`[extract-jar] No 'theme' directory found in extraction output: ${themeRoot}`);
+    return;
+  }
+
+  const themeDirs = readdirSync(themeRoot, { withFileTypes: true })
+    .filter((entry) => entry.isDirectory())
+    .map((entry) => entry.name);
+
+  if (!themeDirs.includes(themeName)) {
+    console.error(
+      `[extract-jar] Selected theme '${themeName}' not found. Available themes: ${themeDirs.join(", ") || "none"}`
+    );
+    process.exit(1);
+  }
+
+  const removed = [];
+  for (const dirName of themeDirs) {
+    if (dirName === themeName) {
+      continue;
+    }
+    rmSync(resolve(themeRoot, dirName), { recursive: true, force: true });
+    removed.push(dirName);
+  }
+
+  if (removed.length > 0) {
+    console.log(`[extract-jar] Kept theme '${themeName}'. Removed: ${removed.join(", ")}`);
+  } else {
+    console.log(`[extract-jar] Theme '${themeName}' already the only extracted theme.`);
+  }
+}
+
 (async () => {
   if (!existsSync(distDir)) {
     console.error(`'${distDir}' directory not found. Run 'yarn build-keycloak-theme' first.`);
@@ -93,6 +140,11 @@ function extractJar(jarFile, outputDir) {
   console.log(`Extracting ${jarFile} to ${outputDir}...`);
   try {
     extractJar(jarFile, outputDir);
+
+    if (selectedTheme) {
+      keepOnlySelectedTheme(outputDir, selectedTheme);
+    }
+
     console.log(`Done. Extracted to ${outputDir}`);
   } catch (error) {
     console.error(`Failed to extract ${jarFile}:`, error.message);
