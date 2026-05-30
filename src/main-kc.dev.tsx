@@ -6,7 +6,11 @@ import { getKcContextMock } from "./login/mocks/getKcContextMock";
 const kcContext = getKcContextMock({
     pageId: "login-password.ftl",
     overrides: {
-        themeName: "flowcraft"
+        themeName: "flowcraft",
+        auth: {
+            attemptedUsername: "adhamaa",
+            showUsername: true
+        }
     }
 });
 

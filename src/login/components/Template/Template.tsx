@@ -39,6 +39,7 @@ export function Template(props: {
   infoNode?: ReactNode;
   documentTitle?: string;
   bodyClassName?: string;
+  displayAttemptedUsernameHeader?: boolean;
   children: ReactNode;
 }) {
   const {
@@ -49,6 +50,7 @@ export function Template(props: {
     infoNode = null,
     documentTitle,
     bodyClassName,
+    displayAttemptedUsernameHeader = true,
     children,
     headerNode,
   } = props;
@@ -87,6 +89,7 @@ export function Template(props: {
 
   const headerContent = (() => {
     const node = !(
+      displayAttemptedUsernameHeader &&
       auth !== undefined &&
       auth.showUsername &&
       !auth.showResetCredentials
