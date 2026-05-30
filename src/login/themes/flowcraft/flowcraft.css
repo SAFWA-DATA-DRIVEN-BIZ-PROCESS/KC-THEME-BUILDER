@@ -78,7 +78,7 @@
 }
 
 [data-theme-implementation="flowcraft"] input.kcInputClass,
-[data-theme-implementation="flowcraft"] input:not([type="hidden"]):not([type="checkbox"]):not([type="radio"]):not([type="file"]):not([type="button"]):not([type="submit"]):not([type="reset"]):not([type="image"]) {
+[data-theme-implementation="flowcraft"] input:not([type="hidden"]):not([type="checkbox"]):not([type="radio"]):not([type="file"]):not([type="button"]):not([type="submit"]):not([type="reset"]):not([type="image"]):not([data-slot="input-group-control"]) {
   min-height: 2.5rem !important;
   border: 0.5px solid var(--flowcraft-input-border) !important;
   border-radius: 0.375rem !important;
@@ -101,11 +101,11 @@
 }
 
 [data-theme-implementation="flowcraft"] input.kcInputClass:-webkit-autofill,
-[data-theme-implementation="flowcraft"] input:not([type="hidden"]):not([type="checkbox"]):not([type="radio"]):not([type="file"]):not([type="button"]):not([type="submit"]):not([type="reset"]):not([type="image"]):-webkit-autofill,
+[data-theme-implementation="flowcraft"] input:not([type="hidden"]):not([type="checkbox"]):not([type="radio"]):not([type="file"]):not([type="button"]):not([type="submit"]):not([type="reset"]):not([type="image"]):not([data-slot="input-group-control"]):-webkit-autofill,
 [data-theme-implementation="flowcraft"] input.kcInputClass:-webkit-autofill:hover,
-[data-theme-implementation="flowcraft"] input:not([type="hidden"]):not([type="checkbox"]):not([type="radio"]):not([type="file"]):not([type="button"]):not([type="submit"]):not([type="reset"]):not([type="image"]):-webkit-autofill:hover,
+[data-theme-implementation="flowcraft"] input:not([type="hidden"]):not([type="checkbox"]):not([type="radio"]):not([type="file"]):not([type="button"]):not([type="submit"]):not([type="reset"]):not([type="image"]):not([data-slot="input-group-control"]):-webkit-autofill:hover,
 [data-theme-implementation="flowcraft"] input.kcInputClass:-webkit-autofill:focus,
-[data-theme-implementation="flowcraft"] input:not([type="hidden"]):not([type="checkbox"]):not([type="radio"]):not([type="file"]):not([type="button"]):not([type="submit"]):not([type="reset"]):not([type="image"]):-webkit-autofill:focus {
+[data-theme-implementation="flowcraft"] input:not([type="hidden"]):not([type="checkbox"]):not([type="radio"]):not([type="file"]):not([type="button"]):not([type="submit"]):not([type="reset"]):not([type="image"]):not([data-slot="input-group-control"]):-webkit-autofill:focus {
   -webkit-text-fill-color: var(--flowcraft-text) !important;
   box-shadow: 0 0 0 1000px var(--flowcraft-input-bg) inset !important;
   transition: background-color 9999s ease-in-out 0s !important;
@@ -118,11 +118,43 @@
   font-size: 0.875rem !important;
 }
 
+[data-theme-implementation="flowcraft"] [data-slot="input-group"] {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) 2rem;
+  align-items: stretch;
+  overflow: hidden;
+}
+
 [data-theme-implementation="flowcraft"] [data-slot="input-group-control"] {
+  height: 100% !important;
+  min-height: 0 !important;
   border: none !important;
+  border-radius: 0 !important;
   background-color: transparent !important;
   color: var(--flowcraft-text) !important;
   font-size: 0.875rem !important;
+  box-shadow: none !important;
+  padding-block: 0 !important;
+}
+
+[data-theme-implementation="flowcraft"] [data-slot="input-group-addon"] {
+  display: flex !important;
+  height: 100% !important;
+  min-height: 0 !important;
+  width: 2rem !important;
+  align-items: center;
+  justify-content: center;
+  padding-block: 0 !important;
+  color: #4D4D4D !important;
+}
+
+[data-theme-implementation="flowcraft"] [data-slot="input-group-addon"] [data-slot="button"][data-variant="ghost"],
+[data-theme-implementation="flowcraft"] [data-slot="input-group-addon"] [data-slot="button"][data-variant="ghost"]:hover,
+[data-theme-implementation="flowcraft"] [data-slot="input-group-addon"] [data-slot="button"][data-variant="ghost"]:focus,
+[data-theme-implementation="flowcraft"] [data-slot="input-group-addon"] [data-slot="button"][data-variant="ghost"]:active {
+  border: 0 !important;
+  background: transparent !important;
+  color: #4D4D4D !important;
   box-shadow: none !important;
 }
 
@@ -146,7 +178,7 @@
 [data-theme-implementation="flowcraft"]
   [data-slot="input-group-control"]::placeholder,
 [data-theme-implementation="flowcraft"] input.kcInputClass::placeholder,
-[data-theme-implementation="flowcraft"] input:not([type="hidden"]):not([type="checkbox"]):not([type="radio"]):not([type="file"]):not([type="button"]):not([type="submit"]):not([type="reset"]):not([type="image"])::placeholder,
+[data-theme-implementation="flowcraft"] input:not([type="hidden"]):not([type="checkbox"]):not([type="radio"]):not([type="file"]):not([type="button"]):not([type="submit"]):not([type="reset"]):not([type="image"]):not([data-slot="input-group-control"])::placeholder,
 [data-theme-implementation="flowcraft"] textarea::placeholder {
   color: var(--flowcraft-placeholder) !important;
 }
@@ -155,8 +187,8 @@
 [data-theme-implementation="flowcraft"] [data-slot="input"]:focus-visible,
 [data-theme-implementation="flowcraft"] input.kcInputClass:focus,
 [data-theme-implementation="flowcraft"] input.kcInputClass:focus-visible,
-[data-theme-implementation="flowcraft"] input:not([type="hidden"]):not([type="checkbox"]):not([type="radio"]):not([type="file"]):not([type="button"]):not([type="submit"]):not([type="reset"]):not([type="image"]):focus,
-[data-theme-implementation="flowcraft"] input:not([type="hidden"]):not([type="checkbox"]):not([type="radio"]):not([type="file"]):not([type="button"]):not([type="submit"]):not([type="reset"]):not([type="image"]):focus-visible,
+[data-theme-implementation="flowcraft"] input:not([type="hidden"]):not([type="checkbox"]):not([type="radio"]):not([type="file"]):not([type="button"]):not([type="submit"]):not([type="reset"]):not([type="image"]):not([data-slot="input-group-control"]):focus,
+[data-theme-implementation="flowcraft"] input:not([type="hidden"]):not([type="checkbox"]):not([type="radio"]):not([type="file"]):not([type="button"]):not([type="submit"]):not([type="reset"]):not([type="image"]):not([data-slot="input-group-control"]):focus-visible,
 [data-theme-implementation="flowcraft"] [data-slot="select-trigger"]:focus,
 [data-theme-implementation="flowcraft"]
   [data-slot="select-trigger"]:focus-visible,
@@ -167,6 +199,13 @@
   border-color: transparent !important;
   outline: none !important;
   box-shadow: 0 0 0 2px var(--flowcraft-focus-ring) !important;
+}
+
+[data-theme-implementation="flowcraft"] [data-slot="input-group-control"]:focus,
+[data-theme-implementation="flowcraft"] [data-slot="input-group-control"]:focus-visible {
+  border: 0 !important;
+  outline: none !important;
+  box-shadow: none !important;
 }
 
 [data-theme-implementation="flowcraft"] input[aria-invalid="true"],
@@ -351,6 +390,14 @@
   color: var(--flowcraft-muted-text) !important;
   font-size: 0.75rem !important;
   font-weight: 500 !important;
+  line-height: 1rem !important;
+}
+
+[data-theme-implementation="flowcraft"]
+  [data-flowcraft-region="forgot-password-link"]
+  [data-slot="label"] {
+  font-size: inherit !important;
+  font-weight: inherit !important;
 }
 
 [data-theme-implementation="flowcraft"]

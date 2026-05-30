@@ -1,13 +1,15 @@
 [data-theme-implementation="swifto"] {
-  --swifto-gold: #f6c247;
-  --swifto-gold-soft: #f9d889;
-  --swifto-gold-hover: #f2bd37;
-  --swifto-ink: #16120d;
+  --swifto-gold: #F6D68D;
+  --swifto-gold-soft: #F6D68D;
+  --swifto-gold-hover: #E9C36A;
+  --swifto-gold-ring: #D6AA4D;
+  --swifto-gold-wash: #FBEDD0;
+  --swifto-ink: #473306;
   --swifto-link: #006fff;
   --swifto-field-bg: #f0f0f0;
   --swifto-field-border: #ededed;
   --swifto-placeholder: #9aafc9;
-  --swifto-outline: #4a341d;
+  --swifto-outline: #473306;
   --swifto-footer: #0f172a;
   --swifto-error: #dc2626;
   --swifto-error-bg: #fef2f2;
@@ -71,7 +73,7 @@
 
 [data-theme-implementation="swifto"] [data-slot="field-label"] {
   color: #050505 !important;
-  font-size: 0.75rem !important;
+  font-size: 0.875rem !important;
   font-weight: 700 !important;
   line-height: 1.25 !important;
 }
@@ -151,9 +153,9 @@
 [data-theme-implementation="swifto"] input.kcInputClass:focus-visible,
 [data-theme-implementation="swifto"] input:not([type="hidden"]):not([type="checkbox"]):not([type="radio"]):not([type="file"]):not([type="button"]):not([type="submit"]):not([type="reset"]):not([type="image"]):not([data-slot="input-group-control"]):focus,
 [data-theme-implementation="swifto"] input:not([type="hidden"]):not([type="checkbox"]):not([type="radio"]):not([type="file"]):not([type="button"]):not([type="submit"]):not([type="reset"]):not([type="image"]):not([data-slot="input-group-control"]):focus-visible {
-  border-color: #e0c16f !important;
+  border-color: var(--swifto-gold-ring) !important;
   outline: none !important;
-  box-shadow: 0 0 0 1px #e0c16f !important;
+  box-shadow: 0 0 0 1px var(--swifto-gold-ring) !important;
 }
 
 [data-theme-implementation="swifto"] [data-flowcraft-region="login-options"] {
@@ -176,11 +178,21 @@
 }
 
 [data-theme-implementation="swifto"] [data-flowcraft-region="forgot-password-link"] a,
-[data-theme-implementation="swifto"] [data-flowcraft-region="forgot-password-link"] [data-slot="label"] {
+[data-theme-implementation="swifto"] [data-flowcraft-region="forgot-password-link"] [data-slot="label"],
+[data-theme-implementation="swifto"] #kc-form-login > [data-slot="field"] + .flex.justify-end a,
+[data-theme-implementation="swifto"] #kc-form-login > [data-slot="field"] + .flex.justify-end [data-slot="label"] {
   color: var(--swifto-link) !important;
   font-size: 0.75rem !important;
   font-weight: 400 !important;
   text-decoration: none !important;
+}
+
+[data-theme-implementation="swifto"] #kc-form-login > [data-slot="field"] + .flex.justify-end {
+  margin-top: 1.25rem;
+}
+
+[data-theme-implementation="swifto"] #kc-form-login > .flex.justify-end + .flex.justify-end {
+  margin-top: 1.25rem;
 }
 
 [data-theme-implementation="swifto"] [data-slot="switch"] {
@@ -214,7 +226,7 @@
 [data-theme-implementation="swifto"] [data-slot="button"] {
   border-radius: 6px !important;
   font-size: 0.875rem !important;
-  font-weight: 700 !important;
+  font-weight: 600 !important;
   box-shadow: none !important;
 }
 
@@ -223,6 +235,7 @@
   min-height: 38px !important;
   background-color: var(--swifto-gold-soft) !important;
   color: var(--swifto-ink) !important;
+  font-size: 1rem !important;
 }
 
 [data-theme-implementation="swifto"] [data-slot="button"][data-variant="default"]:hover {
@@ -238,8 +251,8 @@
   align-items: center;
   gap: 0.75rem;
   color: #e0e7ef;
-  font-size: 0.75rem;
-  line-height: 1rem;
+  font-size: 1rem;
+  line-height: 1.25rem;
   text-align: center;
 }
 
@@ -258,6 +271,7 @@
   border: 1px solid var(--swifto-outline) !important;
   background: #ffffff !important;
   color: var(--swifto-ink) !important;
+  font-size: 1rem !important;
 }
 
 [data-theme-implementation="swifto"] [data-slot="alert"] {
@@ -334,7 +348,7 @@
 }
 
 [data-theme-implementation="swifto"] [data-swifto-region="hero"] {
-  background: #f5e5b5;
+  background: var(--swifto-gold-wash);
 }
 
 [data-theme-implementation="swifto"] [data-swifto-region="hero"]::before {
