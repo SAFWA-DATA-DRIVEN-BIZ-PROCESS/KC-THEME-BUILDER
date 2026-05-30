@@ -7,6 +7,7 @@
 # login/components/Template/Template.tsx
 # login/pages/login/Form.tsx
 # login/pages/login/Page.tsx
+# login/pages/login-password/Page.tsx
 # login/pages/login-reset-password/Form.tsx
 # login/pages/login-reset-password/Page.tsx
 # login/pages/login-update-password/Page.tsx
@@ -162,7 +163,6 @@
 /login/pages/login-passkeys-conditional-authenticate/useScript.tsx
 /login/pages/login-password/index.ts
 /login/pages/login-password/Page.stories.tsx
-/login/pages/login-password/Page.tsx
 /login/pages/login-recovery-authn-code-config/index.ts
 /login/pages/login-recovery-authn-code-config/Page.stories.tsx
 /login/pages/login-recovery-authn-code-config/Page.tsx

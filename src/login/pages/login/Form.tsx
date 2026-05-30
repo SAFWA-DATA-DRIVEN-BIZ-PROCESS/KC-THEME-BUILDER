@@ -35,6 +35,7 @@ export function Form() {
 
   const { kcClsx } = useKcClsx();
   const isFlowcraft = kcContext.themeName === "flowcraft";
+  const isSwifto = kcContext.themeName === "swifto";
 
   return (
     <>
@@ -54,7 +55,9 @@ export function Form() {
               {!kcContext.usernameHidden && (
                 <Field>
                   <FieldLabel htmlFor="username">
-                    {isFlowcraft
+                    {isSwifto
+                      ? "Email/Username"
+                      : isFlowcraft
                       ? "Login"
                       : !kcContext.realm.loginWithEmailAllowed
                         ? msg("email")
@@ -69,7 +72,9 @@ export function Form() {
                     id="username"
                     defaultValue={kcContext.login.username ?? ""}
                     placeholder={
-                      isFlowcraft ? "Email or phone number" : undefined
+                      isFlowcraft || isSwifto
+                        ? "Email or phone number"
+                        : undefined
                     }
                     name="username"
                     autoFocus
@@ -113,7 +118,9 @@ export function Form() {
                     type="password"
                     id="password"
                     name="password"
-                    placeholder={isFlowcraft ? "Enter password" : undefined}
+                    placeholder={
+                      isFlowcraft || isSwifto ? "Enter password" : undefined
+                    }
                     autoComplete="current-password"
                     aria-invalid={kcContext.messagesPerField.existsError(
                       "username",
@@ -179,7 +186,7 @@ export function Form() {
                         href={kcContext.url.loginResetCredentialsUrl}
                       >
                         <Label className="cursor-pointer">
-                          {msg("doForgotPassword")}
+                          {isSwifto ? "Forgot password?" : msg("doForgotPassword")}
                         </Label>
                       </a>
                     </span>
@@ -205,7 +212,7 @@ export function Form() {
                   type="submit"
                   value={msgStr("doLogIn")}
                 >
-                  {msgStr("doLogIn")}
+                  {isSwifto ? "Sign in" : msgStr("doLogIn")}
                 </Button>
               </div>
             </form>

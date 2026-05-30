@@ -1,0 +1,35 @@
+[data-theme-implementation="ctui"] {
+  --ctui-shell-bg: #ffffff;
+  --ctui-card-bg: #dfe9ec;
+  --ctui-link: #62929e;
+  --ctui-supporting-text: #1f1f1f;
+  --ctui-hero-bg-size: cover;
+  --ctui-hero-bg-position: center;
+}
+
+[data-theme-implementation="ctui"] [data-ctui-region="shell-panel"] {
+  background-color: var(--ctui-shell-bg);
+}
+
+[data-theme-implementation="ctui"] [data-ctui-region="auth-card"] {
+  background: var(--ctui-card-bg);
+}
+
+[data-theme-implementation="ctui"] [data-ctui-region="hero"] {
+  background-position: var(--ctui-hero-bg-position);
+  background-size: var(--ctui-hero-bg-size);
+  background-repeat: no-repeat;
+}
+
+[data-theme-implementation="ctui"] [data-ctui-region="supporting-info"] {
+  color: var(--ctui-supporting-text);
+}
+
+[data-theme-implementation="ctui"] [data-ctui-region="supporting-info"] a {
+  color: var(--ctui-link);
+  text-decoration: underline;
+}
+
+[data-theme-implementation="ctui"] [data-ctui-region="supporting-info"] a:hover {
+  color: var(--ctui-link);
+}
