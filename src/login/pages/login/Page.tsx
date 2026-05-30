@@ -25,7 +25,7 @@ export function Page() {
       }
       headerNode={
         isFlowcraft ? (
-          <div data-flowcraft-region="login-heading">Nice to see you again</div>
+          <div data-auth-region="login-heading">Nice to see you again</div>
         ) : (
           <div>
             <div className="text-xl font-semibold">Welcome!</div>

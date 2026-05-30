@@ -11,7 +11,6 @@
 
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Tooltip,
   TooltipContent,
@@ -26,9 +25,8 @@ import type { ReactNode } from "react";
 import { useEffect } from "react";
 import { useI18n } from "../../i18n";
 import { useKcContext } from "../../KcContext";
+import { CtuiTemplate } from "../../themes/ctui/CtuiTemplate";
 import { FlowcraftTemplate } from "../../themes/flowcraft/FlowcraftTemplate";
-import logo from "./../../assets/img/Logo.png";
-import Pavion_CT from "./../../assets/img/Pavion_CT.png";
 import { useInitializeTemplate } from "./useInitializeTemplate";
 
 export function Template(props: {
@@ -55,7 +53,9 @@ export function Template(props: {
   const { kcContext } = useKcContext();
 
   const { auth, url, message, isAppInitiatedAction } = kcContext;
-  const isFlowcraft = kcContext.themeName === "flowcraft";
+  const themeName = String(kcContext.themeName);
+  const isCtui = themeName === "CTUI";
+  const isFlowcraft = themeName === "flowcraft";
 
   const { msg, msgStr } = useI18n();
 
@@ -77,13 +77,17 @@ export function Template(props: {
 
   useInitializeTemplate();
 
+  if (import.meta.env.DEV && !isCtui && !isFlowcraft) {
+    throw new Error(`Unsupported Theme Implementation: ${themeName}`);
+  }
+
   const headerContent = (() => {
     const node = !(
       auth !== undefined &&
       auth.showUsername &&
       !auth.showResetCredentials
     ) ? (
-      <h1 data-flowcraft-region="login-heading">{headerNode}</h1>
+      <h1 data-auth-region="login-heading">{headerNode}</h1>
     ) : (
       <div id="kc-username" className="flex items-center justify-between gap-2">
         <div className="flex gap-4 items-center">
@@ -138,7 +142,7 @@ export function Template(props: {
   })();
 
   const mainContent = (
-    <div id="kc-content" className={isFlowcraft ? "space-y-4" : "space-y-4"}>
+    <div id="kc-content" className="space-y-4">
       {displayMessage &&
         message !== undefined &&
         (message.type !== "warning" || !isAppInitiatedAction) && (
@@ -181,25 +185,6 @@ export function Template(props: {
           </div>
         </form>
       )}
-      {!isFlowcraft && (
-        <div className="text-center text-sm mt-12">
-          <div className="mb-4">
-            <div>
-              {" "}
-              For more information visit our website{" "}
-              <a
-                href="https://schinkelstechnik.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="underline hover:text-[#62929E] text-[#62929E]"
-              >
-                SCHINKELS TECHNIK
-              </a>
-            </div>
-          </div>
-          <div>Powered By Schinkels Technik</div>
-        </div>
-      )}
     </div>
   );
 
@@ -212,40 +197,5 @@ export function Template(props: {
     );
   }
 
-  return (
-    <div className="grid min-h-svh lg:grid-cols-[2fr_3fr]">
-      {/* Main content */}
-      <div className="flex flex-col gap-4 px-0 py-0 pb-6 lg:p-6 lg:md:p-10 lg:pt-10 min-h-screen lg:min-h-0 bg-white">
-        <div className="flex flex-1 items-start lg:items-center justify-center flex-col ">
-          <div className="w-full max-w-xl">
-            <Card
-              className="shadow-none bg-transparent lg:bg-card border-0 lg:rounded-lg lg:border lg:shadow-sm rounded-t-2xl"
-              style={{ background: "#DFE9EC" }}
-            >
-              <CardHeader>
-                <CardTitle>
-                  {/* Logo visible on all screen sizes */}
-                  <div className="flex flex-col items-start justify-start gap-3 mt-4 my-4">
-                    <div className="flex items-center gap-3">
-                      <img src={logo} alt="Logo" />
-                    </div>
-                  </div>
-                  {headerContent}
-                </CardTitle>
-              </CardHeader>
-              <CardContent>{mainContent}</CardContent>
-            </Card>
-          </div>
-        </div>
-      </div>
-
-      <div
-        className="flex items-center pt-20 h-full justify-center z-1"
-        style={{
-          backgroundImage: `url(${Pavion_CT})`,
-          backgroundSize: "cover",
-        }}
-      />
-    </div>
-  );
+  return <CtuiTemplate headerContent={headerContent} mainContent={mainContent} />;
 }

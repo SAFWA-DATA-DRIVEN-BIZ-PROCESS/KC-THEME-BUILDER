@@ -13,6 +13,9 @@ This is a **Keycloak authentication theme builder** using Keycloakify, React, an
 **Theme Implementation** — The React pages, layout, components, and assets for one named Keycloak theme.
 _Avoid_: Theme folder, skin
 
+**CTUI** — The existing Theme Implementation selected by the Keycloak theme name `CTUI`.
+_Avoid_: CCTUI
+
 **Theme Selection** — The choice of active Theme Implementation from the Keycloak-provided theme name.
 _Avoid_: Mock switch, Storybook switch
 

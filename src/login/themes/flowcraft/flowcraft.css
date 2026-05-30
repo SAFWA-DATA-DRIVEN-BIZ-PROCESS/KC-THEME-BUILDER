@@ -54,7 +54,7 @@
 }
 
 [data-theme-implementation="flowcraft"]
-  [data-flowcraft-region="login-heading"] {
+  [data-auth-region="login-heading"] {
   color: var(--flowcraft-text) !important;
   font-size: 1.25rem !important;
   font-weight: 700 !important;
@@ -373,7 +373,7 @@
 }
 
 [data-theme-implementation="flowcraft"]
-  [data-flowcraft-region="login-heading"] {
+  [data-auth-region="login-heading"] {
   color: var(--flowcraft-text) !important;
   font-size: 1.25rem !important;
   font-weight: 700 !important;
