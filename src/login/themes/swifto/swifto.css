@@ -124,7 +124,17 @@
   align-items: center;
   justify-content: center;
   padding-block: 0 !important;
-  color: #565656 !important;
+  color: #4D4D4D !important;
+}
+
+[data-theme-implementation="swifto"] [data-slot="input-group-addon"] [data-slot="button"][data-variant="ghost"],
+[data-theme-implementation="swifto"] [data-slot="input-group-addon"] [data-slot="button"][data-variant="ghost"]:hover,
+[data-theme-implementation="swifto"] [data-slot="input-group-addon"] [data-slot="button"][data-variant="ghost"]:focus,
+[data-theme-implementation="swifto"] [data-slot="input-group-addon"] [data-slot="button"][data-variant="ghost"]:active {
+  border: 0 !important;
+  background: transparent !important;
+  color: #4D4D4D !important;
+  box-shadow: none !important;
 }
 
 [data-theme-implementation="swifto"] [data-slot="input"]::placeholder,
