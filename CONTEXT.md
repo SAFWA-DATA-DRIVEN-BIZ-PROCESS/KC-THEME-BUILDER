@@ -11,7 +11,7 @@ This is a **Keycloak authentication theme builder** using Keycloakify, React, an
 **Theme** — A set of templates and static assets that Keycloak renders for authentication flows (login, registration, password reset, etc.). Keycloak themes are packaged as JAR files.
 
 **Theme Implementation** — The React pages, layout, components, and assets for one named Keycloak theme.
-_Avoid_: Theme folder, skin
+_Avoid_: Theme folder, skin, structured theme
 
 **CTUI** — The existing Theme Implementation selected by the Keycloak theme name `CTUI`.
 _Avoid_: CCTUI
@@ -21,6 +21,9 @@ _Avoid_: Mock switch, Storybook switch
 
 **Mock Theme** — The preview-only theme name used to render pages outside a running Keycloak server.
 _Avoid_: Runtime theme, selected realm theme
+
+**Theme-Scoped Styling** — Brand-specific visual styling that applies only inside one Theme Implementation while shared Pages keep authentication behavior and structure reusable.
+_Avoid_: Global theme override, page-specific brand styling
 
 **Keycloakify** — A TypeScript/React framework that compiles React components into Keycloak-compatible theme artifacts. It bridges React development (modern DX) with Keycloak's theme format (JAR output).
 
@@ -79,6 +82,7 @@ Browser
 - A **Theme Implementation** provides a shared shell and base form styling for every **Page** rendered under that theme.
 - **Theme Selection** chooses exactly one **Theme Implementation** for a rendered Keycloak page.
 - A **Mock Theme** previews one **Theme Implementation** without changing runtime Keycloak configuration.
+- **Theme-Scoped Styling** belongs to a Theme Implementation; shared Pages should expose stable regions rather than contain branded visual rules.
 
 ### Key Files
 
@@ -115,7 +119,7 @@ Browser
 - Pages use `KcContext` to access Keycloak state
 - Pages export a named export matching the page name: `export function LoginPage() { ... }`
 - Reusable UI components are stateless and accept props
-- Tailwind classes are the primary styling method; inline styles are avoided
+- Tailwind classes define shared structure; Theme Implementations use Theme-Scoped Styling for brand-specific visual rules
 
 ### TypeScript
 

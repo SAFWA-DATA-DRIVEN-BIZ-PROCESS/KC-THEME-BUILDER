@@ -2,6 +2,10 @@
 
 ## Agent skills
 
+### Theme Implementations
+
+Use `.agents/skills/add-theme-implementation/SKILL.md` when adding, scaffolding, previewing, or building a new Keycloak Theme Implementation for this repository.
+
 ### Issue tracker
 
 Issues are tracked in GitHub Issues for this repository. Skills like `to-issues`, `triage`, and `to-prd` create and read from GitHub. See `docs/agents/issue-tracker.md`.
