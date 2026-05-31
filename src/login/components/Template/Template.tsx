@@ -25,10 +25,63 @@ import type { ReactNode } from "react";
 import { useEffect } from "react";
 import { useI18n } from "../../i18n";
 import { useKcContext } from "../../KcContext";
+import ctuiFaviconUrl from "../../themes/ctui/assets/Logo.png";
 import { CtuiTemplate } from "../../themes/ctui/CtuiTemplate";
+import flowcraftFaviconUrl from "../../themes/flowcraft/assets/flowcraft_logo_min.svg";
 import { FlowcraftTemplate } from "../../themes/flowcraft/FlowcraftTemplate";
+import swiftoFaviconUrl from "../../themes/swifto/assets/Swifto_logo.png";
 import { SwiftoTemplate } from "../../themes/swifto/SwiftoTemplate";
 import { useInitializeTemplate } from "./useInitializeTemplate";
+
+const metadataByThemeName = {
+  CTUI: {
+    appName: "Pavion Admin",
+    faviconHref: ctuiFaviconUrl,
+    faviconType: "image/png",
+  },
+  flowcraft: {
+    appName: "Flowcraft",
+    faviconHref: flowcraftFaviconUrl,
+    faviconType: "image/svg+xml",
+  },
+  swifto: {
+    appName: "Swifto",
+    faviconHref: swiftoFaviconUrl,
+    faviconType: "image/svg+xml",
+  },
+} as const;
+
+function getMetadataForTheme(themeName: string) {
+  return (
+    metadataByThemeName[themeName as keyof typeof metadataByThemeName] ??
+    metadataByThemeName.CTUI
+  );
+}
+
+function setNamedMetaContent(name: string, content: string) {
+  let element = document.querySelector<HTMLMetaElement>(`meta[name="${name}"]`);
+
+  if (element === null) {
+    element = document.createElement("meta");
+    element.name = name;
+    document.head.appendChild(element);
+  }
+
+  element.content = content;
+}
+
+function setFavicon(href: string, type: string) {
+  let element = document.querySelector<HTMLLinkElement>('link[rel="icon"]');
+
+  if (element === null) {
+    element = document.createElement("link");
+    element.rel = "icon";
+    document.head.appendChild(element);
+  }
+
+  element.href = href;
+  element.type = type;
+}
 
 export function Template(props: {
   displayInfo?: boolean;
@@ -62,14 +115,20 @@ export function Template(props: {
   const isCtui = themeName === "CTUI";
   const isFlowcraft = themeName === "flowcraft";
   const isSwifto = themeName === "swifto";
+  const themeMetadata = getMetadataForTheme(themeName);
 
   const { msg, msgStr } = useI18n();
 
   const { kcClsx } = useKcClsx();
 
   useEffect(() => {
-    document.title = documentTitle ?? msgStr("loginTitle", "Pavion Admin");
-  }, []);
+    const appName = themeMetadata.appName;
+
+    document.title = documentTitle ?? msgStr("loginTitle", appName);
+    setNamedMetaContent("application-name", appName);
+    setNamedMetaContent("apple-mobile-web-app-title", appName);
+    setFavicon(themeMetadata.faviconHref, themeMetadata.faviconType);
+  }, [documentTitle, msgStr, themeMetadata]);
 
   useSetClassName({
     qualifiedName: "html",
