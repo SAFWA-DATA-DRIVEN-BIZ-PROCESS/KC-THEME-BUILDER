@@ -20,7 +20,6 @@ export function Page() {
   const { msg } = useI18n();
   const isFlowcraft = kcContext.themeName === "flowcraft";
   const shouldUsePasswordStepLayout =
-    isFlowcraft &&
     kcContext.usernameHidden &&
     kcContext.auth?.showUsername === true &&
     kcContext.auth.attemptedUsername !== undefined;

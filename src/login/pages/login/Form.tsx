@@ -39,7 +39,6 @@ export function Form() {
   const isFlowcraft = kcContext.themeName === "flowcraft";
   const isSwifto = kcContext.themeName === "swifto";
   const shouldUsePasswordStepLayout =
-    isFlowcraft &&
     kcContext.usernameHidden &&
     kcContext.auth?.showUsername === true &&
     kcContext.auth.attemptedUsername !== undefined;
@@ -69,15 +68,23 @@ export function Form() {
               {shouldShowUsernameInput && (
                 <Field>
                   <FieldLabel htmlFor="username">
-                    {isSwifto
-                      ? "Email/Username"
-                      : isFlowcraft
-                      ? "Login"
-                      : !kcContext.realm.loginWithEmailAllowed
-                        ? msg("email")
-                        : !kcContext.realm.registrationEmailAsUsername
-                          ? msg("usernameOrEmail")
-                          : msg("username")}
+                    {shouldUsePasswordStepLayout
+                      ? isSwifto
+                        ? "Email/Username"
+                        : isFlowcraft
+                          ? "Login"
+                          : !kcContext.realm.registrationEmailAsUsername
+                            ? msg("usernameOrEmail")
+                            : msg("username")
+                      : isSwifto
+                        ? "Email/Username"
+                        : isFlowcraft
+                          ? "Login"
+                          : !kcContext.realm.loginWithEmailAllowed
+                            ? msg("email")
+                            : !kcContext.realm.registrationEmailAsUsername
+                              ? msg("usernameOrEmail")
+                              : msg("username")}
                   </FieldLabel>
                   {shouldUsePasswordStepLayout ? (
                     <InputGroup data-flowcraft-region="username-input">
@@ -86,7 +93,11 @@ export function Form() {
                         type="text"
                         id="username"
                         defaultValue={usernameDefaultValue}
-                        placeholder="Email or phone number"
+                        placeholder={
+                          isFlowcraft || isSwifto
+                            ? "Email or phone number"
+                            : undefined
+                        }
                         name="username"
                         autoFocus
                         autoComplete={
