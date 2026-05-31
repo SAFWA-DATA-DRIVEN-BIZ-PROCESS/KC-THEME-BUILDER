@@ -12,6 +12,7 @@ import { Input } from "@/components/ui/input";
 import {
   InputGroup,
   InputGroupAddon,
+  InputGroupButton,
   InputGroupInput,
 } from "@/components/ui/input-group";
 import { Label } from "@/components/ui/label";
@@ -19,6 +20,7 @@ import { WebAuthnConditionalUI } from "@/login/components/WebAuthnConditionalUi"
 import { useKcContext } from "@/login/KcContext";
 import { kcSanitize } from "@keycloakify/login-ui/kcSanitize";
 import { useKcClsx } from "@keycloakify/login-ui/useKcClsx";
+import { RotateCcw } from "lucide-react";
 import { useState } from "react";
 import { assert } from "tsafe/assert";
 import { PasswordVisibilityButton } from "../../components/PasswordVisibilityButton";
@@ -36,6 +38,16 @@ export function Form() {
   const { kcClsx } = useKcClsx();
   const isFlowcraft = kcContext.themeName === "flowcraft";
   const isSwifto = kcContext.themeName === "swifto";
+  const shouldUsePasswordStepLayout =
+    isFlowcraft &&
+    kcContext.usernameHidden &&
+    kcContext.auth?.showUsername === true &&
+    kcContext.auth.attemptedUsername !== undefined;
+  const shouldShowUsernameInput =
+    !kcContext.usernameHidden || shouldUsePasswordStepLayout;
+  const usernameDefaultValue = shouldUsePasswordStepLayout
+    ? kcContext.auth?.attemptedUsername ?? ""
+    : kcContext.login.username ?? "";
 
   return (
     <>
@@ -50,9 +62,11 @@ export function Form() {
               }}
               action={kcContext.url.loginAction}
               method="post"
-              className="space-y-4"
+              className={
+                shouldUsePasswordStepLayout ? "flex flex-col gap-4" : "space-y-4"
+              }
             >
-              {!kcContext.usernameHidden && (
+              {shouldShowUsernameInput && (
                 <Field>
                   <FieldLabel htmlFor="username">
                     {isSwifto
@@ -65,29 +79,68 @@ export function Form() {
                           ? msg("usernameOrEmail")
                           : msg("username")}
                   </FieldLabel>
-                  <Input
-                    data-flowcraft-region="username-input"
-                    tabIndex={2}
-                    type="text"
-                    id="username"
-                    defaultValue={kcContext.login.username ?? ""}
-                    placeholder={
-                      isFlowcraft || isSwifto
-                        ? "Email or phone number"
-                        : undefined
-                    }
-                    name="username"
-                    autoFocus
-                    autoComplete={
-                      kcContext.enableWebAuthnConditionalUI
-                        ? "username webauthn"
-                        : "username"
-                    }
-                    aria-invalid={kcContext.messagesPerField.existsError(
-                      "username",
-                      "password",
-                    )}
-                  />
+                  {shouldUsePasswordStepLayout ? (
+                    <InputGroup data-flowcraft-region="username-input">
+                      <InputGroupInput
+                        tabIndex={1}
+                        type="text"
+                        id="username"
+                        defaultValue={usernameDefaultValue}
+                        placeholder="Email or phone number"
+                        name="username"
+                        autoFocus
+                        autoComplete={
+                          kcContext.enableWebAuthnConditionalUI
+                            ? "username webauthn"
+                            : "username"
+                        }
+                        aria-invalid={kcContext.messagesPerField.existsError(
+                          "username",
+                          "password",
+                        )}
+                      />
+                      <InputGroupAddon align="inline-end">
+                        <InputGroupButton
+                          asChild
+                          size="icon-xs"
+                          variant="ghost"
+                          aria-label={msgStr("restartLoginTooltip")}
+                        >
+                          <a
+                            id="reset-login"
+                            href={kcContext.url.loginRestartFlowUrl}
+                            tabIndex={2}
+                          >
+                            <RotateCcw className="size-3.5" />
+                          </a>
+                        </InputGroupButton>
+                      </InputGroupAddon>
+                    </InputGroup>
+                  ) : (
+                    <Input
+                      data-flowcraft-region="username-input"
+                      tabIndex={2}
+                      type="text"
+                      id="username"
+                      defaultValue={usernameDefaultValue}
+                      placeholder={
+                        isFlowcraft || isSwifto
+                          ? "Email or phone number"
+                          : undefined
+                      }
+                      name="username"
+                      autoFocus
+                      autoComplete={
+                        kcContext.enableWebAuthnConditionalUI
+                          ? "username webauthn"
+                          : "username"
+                      }
+                      aria-invalid={kcContext.messagesPerField.existsError(
+                        "username",
+                        "password",
+                      )}
+                    />
+                  )}
                   {kcContext.messagesPerField.existsError(
                     "username",
                     "password",
@@ -119,7 +172,11 @@ export function Form() {
                     id="password"
                     name="password"
                     placeholder={
-                      isFlowcraft || isSwifto ? "Enter password" : undefined
+                      shouldUsePasswordStepLayout
+                        ? undefined
+                        : isFlowcraft || isSwifto
+                          ? "Enter password"
+                          : undefined
                     }
                     autoComplete="current-password"
                     aria-invalid={kcContext.messagesPerField.existsError(
@@ -156,8 +213,14 @@ export function Form() {
               </Field>
 
               <div
-                data-flowcraft-region="login-options"
-                className="flex justify-between gap-2"
+                data-flowcraft-region={
+                  shouldUsePasswordStepLayout ? undefined : "login-options"
+                }
+                className={
+                  shouldUsePasswordStepLayout
+                    ? "flex justify-end"
+                    : "flex justify-between gap-2"
+                }
               >
                 {kcContext.realm.rememberMe && !kcContext.usernameHidden && (
                   <div className="flex items-center space-x-2 ">
@@ -203,10 +266,10 @@ export function Form() {
                 />
 
                 <Button
-                  className="mt-3 w-full"
+                  className={shouldUsePasswordStepLayout ? "w-full" : "mt-3 w-full"}
                   data-flowcraft-region="login-button"
                   disabled={isLoginButtonDisabled}
-                  tabIndex={7}
+                  tabIndex={shouldUsePasswordStepLayout ? 4 : 7}
                   name="login"
                   id="kc-login"
                   type="submit"

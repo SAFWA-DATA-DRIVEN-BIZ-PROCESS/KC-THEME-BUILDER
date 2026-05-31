@@ -7,6 +7,7 @@
 
 import { assert } from "tsafe/assert";
 import { Template } from "../../components/Template";
+import { useI18n } from "../../i18n";
 import { useKcContext } from "../../KcContext";
 import { Form } from "./Form";
 import { Info } from "./Info";
@@ -16,14 +17,24 @@ export function Page() {
   const { kcContext } = useKcContext();
   assert(kcContext.pageId === "login.ftl");
 
+  const { msg } = useI18n();
   const isFlowcraft = kcContext.themeName === "flowcraft";
+  const shouldUsePasswordStepLayout =
+    isFlowcraft &&
+    kcContext.usernameHidden &&
+    kcContext.auth?.showUsername === true &&
+    kcContext.auth.attemptedUsername !== undefined;
 
   return (
     <Template
+      displayAttemptedUsernameHeader={!shouldUsePasswordStepLayout}
       displayMessage={
         !kcContext.messagesPerField.existsError("username", "password")
       }
       headerNode={
+        shouldUsePasswordStepLayout ? (
+          msg("doLogIn")
+        ) :
         isFlowcraft ? (
           <div data-auth-region="login-heading">Nice to see you again</div>
         ) : (
@@ -36,12 +47,14 @@ export function Page() {
         )
       }
       displayInfo={
+        !shouldUsePasswordStepLayout &&
         kcContext.realm.password &&
         kcContext.realm.registrationAllowed &&
         !kcContext.registrationDisabled
       }
       infoNode={<Info />}
       socialProvidersNode={
+        !shouldUsePasswordStepLayout &&
         kcContext.realm.password &&
         kcContext.social !== undefined && <SocialProviders />
       }

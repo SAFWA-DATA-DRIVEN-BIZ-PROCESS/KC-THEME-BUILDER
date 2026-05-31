@@ -4,11 +4,12 @@ import { KcPage } from "./kc.gen";
 import { getKcContextMock } from "./login/mocks/getKcContextMock";
 
 const kcContext = getKcContextMock({
-    pageId: "login-password.ftl",
+    pageId: "login.ftl",
     overrides: {
         themeName: "flowcraft",
+        usernameHidden: true,
         auth: {
-            attemptedUsername: "adhamaa",
+            attemptedUsername: "901967198722",
             showUsername: true
         }
     }
