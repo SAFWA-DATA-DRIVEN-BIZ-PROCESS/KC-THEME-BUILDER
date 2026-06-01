@@ -4,14 +4,14 @@ import { KcPage } from "./kc.gen";
 import { getKcContextMock } from "./login/mocks/getKcContextMock";
 
 const kcContext = getKcContextMock({
-    pageId: "login.ftl",
+    pageId: "login-username.ftl",
     overrides: {
-        themeName: "flowcraft",
-        usernameHidden: true,
-        auth: {
-            attemptedUsername: "901967198722",
-            showUsername: true
-        }
+        themeName: "swifto",
+        // usernameHidden: true,
+        // auth: {
+        //     attemptedUsername: "901967198722",
+        //     showUsername: true
+        // }
     }
 });
 

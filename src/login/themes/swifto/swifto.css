@@ -20,6 +20,10 @@
   --swifto-success: #16a34a;
   --swifto-success-bg: #f0fdf4;
   --swifto-success-border: #d1f2d5;
+  --swifto-switch-width: 2.25rem;
+  --swifto-switch-height: 1.125rem;
+  --swifto-switch-thumb-size: 0.875rem;
+  --swifto-switch-thumb-offset: 1.125rem;
   background: #ffffff;
   color: var(--swifto-ink);
   font-family: Inter, ui-sans-serif, system-ui, sans-serif;
@@ -196,9 +200,9 @@
 }
 
 [data-theme-implementation="swifto"] [data-slot="switch"] {
-  width: 2.25rem !important;
-  height: 1.125rem !important;
-  min-width: 2.25rem !important;
+  width: var(--swifto-switch-width) !important;
+  height: var(--swifto-switch-height) !important;
+  min-width: var(--swifto-switch-width) !important;
   padding: 0 !important;
   background-color: #eeeeee !important;
 }
@@ -208,15 +212,19 @@
 }
 
 [data-theme-implementation="swifto"] [data-slot="switch-thumb"] {
-  width: 0.875rem !important;
-  height: 0.875rem !important;
-  translate: none !important;
-  transform: translateX(0) !important;
+  width: var(--swifto-switch-thumb-size) !important;
+  height: var(--swifto-switch-thumb-size) !important;
+  flex-shrink: 0 !important;
+  --tw-translate-x: 0rem !important;
+  --tw-translate-y: 0rem !important;
+  translate: var(--tw-translate-x) var(--tw-translate-y) !important;
+  transform: none !important;
 }
 
 [data-theme-implementation="swifto"] [data-slot="switch-thumb"][data-state="checked"] {
-  translate: none !important;
-  transform: translateX(1.125rem) !important;
+  --tw-translate-x: var(--swifto-switch-thumb-offset) !important;
+  translate: var(--tw-translate-x) var(--tw-translate-y) !important;
+  transform: none !important;
 }
 
 [data-theme-implementation="swifto"] [data-flowcraft-region="login-button"] {

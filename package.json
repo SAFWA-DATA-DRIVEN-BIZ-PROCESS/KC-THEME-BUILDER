@@ -8,6 +8,7 @@
     "postinstall": "keycloakify sync-extensions",
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "build:keycloakify": "yarn run build && keycloakify build",
     "keycloakify": "keycloakify",
     "build:kc": "node ./scripts/run-build-kc.mjs",
     "build:themes": "node ./scripts/run-build-themes.mjs",
