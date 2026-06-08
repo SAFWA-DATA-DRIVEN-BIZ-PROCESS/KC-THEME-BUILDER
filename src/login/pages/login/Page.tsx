@@ -19,6 +19,7 @@ export function Page() {
 
   const { msg } = useI18n();
   const isFlowcraft = kcContext.themeName === "flowcraft";
+  const isUserManagement = kcContext.themeName === "user-management";
   const shouldUsePasswordStepLayout =
     kcContext.usernameHidden &&
     kcContext.auth?.showUsername === true &&
@@ -36,6 +37,8 @@ export function Page() {
         ) :
         isFlowcraft ? (
           <div data-auth-region="login-heading">Nice to see you again</div>
+        ) : isUserManagement ? (
+          <div data-auth-region="login-heading">Welcome!</div>
         ) : (
           <div>
             <div className="text-xl font-semibold">Welcome!</div>

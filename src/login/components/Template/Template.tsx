@@ -31,6 +31,8 @@ import flowcraftFaviconUrl from "../../themes/flowcraft/assets/flowcraft_logo_mi
 import { FlowcraftTemplate } from "../../themes/flowcraft/FlowcraftTemplate";
 import swiftoFaviconUrl from "../../themes/swifto/assets/Swifto_logo.png";
 import { SwiftoTemplate } from "../../themes/swifto/SwiftoTemplate";
+import userManagementFaviconUrl from "../../themes/user-management/assets/UM_icon.png";
+import { UserManagementTemplate } from "../../themes/user-management/UserManagementTemplate";
 import { useInitializeTemplate } from "./useInitializeTemplate";
 
 const metadataByThemeName = {
@@ -48,6 +50,11 @@ const metadataByThemeName = {
     appName: "Swifto",
     faviconHref: swiftoFaviconUrl,
     faviconType: "image/svg+xml",
+  },
+  "user-management": {
+    appName: "User Management",
+    faviconHref: userManagementFaviconUrl,
+    faviconType: "image/png",
   },
 } as const;
 
@@ -115,6 +122,7 @@ export function Template(props: {
   const isCtui = themeName === "CTUI";
   const isFlowcraft = themeName === "flowcraft";
   const isSwifto = themeName === "swifto";
+  const isUserManagement = themeName === "user-management";
   const themeMetadata = getMetadataForTheme(themeName);
 
   const { msg, msgStr } = useI18n();
@@ -142,7 +150,13 @@ export function Template(props: {
 
   useInitializeTemplate();
 
-  if (import.meta.env.DEV && !isCtui && !isFlowcraft && !isSwifto) {
+  if (
+    import.meta.env.DEV &&
+    !isCtui &&
+    !isFlowcraft &&
+    !isSwifto &&
+    !isUserManagement
+  ) {
     throw new Error(`Unsupported Theme Implementation: ${themeName}`);
   }
 
@@ -275,6 +289,15 @@ export function Template(props: {
   if (isSwifto) {
     return (
       <SwiftoTemplate headerContent={headerContent} mainContent={mainContent} />
+    );
+  }
+
+  if (isUserManagement) {
+    return (
+      <UserManagementTemplate
+        headerContent={headerContent}
+        mainContent={mainContent}
+      />
     );
   }
 

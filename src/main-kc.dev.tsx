@@ -4,9 +4,14 @@ import { KcPage } from "./kc.gen";
 import { getKcContextMock } from "./login/mocks/getKcContextMock";
 
 const kcContext = getKcContextMock({
-    pageId: "login-username.ftl",
+    pageId: "login.ftl",
     overrides: {
-        themeName: "swifto",
+        themeName: "user-management",
+        realm: {
+            registrationAllowed: false,
+            rememberMe: false,
+            resetPasswordAllowed: false
+        },
         // usernameHidden: true,
         // auth: {
         //     attemptedUsername: "901967198722",

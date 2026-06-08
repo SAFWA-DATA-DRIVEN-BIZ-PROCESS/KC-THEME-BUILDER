@@ -28,6 +28,7 @@ export function Page() {
     const [isLoginButtonDisabled, setIsLoginButtonDisabled] = useState(false);
     const isFlowcraft = kcContext.themeName === "flowcraft";
     const isSwifto = kcContext.themeName === "swifto";
+    const isUserManagement = kcContext.themeName === "user-management";
     const shouldShowUsername = kcContext.auth?.showUsername === true;
     const attemptedUsername = kcContext.auth?.attemptedUsername ?? "";
 
@@ -52,6 +53,8 @@ export function Page() {
                         <FieldLabel htmlFor="username">
                             {isSwifto
                                 ? "Email/Username"
+                                                                : isUserManagement
+                                                                    ? "Userid"
                                 : isFlowcraft
                                   ? "Login"
                                   : !kcContext.realm.registrationEmailAsUsername
@@ -65,7 +68,13 @@ export function Page() {
                                 id="username"
                                 name="username"
                                 defaultValue={attemptedUsername}
-                                placeholder={isFlowcraft || isSwifto ? "Email or phone number" : undefined}
+                                placeholder={
+                                    isUserManagement
+                                        ? "Please enter your userid"
+                                        : isFlowcraft || isSwifto
+                                          ? "Email or phone number"
+                                          : undefined
+                                }
                                 autoFocus
                                 autoComplete={
                                     kcContext.enableWebAuthnConditionalUI

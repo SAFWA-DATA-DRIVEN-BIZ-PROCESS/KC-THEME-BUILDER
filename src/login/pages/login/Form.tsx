@@ -38,6 +38,7 @@ export function Form() {
   const { kcClsx } = useKcClsx();
   const isFlowcraft = kcContext.themeName === "flowcraft";
   const isSwifto = kcContext.themeName === "swifto";
+  const isUserManagement = kcContext.themeName === "user-management";
   const shouldUsePasswordStepLayout =
     kcContext.usernameHidden &&
     kcContext.auth?.showUsername === true &&
@@ -71,6 +72,8 @@ export function Form() {
                     {shouldUsePasswordStepLayout
                       ? isSwifto
                         ? "Email/Username"
+                        : isUserManagement
+                          ? "Userid"
                         : isFlowcraft
                           ? "Login"
                           : !kcContext.realm.registrationEmailAsUsername
@@ -78,6 +81,8 @@ export function Form() {
                             : msg("username")
                       : isSwifto
                         ? "Email/Username"
+                        : isUserManagement
+                          ? "Userid"
                         : isFlowcraft
                           ? "Login"
                           : !kcContext.realm.loginWithEmailAllowed
@@ -94,7 +99,9 @@ export function Form() {
                         id="username"
                         defaultValue={usernameDefaultValue}
                         placeholder={
-                          isFlowcraft || isSwifto
+                          isUserManagement
+                            ? "Please enter your userid"
+                            : isFlowcraft || isSwifto
                             ? "Email or phone number"
                             : undefined
                         }
@@ -135,7 +142,9 @@ export function Form() {
                       id="username"
                       defaultValue={usernameDefaultValue}
                       placeholder={
-                        isFlowcraft || isSwifto
+                        isUserManagement
+                          ? "Please enter your userid"
+                          : isFlowcraft || isSwifto
                           ? "Email or phone number"
                           : undefined
                       }
@@ -185,6 +194,8 @@ export function Form() {
                     placeholder={
                       shouldUsePasswordStepLayout
                         ? undefined
+                        : isUserManagement
+                          ? "Password"
                         : isFlowcraft || isSwifto
                           ? "Enter password"
                           : undefined
