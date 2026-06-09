@@ -119,7 +119,7 @@ export function Page() {
                         )}
 
                         {realm.rememberMe && !usernameHidden && (
-                            <div className="flex items-center space-x-2">
+                            <div className="flex items-center space-x-2 w-full justify-start">
                                 <Switch
                                     className="data-[state=checked]:bg-primary"
                                     tabIndex={3}
