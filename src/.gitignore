@@ -2,6 +2,8 @@
 
 # === Owned files start ===
 # login/index.css
+# login/components/Template/Template.tsx
+# login/components/Template/layouts/TwoColumnLayout.tsx
 # === Owned files end =====
 
 # === @keycloakify/login-ui-storybook v250004.2.0 ===
@@ -80,7 +82,6 @@
 /login/assets/img/shape.svg
 /login/components/Template/Defaults.ts
 /login/components/Template/index.ts
-/login/components/Template/Template.tsx
 /login/components/Template/TemplateContent.tsx
 /login/components/Template/TemplateTopBar.tsx
 /login/components/Template/useAuthChecker.ts
@@ -228,7 +229,6 @@
 /login/pages/webauthn-register/useLogic.ts
 /login/components/Template/layouts/CenteredCardLayout.tsx
 /login/components/Template/layouts/ImageAsideLayout.tsx
-/login/components/Template/layouts/TwoColumnLayout.tsx
 /login/components/Template/theme/Themes.ts
 /login/components/Template/theme/ThemeTypes.ts
 /login/components/Template/theme/ThemeUtils.ts
