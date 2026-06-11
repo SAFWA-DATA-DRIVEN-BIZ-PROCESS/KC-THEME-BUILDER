@@ -5,19 +5,11 @@
  * $ npx keycloakify own --path "login/components/Template/layouts/TwoColumnLayout.tsx" --revert
  */
 
-import { useI18n } from "@/login/i18n";
-import { useKcContext } from "@/login/KcContext";
-import { kcSanitize } from "@keycloakify/login-ui/kcSanitize";
 import type { ReactNode } from "react";
 import CCGUIBackground from "../../../assets/img/CCGUI-background.svg";
-import { TemplateTopBar } from "../TemplateTopBar";
 
-export function TwoColumnLayout(props: { content: ReactNode; logoUrl: string }) {
-    const { content, logoUrl } = props;
-
-    const { kcContext } = useKcContext();
-
-    const { msg } = useI18n();
+export function TwoColumnLayout(props: { content: ReactNode }) {
+    const { content } = props;
 
     return (
         <div className="grid min-h-svh lg:grid-cols-2 ">

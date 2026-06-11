@@ -3,6 +3,12 @@
 # === Owned files start ===
 # login/index.css
 # login/components/Template/Template.tsx
+# login/components/Template/TemplateContent.tsx
+# login/pages/login/Form.tsx
+# login/pages/login/Page.tsx
+# login/pages/login-reset-password/Form.tsx
+# login/pages/login-reset-password/Page.tsx
+# login/pages/login-username/Page.tsx
 # login/components/Template/layouts/TwoColumnLayout.tsx
 # === Owned files end =====
 
@@ -82,7 +88,6 @@
 /login/assets/img/shape.svg
 /login/components/Template/Defaults.ts
 /login/components/Template/index.ts
-/login/components/Template/TemplateContent.tsx
 /login/components/Template/TemplateTopBar.tsx
 /login/components/Template/useAuthChecker.ts
 /login/components/Template/useInitializeTemplate.ts
@@ -127,11 +132,9 @@
 /login/pages/link-idp-action/index.ts
 /login/pages/link-idp-action/Page.stories.tsx
 /login/pages/link-idp-action/Page.tsx
-/login/pages/login/Form.tsx
 /login/pages/login/index.ts
 /login/pages/login/Info.tsx
 /login/pages/login/Page.stories.tsx
-/login/pages/login/Page.tsx
 /login/pages/login/SocialProviders.tsx
 /login/pages/login/useProviderLogos.tsx
 /login/pages/login-config-totp/index.ts
@@ -175,10 +178,8 @@
 /login/pages/login-reset-otp/index.ts
 /login/pages/login-reset-otp/Page.stories.tsx
 /login/pages/login-reset-otp/Page.tsx
-/login/pages/login-reset-password/Form.tsx
 /login/pages/login-reset-password/index.ts
 /login/pages/login-reset-password/Page.stories.tsx
-/login/pages/login-reset-password/Page.tsx
 /login/pages/login-update-password/index.ts
 /login/pages/login-update-password/Page.stories.tsx
 /login/pages/login-update-password/Page.tsx
@@ -187,7 +188,6 @@
 /login/pages/login-update-profile/Page.tsx
 /login/pages/login-username/index.ts
 /login/pages/login-username/Page.stories.tsx
-/login/pages/login-username/Page.tsx
 /login/pages/login-verify-email/index.ts
 /login/pages/login-verify-email/Page.stories.tsx
 /login/pages/login-verify-email/Page.tsx
