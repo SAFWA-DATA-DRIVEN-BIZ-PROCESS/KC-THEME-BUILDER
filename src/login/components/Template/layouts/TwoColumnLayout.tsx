@@ -1,0 +1,30 @@
+/**
+ * This file has been claimed for ownership from @oussemasahbeni/keycloakify-login-shadcn version 250004.0.24.
+ * To relinquish ownership and restore this file to its original content, run the following command:
+ * 
+ * $ npx keycloakify own --path "login/components/Template/layouts/TwoColumnLayout.tsx" --revert
+ */
+
+import type { ReactNode } from "react";
+import CCGUIBackground from "../../../assets/img/CCGUI-background.svg";
+
+export function TwoColumnLayout(props: { content: ReactNode }) {
+    const { content } = props;
+
+    return (
+        <div className="grid min-h-svh lg:grid-cols-2 ">
+            <div className="relative flex min-h-screen flex-col pb-6 lg:min-h-0 lg:p-6 lg:pt-10">
+                {/* <TemplateTopBar /> */}
+
+                <div className="flex flex-1 items-center justify-center lg:items-center p-6 md:p-10">
+                    <main className="w-full max-w-xl">{content}</main>
+                </div>
+            </div>
+
+            <div className="hidden h-full overflow-hidden lg:block" style={{
+                backgroundImage: `url(${CCGUIBackground})`,
+            }}>
+            </div>
+        </div>
+    );
+}

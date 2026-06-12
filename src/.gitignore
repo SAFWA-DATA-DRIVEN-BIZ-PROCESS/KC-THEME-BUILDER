@@ -1,6 +1,15 @@
 # This file is managed by Keycloakify, do not edit it manually.
 
 # === Owned files start ===
+# login/index.css
+# login/components/Template/Template.tsx
+# login/components/Template/TemplateContent.tsx
+# login/pages/login/Form.tsx
+# login/pages/login/Page.tsx
+# login/pages/login-reset-password/Form.tsx
+# login/pages/login-reset-password/Page.tsx
+# login/pages/login-username/Page.tsx
+# login/components/Template/layouts/TwoColumnLayout.tsx
 # === Owned files end =====
 
 # === @keycloakify/login-ui-storybook v250004.2.0 ===
@@ -44,10 +53,9 @@
 /login/pages/webauthn-error/Page.stories.tsx
 /login/pages/webauthn-register/Page.stories.tsx
 
-# === @oussemasahbeni/keycloakify-login-shadcn v250004.0.20 ===
+# === @oussemasahbeni/keycloakify-login-shadcn v250004.0.24 ===
 /components/ThemeProvider.tsx
 /login/i18n.ts
-/login/index.css
 /login/KcContext.ts
 /login/KcPage.tsx
 /login/styleLevelCustomization.tsx
@@ -74,10 +82,13 @@
 /login/pages/PageIndex.tsx
 /login/shared/getColorScheme.ts
 /login/shared/redirectUrlOrigin.ts
-/login/assets/img/auth-logo.svg
+/login/shared/resolveAssetUrl.ts
+/login/assets/img/default-logo.svg
+/login/assets/img/placeholder.svg
 /login/assets/img/shape.svg
+/login/components/Template/Defaults.ts
 /login/components/Template/index.ts
-/login/components/Template/Template.tsx
+/login/components/Template/TemplateTopBar.tsx
 /login/components/Template/useAuthChecker.ts
 /login/components/Template/useInitializeTemplate.ts
 /login/components/ui/Langauges.tsx
@@ -121,11 +132,9 @@
 /login/pages/link-idp-action/index.ts
 /login/pages/link-idp-action/Page.stories.tsx
 /login/pages/link-idp-action/Page.tsx
-/login/pages/login/Form.tsx
 /login/pages/login/index.ts
 /login/pages/login/Info.tsx
 /login/pages/login/Page.stories.tsx
-/login/pages/login/Page.tsx
 /login/pages/login/SocialProviders.tsx
 /login/pages/login/useProviderLogos.tsx
 /login/pages/login-config-totp/index.ts
@@ -169,10 +178,8 @@
 /login/pages/login-reset-otp/index.ts
 /login/pages/login-reset-otp/Page.stories.tsx
 /login/pages/login-reset-otp/Page.tsx
-/login/pages/login-reset-password/Form.tsx
 /login/pages/login-reset-password/index.ts
 /login/pages/login-reset-password/Page.stories.tsx
-/login/pages/login-reset-password/Page.tsx
 /login/pages/login-update-password/index.ts
 /login/pages/login-update-password/Page.stories.tsx
 /login/pages/login-update-password/Page.tsx
@@ -181,7 +188,6 @@
 /login/pages/login-update-profile/Page.tsx
 /login/pages/login-username/index.ts
 /login/pages/login-username/Page.stories.tsx
-/login/pages/login-username/Page.tsx
 /login/pages/login-verify-email/index.ts
 /login/pages/login-verify-email/Page.stories.tsx
 /login/pages/login-verify-email/Page.tsx
@@ -221,20 +227,12 @@
 /login/pages/webauthn-register/Page.stories.tsx
 /login/pages/webauthn-register/Page.tsx
 /login/pages/webauthn-register/useLogic.ts
-/login/assets/fonts/geist/Geist-Black.woff2
-/login/assets/fonts/geist/Geist-Bold.woff2
-/login/assets/fonts/geist/Geist-Light.woff2
-/login/assets/fonts/geist/Geist-Medium.woff2
-/login/assets/fonts/geist/Geist-Regular.woff2
-/login/assets/fonts/geist/Geist-SemiBold.woff2
-/login/assets/fonts/geist/Geist-Thin.woff2
-/login/assets/fonts/geist/Geist-UltraBlack.woff2
-/login/assets/fonts/geist/Geist-UltraLight.woff2
-/login/assets/fonts/geist/GeistVariableVF.woff2
-/login/assets/fonts/geist/index.css
-/login/assets/fonts/inter/Inter-italic.var.woff2
-/login/assets/fonts/inter/Inter-roman.var.woff2
-/login/assets/fonts/inter/inter.css
+/login/components/Template/layouts/CenteredCardLayout.tsx
+/login/components/Template/layouts/ImageAsideLayout.tsx
+/login/components/Template/theme/Themes.ts
+/login/components/Template/theme/ThemeTypes.ts
+/login/components/Template/theme/ThemeUtils.ts
+/login/components/Template/theme/useApplyThemePreset.ts
 /login/pages/login/providers/apple.svg
 /login/pages/login/providers/bitbucket.svg
 /login/pages/login/providers/discord.svg

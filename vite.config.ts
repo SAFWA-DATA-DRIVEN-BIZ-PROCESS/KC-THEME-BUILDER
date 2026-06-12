@@ -10,7 +10,7 @@ export default defineConfig({
         react(),
         tailwindcss(),
         keycloakify({
-            // themeName: ["swifto"],
+            themeName: ["ccgui-v4"],
             accountThemeImplementation: "none",
             keycloakVersionTargets: {
                 "22-to-25": false,
