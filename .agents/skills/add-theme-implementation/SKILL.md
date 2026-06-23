@@ -25,18 +25,18 @@ Current local hypothesis to verify in code: `kcContext.themeName` selects a Them
 
 ## Clarify Before Implementation
 
-Before implementing a Theme Implementation, run the work with `/grill-with-docs` to resolve misunderstandings against the project's domain language and existing decisions.
+Before implementing a Theme Implementation, run a clarification pass to resolve misunderstandings against the project's domain language and existing decisions. Use `/grill-with-docs` when it is available; otherwise, follow the same workflow manually before editing implementation files.
 
 Use that pass to:
 
 - Challenge user wording against `CONTEXT.md`, especially **Theme Implementation**, **Theme Selection**, **Mock Theme**, and **Theme-Scoped Styling**.
 - Inspect code instead of asking when the answer is discoverable from existing Theme Implementations or the theme-selection path.
-- Ask one question at a time when requirements remain ambiguous.
+- During the clarification pass only, ask one question at a time when a requirement cannot be resolved by inspecting existing Theme Implementations or the theme-selection path.
 - Provide a recommended answer with each question.
 - Update `CONTEXT.md` inline when a term or boundary is resolved.
-- Offer ADRs only when the decision is hard to reverse, surprising without context, and the result of a real trade-off.
+- Follow the ADR criteria in Documentation Rules when deciding whether to propose an ADR.
 
-Do not start implementation until the theme name, brand assets, layout boundary, copy changes, preview behavior, and validation target are clear enough to avoid rework. If `/grill-with-docs` is unavailable as a slash command, follow the same workflow manually before editing implementation files.
+Do not start implementation until the theme name, brand assets, layout boundary, copy changes, preview behavior, and validation target are clear enough to avoid rework.
 
 ## Required Inputs
 
@@ -48,6 +48,8 @@ Collect or infer these before creating files:
 - Brand assets and whether they can be committed to the repo
 - Required shell layout, such as split hero, card-only, or single-column
 - Any login-page copy changes, such as heading, username label, or placeholders
+
+If brand assets cannot be committed, document the expected asset paths and filenames as placeholders in `src/login/themes/<slug>/assets/README.md`, and note in `CONTEXT.md` that assets must be supplied externally before the theme is deployable.
 
 If an answer can be determined from assets, screenshots, or existing repo conventions, inspect those instead of asking.
 
@@ -63,12 +65,12 @@ If an answer can be determined from assets, screenshots, or existing repo conven
 8. Add theme-specific region hooks only when CSS needs stable selectors, using `data-<slug>-region="..."`.
 9. Register the Keycloak theme name in `vite.config.ts` under `keycloakify({ themeName: [...] })`.
 10. Wire the new template into `src/login/components/Template/Template.tsx` using `kcContext.themeName`.
-11. Keep page components shared unless the user explicitly needs page-level copy or behavior changes.
-12. If page-level changes are needed, keep styling out of page conditionals; prefer data attributes plus theme-scoped CSS.
+11. Keep page components shared unless the user requires changes to JSX content, such as text strings, element structure, or conditional logic, that cannot be expressed through CSS or data attributes alone.
+12. When a page component fork is required, keep all visual styling out of page conditionals; use data attributes plus theme-scoped CSS rather than inline conditional styling.
 
 ## Generated Files
 
-`src/kc.gen.tsx` is generated. Do not edit it manually unless the user explicitly asks for a temporary probe. Prefer commands that regenerate it through Keycloakify, such as the repo's existing build or sync flow.
+`src/kc.gen.tsx` is generated. Do not edit it manually. Prefer commands that regenerate it through Keycloakify, such as the repo's existing build or sync flow.
 
 ## Previewing
 
@@ -93,13 +95,18 @@ Run the narrowest useful check after the first substantive edit:
 2. `yarn run build-keycloak-theme:ci` when the Keycloak JAR output or generated theme names are affected.
 3. Storybook or browser preview when layout, responsive behavior, or assets changed.
 
+If a validation command exits with a non-zero code, stop further implementation, report the full error output to the user, and do not proceed to the next implementation step until the build passes.
+
 If Keycloakify sync changes generated or owned files unexpectedly, inspect those changes before continuing and never discard unrelated user edits.
+
+If inspection reveals that Keycloakify sync has touched files containing unrelated user edits, halt the workflow, present the conflicting diff to the user, and ask explicitly whether to proceed with the sync output or restore the user edits before continuing.
 
 ## Documentation Rules
 
 - Update `CONTEXT.md` only for resolved domain language, not implementation steps.
 - Keep `CONTEXT.md` implementation-detail free.
-- Create an ADR only when the decision is hard to reverse, surprising without context, and the result of a real trade-off.
+- Create an ADR only when the decision involves a new external dependency, a departure from an existing ADR, or a structural change to the theme-selection path.
+- Do not create an ADR for choosing a CSS variable naming convention or other routine implementation decisions.
 - Do not create an ADR for routine addition of another Theme Implementation.
 
 ## Common Pitfalls
