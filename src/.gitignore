@@ -3,19 +3,26 @@
 # === Owned files start ===
 # login/index.css
 # login/styleLevelCustomization.tsx
+# login/mocks/KcPageStory.tsx
+# login/mocks/KcPageStory.tsx
 # login/shared/getColorScheme.ts
 # login/components/Template/Template.tsx
+# login/pages/link-idp-action/Page.stories.tsx
+# login/pages/link-idp-action/Page.stories.tsx
 # login/pages/login/Form.tsx
+# login/pages/login/Page.stories.tsx
+# login/pages/login/Page.stories.tsx
 # login/pages/login/Page.tsx
 # login/pages/login-password/Page.tsx
 # login/pages/login-reset-password/Form.tsx
 # login/pages/login-reset-password/Page.tsx
+# login/pages/login-update-password/Page.stories.tsx
+# login/pages/login-update-password/Page.stories.tsx
 # login/pages/login-update-password/Page.tsx
 # login/pages/login-username/Page.tsx
 # === Owned files end =====
 
 # === @keycloakify/login-ui-storybook v250004.2.0 ===
-/login/mocks/KcPageStory.tsx
 /login/pages/code/Page.stories.tsx
 /login/pages/delete-account-confirm/Page.stories.tsx
 /login/pages/delete-credential/Page.stories.tsx
@@ -23,8 +30,6 @@
 /login/pages/frontchannel-logout/Page.stories.tsx
 /login/pages/idp-review-user-profile/Page.stories.tsx
 /login/pages/info/Page.stories.tsx
-/login/pages/link-idp-action/Page.stories.tsx
-/login/pages/login/Page.stories.tsx
 /login/pages/login-config-totp/Page.stories.tsx
 /login/pages/login-idp-link-confirm/Page.stories.tsx
 /login/pages/login-idp-link-confirm-override/Page.stories.tsx
@@ -39,7 +44,6 @@
 /login/pages/login-recovery-authn-code-input/Page.stories.tsx
 /login/pages/login-reset-otp/Page.stories.tsx
 /login/pages/login-reset-password/Page.stories.tsx
-/login/pages/login-update-password/Page.stories.tsx
 /login/pages/login-update-profile/Page.stories.tsx
 /login/pages/login-username/Page.stories.tsx
 /login/pages/login-verify-email/Page.stories.tsx
@@ -79,7 +83,6 @@
 /login/components/LogoutOtherSessions.tsx
 /login/components/PasswordVisibilityButton.tsx
 /login/mocks/getKcContextMock.ts
-/login/mocks/KcPageStory.tsx
 /login/pages/PageIndex.tsx
 /login/shared/redirectUrlOrigin.ts
 /login/assets/img/auth-logo.svg
@@ -126,11 +129,9 @@
 /login/pages/info/Page.stories.tsx
 /login/pages/info/Page.tsx
 /login/pages/link-idp-action/index.ts
-/login/pages/link-idp-action/Page.stories.tsx
 /login/pages/link-idp-action/Page.tsx
 /login/pages/login/index.ts
 /login/pages/login/Info.tsx
-/login/pages/login/Page.stories.tsx
 /login/pages/login/SocialProviders.tsx
 /login/pages/login/useProviderLogos.tsx
 /login/pages/login-config-totp/index.ts
@@ -176,7 +177,6 @@
 /login/pages/login-reset-password/index.ts
 /login/pages/login-reset-password/Page.stories.tsx
 /login/pages/login-update-password/index.ts
-/login/pages/login-update-password/Page.stories.tsx
 /login/pages/login-update-profile/index.ts
 /login/pages/login-update-profile/Page.stories.tsx
 /login/pages/login-update-profile/Page.tsx

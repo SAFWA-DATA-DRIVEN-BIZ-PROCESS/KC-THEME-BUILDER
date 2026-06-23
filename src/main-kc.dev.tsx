@@ -6,7 +6,7 @@ import { getKcContextMock } from "./login/mocks/getKcContextMock";
 const kcContext = getKcContextMock({
     pageId: "login.ftl",
     overrides: {
-        themeName: "user-management",
+        themeName: "CTUI",
         realm: {
             registrationAllowed: false,
             rememberMe: false,
