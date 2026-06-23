@@ -37,7 +37,7 @@ _Avoid_: Global theme override, page-specific brand styling
 
 **Tailwind CSS** — Utility-first CSS framework used for styling. Tailwind configuration is in `tailwind.config.js`.
 
-**Storybook** — Component development and documentation tool. Run `yarn storybook` to develop pages in isolation.
+**Storybook** — Component development and documentation tool. Run `yarn storybook` to develop pages in isolation. While Storybook is running, its MCP server is available at `http://localhost:6006/mcp`.
 
 ## Architecture Overview
 
@@ -97,7 +97,8 @@ Browser
 
 1. **Dev mode** — `yarn dev` starts Vite dev server with HMR
    - Develop pages with live reload
-   - Use Storybook for isolated component development: `yarn storybook`
+    - Use Storybook for isolated component development: `yarn storybook`
+    - Use the `keycloak-theme-storybook` MCP server from `.vscode/mcp.json` for Storybook-aware agent workflows
 
 2. **Build** — `yarn build` compiles TypeScript and Vite, then `keycloakify build` generates JAR
    - Output: `dist_keycloak/` contains the compiled theme JAR
