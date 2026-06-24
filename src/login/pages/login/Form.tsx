@@ -6,6 +6,7 @@
  */
 
 import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
 import { Switch } from "@/components/ui/switch";
 import { Field, FieldError, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
@@ -39,6 +40,7 @@ export function Form() {
   const isFlowcraft = kcContext.themeName === "flowcraft";
   const isSwifto = kcContext.themeName === "swifto";
   const isUserManagement = kcContext.themeName === "user-management";
+  const isCivion = kcContext.themeName === "civion";
   const shouldUsePasswordStepLayout =
     kcContext.usernameHidden &&
     kcContext.auth?.showUsername === true &&
@@ -70,7 +72,9 @@ export function Form() {
                 <Field>
                   <FieldLabel htmlFor="username">
                     {shouldUsePasswordStepLayout
-                      ? isSwifto
+                      ? isCivion
+                        ? "UserID/Email"
+                        : isSwifto
                         ? "Email/Username"
                         : isUserManagement
                           ? "Userid"
@@ -79,7 +83,9 @@ export function Form() {
                           : !kcContext.realm.registrationEmailAsUsername
                             ? msg("usernameOrEmail")
                             : msg("username")
-                      : isSwifto
+                      : isCivion
+                        ? "UserID/Email"
+                        : isSwifto
                         ? "Email/Username"
                         : isUserManagement
                           ? "Userid"
@@ -99,7 +105,7 @@ export function Form() {
                         id="username"
                         defaultValue={usernameDefaultValue}
                         placeholder={
-                          isUserManagement
+                          isCivion || isUserManagement
                             ? "Please enter your userid"
                             : isFlowcraft || isSwifto
                             ? "Email or phone number"
@@ -142,7 +148,7 @@ export function Form() {
                       id="username"
                       defaultValue={usernameDefaultValue}
                       placeholder={
-                        isUserManagement
+                        isCivion || isUserManagement
                           ? "Please enter your userid"
                           : isFlowcraft || isSwifto
                           ? "Email or phone number"
@@ -194,7 +200,7 @@ export function Form() {
                     placeholder={
                       shouldUsePasswordStepLayout
                         ? undefined
-                        : isUserManagement
+                        : isCivion || isUserManagement
                           ? "Password"
                         : isFlowcraft || isSwifto
                           ? "Enter password"
@@ -246,20 +252,31 @@ export function Form() {
               >
                 {kcContext.realm.rememberMe && !kcContext.usernameHidden && (
                   <div className="flex items-center space-x-2 ">
-                    <Switch
-                      data-flowcraft-region="remember-me-switch"
-                      tabIndex={5}
-                      id="rememberMe"
-                      name="rememberMe"
-                      defaultChecked={!!kcContext.login.rememberMe}
-                    />
+                    {isCivion ? (
+                      <Checkbox
+                        data-civion-region="remember-me-checkbox"
+                        tabIndex={5}
+                        id="rememberMe"
+                        name="rememberMe"
+                        value="on"
+                        defaultChecked={!!kcContext.login.rememberMe}
+                      />
+                    ) : (
+                      <Switch
+                        data-flowcraft-region="remember-me-switch"
+                        tabIndex={5}
+                        id="rememberMe"
+                        name="rememberMe"
+                        defaultChecked={!!kcContext.login.rememberMe}
+                      />
+                    )}
 
                     <Label
                       htmlFor="rememberMe"
                       className="cursor-pointer"
                       data-flowcraft-region="remember-me-label"
                     >
-                      {msg("rememberMe")}
+                      {isCivion ? "Remember Me" : msg("rememberMe")}
                     </Label>
                   </div>
                 )}
@@ -271,7 +288,11 @@ export function Form() {
                         href={kcContext.url.loginResetCredentialsUrl}
                       >
                         <Label className="cursor-pointer">
-                          {isSwifto ? "Forgot password?" : msg("doForgotPassword")}
+                          {isCivion
+                            ? "Forgot Password?"
+                            : isSwifto
+                              ? "Forgot password?"
+                              : msg("doForgotPassword")}
                         </Label>
                       </a>
                     </span>
@@ -297,7 +318,7 @@ export function Form() {
                   type="submit"
                   value={msgStr("doLogIn")}
                 >
-                  {isSwifto ? "Sign in" : msgStr("doLogIn")}
+                  {isCivion || isSwifto ? "Sign in" : msgStr("doLogIn")}
                 </Button>
               </div>
             </form>

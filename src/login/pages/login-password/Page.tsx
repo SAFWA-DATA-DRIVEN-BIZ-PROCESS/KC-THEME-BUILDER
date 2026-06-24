@@ -29,8 +29,19 @@ export function Page() {
     const isFlowcraft = kcContext.themeName === "flowcraft";
     const isSwifto = kcContext.themeName === "swifto";
     const isUserManagement = kcContext.themeName === "user-management";
+    const isCivion = kcContext.themeName === "civion";
     const shouldShowUsername = kcContext.auth?.showUsername === true;
     const attemptedUsername = kcContext.auth?.attemptedUsername ?? "";
+    const usernameLabel = (() => {
+        if (isCivion) return "UserID/Email";
+        if (isSwifto) return "Email/Username";
+        if (isUserManagement) return "Userid";
+        if (isFlowcraft) return "Login";
+
+        return !kcContext.realm.registrationEmailAsUsername
+            ? msg("usernameOrEmail")
+            : msg("username");
+    })();
 
     return (
         <Template
@@ -50,17 +61,7 @@ export function Page() {
             >
                 {shouldShowUsername && (
                     <Field>
-                        <FieldLabel htmlFor="username">
-                            {isSwifto
-                                ? "Email/Username"
-                                                                : isUserManagement
-                                                                    ? "Userid"
-                                : isFlowcraft
-                                  ? "Login"
-                                  : !kcContext.realm.registrationEmailAsUsername
-                                    ? msg("usernameOrEmail")
-                                    : msg("username")}
-                        </FieldLabel>
+                        <FieldLabel htmlFor="username">{usernameLabel}</FieldLabel>
                         <InputGroup data-flowcraft-region="username-input">
                             <InputGroupInput
                                 tabIndex={1}
@@ -69,7 +70,7 @@ export function Page() {
                                 name="username"
                                 defaultValue={attemptedUsername}
                                 placeholder={
-                                    isUserManagement
+                                    isCivion || isUserManagement
                                         ? "Please enter your userid"
                                         : isFlowcraft || isSwifto
                                           ? "Email or phone number"
@@ -114,6 +115,7 @@ export function Page() {
                             type="password"
                             id="password"
                             name="password"
+                            placeholder={isCivion ? "Password" : undefined}
                             autoComplete="current-password"
                             aria-invalid={kcContext.messagesPerField.existsError(
                                 "password"
@@ -145,7 +147,7 @@ export function Page() {
                         <span className=" underline-offset-4 hover:underline">
                             <a tabIndex={5} href={kcContext.url.loginResetCredentialsUrl}>
                                 <Label className="cursor-pointer">
-                                    {msg("doForgotPassword")}
+                                    {isCivion ? "Forgot Password?" : msg("doForgotPassword")}
                                 </Label>
                             </a>
                         </span>
@@ -160,7 +162,7 @@ export function Page() {
                         type="submit"
                         tabIndex={4}
                     >
-                        {msgStr("doLogIn")}
+                        {isCivion ? "Sign in" : msgStr("doLogIn")}
                     </Button>
                 </div>
             </form>

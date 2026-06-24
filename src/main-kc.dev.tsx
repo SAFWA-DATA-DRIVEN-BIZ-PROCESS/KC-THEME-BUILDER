@@ -6,11 +6,11 @@ import { getKcContextMock } from "./login/mocks/getKcContextMock";
 const kcContext = getKcContextMock({
     pageId: "login.ftl",
     overrides: {
-        themeName: "CTUI",
+        themeName: "civion",
         realm: {
             registrationAllowed: false,
-            rememberMe: false,
-            resetPasswordAllowed: false
+            rememberMe: true,
+            resetPasswordAllowed: true
         },
         // usernameHidden: true,
         // auth: {

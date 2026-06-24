@@ -1,0 +1,428 @@
+[data-theme-implementation="civion"] {
+  --civion-card-bg: #e6eef1;
+  --civion-ink: #353c3f;
+  --civion-muted: #6e7a7f;
+  --civion-label: #607782;
+  --civion-field-bg: #ffffff;
+  --civion-field-border: #d8e4e8;
+  --civion-placeholder: #c2d0d7;
+  --civion-primary: #6a9da8;
+  --civion-primary-hover: #5d909b;
+  --civion-ring: rgba(106, 157, 168, 0.36);
+  --civion-link: #d34d69;
+  --civion-required: #e35472;
+  --civion-error: #dc2626;
+  --civion-error-bg: #fef2f2;
+  --civion-error-border: #fecaca;
+  --civion-warning: #b7791f;
+  --civion-warning-bg: #fff8e5;
+  --civion-warning-border: #f1d48a;
+  --civion-success: #15803d;
+  --civion-success-bg: #f0fdf4;
+  --civion-success-border: #bbf7d0;
+  --civion-control-radius: 6px;
+  background: #ffffff;
+  color: var(--civion-ink);
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+}
+
+[data-theme-implementation="civion"] [data-civion-region="form-panel"] {
+  background: #ffffff;
+  padding-block: 1.5rem !important;
+}
+
+[data-theme-implementation="civion"] [data-civion-region="auth-card"] {
+  display: flex;
+  width: 27.5rem;
+  max-width: 100%;
+  min-height: 35rem;
+  flex-direction: column;
+  border-radius: 6px;
+  background: var(--civion-card-bg);
+  padding: 2.25rem 2.5rem;
+}
+
+[data-theme-implementation="civion"] [data-civion-region="brand-lockup"] {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+[data-theme-implementation="civion"] [data-civion-region="logo-mark"] {
+  display: block;
+  width: 2.75rem;
+  height: 2.75rem;
+  flex: 0 0 auto;
+}
+
+[data-theme-implementation="civion"] [data-civion-region="brand-name"] {
+  color: #30383c;
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 0.95;
+  white-space: nowrap;
+}
+
+[data-theme-implementation="civion"] [data-civion-region="brand-tagline"] {
+  margin-top: 0.25rem;
+  color: #4e666f;
+  font-size: 0.625rem;
+  font-weight: 600;
+  line-height: 1.1;
+  white-space: nowrap;
+}
+
+[data-theme-implementation="civion"] [data-civion-region="header"] {
+  margin-top: 2.25rem;
+}
+
+[data-theme-implementation="civion"] [data-auth-region="login-heading"] {
+  margin: 0;
+  color: var(--civion-ink) !important;
+  font-size: 1.5rem !important;
+  font-weight: 700 !important;
+  line-height: 1.2 !important;
+}
+
+[data-theme-implementation="civion"] [data-auth-region="login-heading"] > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+[data-theme-implementation="civion"] [data-auth-region="login-heading"] .text-xl {
+  color: var(--civion-ink) !important;
+  font-size: 1.5rem !important;
+  font-weight: 700 !important;
+  line-height: 1.2 !important;
+}
+
+[data-theme-implementation="civion"] [data-auth-region="login-heading"] .text-sm {
+  color: var(--civion-muted) !important;
+  font-size: 0.875rem !important;
+  font-weight: 400 !important;
+  line-height: 1.35 !important;
+}
+
+[data-theme-implementation="civion"] [data-civion-region="form-wrap"] {
+  width: 100%;
+  margin-top: 1.875rem;
+}
+
+[data-theme-implementation="civion"] #kc-content,
+[data-theme-implementation="civion"] #kc-form,
+[data-theme-implementation="civion"] #kc-form-wrapper,
+[data-theme-implementation="civion"] #kc-form-login {
+  width: 100%;
+}
+
+[data-theme-implementation="civion"] #kc-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+[data-theme-implementation="civion"] #kc-form-login {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+[data-theme-implementation="civion"] [data-slot="field"] {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+[data-theme-implementation="civion"] [data-slot="field"] + [data-slot="field"] {
+  margin-top: 1.25rem;
+}
+
+[data-theme-implementation="civion"] [data-slot="field-label"] {
+  color: var(--civion-label) !important;
+  font-size: 0.875rem !important;
+  font-weight: 700 !important;
+  line-height: 1.25 !important;
+}
+
+[data-theme-implementation="civion"] [data-slot="field-label"]::after {
+  content: "*";
+  margin-left: 0.25rem;
+  color: var(--civion-required);
+}
+
+[data-theme-implementation="civion"] [data-slot="input"],
+[data-theme-implementation="civion"] [data-slot="input-group"],
+[data-theme-implementation="civion"] input.kcInputClass,
+[data-theme-implementation="civion"] input:not([type="hidden"]):not([type="checkbox"]):not([type="radio"]):not([type="file"]):not([type="button"]):not([type="submit"]):not([type="reset"]):not([type="image"]):not([data-slot="input-group-control"]) {
+  width: 100% !important;
+  max-width: 100% !important;
+  height: 44px !important;
+  min-height: 44px !important;
+  border: 1px solid var(--civion-field-border) !important;
+  border-radius: var(--civion-control-radius) !important;
+  background-color: var(--civion-field-bg) !important;
+  color: var(--civion-ink) !important;
+  box-shadow: none !important;
+  font-size: 0.9375rem !important;
+  line-height: 1.4 !important;
+}
+
+[data-theme-implementation="civion"] [data-slot="input"],
+[data-theme-implementation="civion"] input.kcInputClass,
+[data-theme-implementation="civion"] input:not([type="hidden"]):not([type="checkbox"]):not([type="radio"]):not([type="file"]):not([type="button"]):not([type="submit"]):not([type="reset"]):not([type="image"]):not([data-slot="input-group-control"]) {
+  padding-inline: 1rem !important;
+  padding-block: 0 !important;
+}
+
+[data-theme-implementation="civion"] [data-slot="input-group"] {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) 2.75rem;
+  align-items: stretch;
+  overflow: hidden;
+}
+
+[data-theme-implementation="civion"] [data-slot="input-group-control"] {
+  height: 100% !important;
+  min-height: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background-color: transparent !important;
+  color: var(--civion-ink) !important;
+  box-shadow: none !important;
+  font-size: 0.9375rem !important;
+  line-height: 1.4 !important;
+  padding-block: 0 !important;
+}
+
+[data-theme-implementation="civion"] [data-slot="input-group-addon"] {
+  display: flex !important;
+  height: 100% !important;
+  min-height: 0 !important;
+  width: 2.75rem !important;
+  align-items: center;
+  justify-content: center;
+  padding-block: 0 !important;
+  color: #bccbd1 !important;
+}
+
+[data-theme-implementation="civion"] [data-slot="input-group-addon"] [data-slot="button"] {
+  width: 2rem !important;
+  height: 2rem !important;
+  min-height: 2rem !important;
+  padding: 0 !important;
+}
+
+[data-theme-implementation="civion"] [data-slot="input-group-addon"] [data-slot="button"][data-variant="ghost"],
+[data-theme-implementation="civion"] [data-slot="input-group-addon"] [data-slot="button"][data-variant="ghost"]:hover,
+[data-theme-implementation="civion"] [data-slot="input-group-addon"] [data-slot="button"][data-variant="ghost"]:focus,
+[data-theme-implementation="civion"] [data-slot="input-group-addon"] [data-slot="button"][data-variant="ghost"]:active {
+  border: 0 !important;
+  background: transparent !important;
+  color: #bccbd1 !important;
+  box-shadow: none !important;
+}
+
+[data-theme-implementation="civion"] [data-slot="input"]::placeholder,
+[data-theme-implementation="civion"] [data-slot="input-group-control"]::placeholder,
+[data-theme-implementation="civion"] input.kcInputClass::placeholder,
+[data-theme-implementation="civion"] input:not([type="hidden"]):not([type="checkbox"]):not([type="radio"]):not([type="file"]):not([type="button"]):not([type="submit"]):not([type="reset"]):not([type="image"]):not([data-slot="input-group-control"])::placeholder {
+  color: var(--civion-placeholder) !important;
+}
+
+[data-theme-implementation="civion"] [data-slot="input"]:focus,
+[data-theme-implementation="civion"] [data-slot="input"]:focus-visible,
+[data-theme-implementation="civion"] [data-slot="input-group"]:focus-within,
+[data-theme-implementation="civion"] input.kcInputClass:focus,
+[data-theme-implementation="civion"] input.kcInputClass:focus-visible,
+[data-theme-implementation="civion"] input:not([type="hidden"]):not([type="checkbox"]):not([type="radio"]):not([type="file"]):not([type="button"]):not([type="submit"]):not([type="reset"]):not([type="image"]):not([data-slot="input-group-control"]):focus,
+[data-theme-implementation="civion"] input:not([type="hidden"]):not([type="checkbox"]):not([type="radio"]):not([type="file"]):not([type="button"]):not([type="submit"]):not([type="reset"]):not([type="image"]):not([data-slot="input-group-control"]):focus-visible {
+  border-color: var(--civion-primary) !important;
+  outline: none !important;
+  box-shadow: 0 0 0 2px var(--civion-ring) !important;
+}
+
+[data-theme-implementation="civion"] [data-slot="input-group-control"]:focus,
+[data-theme-implementation="civion"] [data-slot="input-group-control"]:focus-visible {
+  border: 0 !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+[data-theme-implementation="civion"] [data-flowcraft-region="login-options"] {
+  margin-top: 1.5rem;
+  align-items: center;
+  gap: 0.5rem !important;
+}
+
+[data-theme-implementation="civion"] [data-flowcraft-region="login-options"] [data-slot="label"],
+[data-theme-implementation="civion"] [data-flowcraft-region="remember-me-label"] {
+  color: #3f4b50 !important;
+  font-size: 0.8125rem !important;
+  font-weight: 600 !important;
+  line-height: 1.2 !important;
+}
+
+[data-theme-implementation="civion"] [data-slot="checkbox"] {
+  width: 1rem !important;
+  height: 1rem !important;
+  min-width: 1rem !important;
+  border: 2px solid #1C1454 !important;
+  border-radius: 2px !important;
+  background-color: #ffffff !important;
+  color: #ffffff !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+}
+
+[data-theme-implementation="civion"] [data-slot="checkbox"][data-state="checked"] {
+  background-color: #1C1454 !important;
+  border-color: #1C1454 !important;
+}
+
+[data-theme-implementation="civion"] [data-slot="checkbox-indicator"] svg {
+  width: 0.75rem;
+  height: 0.75rem;
+}
+
+[data-theme-implementation="civion"] [data-flowcraft-region="forgot-password-link"] {
+  margin-left: auto;
+  line-height: 1;
+}
+
+[data-theme-implementation="civion"] [data-flowcraft-region="forgot-password-link"] a,
+[data-theme-implementation="civion"] [data-flowcraft-region="forgot-password-link"] [data-slot="label"] {
+  color: var(--civion-link) !important;
+  font-size: 0.8125rem !important;
+  font-weight: 500 !important;
+  line-height: 1.2 !important;
+  text-decoration: underline !important;
+}
+
+[data-theme-implementation="civion"] .kcFormGroupClass {
+  width: 100%;
+}
+
+[data-theme-implementation="civion"] [data-flowcraft-region="login-button"] {
+  margin-top: 1.5rem !important;
+}
+
+[data-theme-implementation="civion"] [data-slot="button"] {
+  border-radius: var(--civion-control-radius) !important;
+  box-shadow: none !important;
+}
+
+[data-theme-implementation="civion"] [data-slot="button"][data-variant="default"] {
+  width: 100% !important;
+  height: 44px !important;
+  min-height: 44px !important;
+  background-color: var(--civion-primary) !important;
+  color: #ffffff !important;
+  font-size: 0.9375rem !important;
+  font-weight: 600 !important;
+  line-height: 1.2 !important;
+}
+
+[data-theme-implementation="civion"] [data-slot="button"][data-variant="default"]:hover {
+  background-color: var(--civion-primary-hover) !important;
+}
+
+[data-theme-implementation="civion"] [data-slot="button"][data-variant="outline"] {
+  width: 100% !important;
+  height: 44px !important;
+  min-height: 44px !important;
+  border-color: var(--civion-field-border) !important;
+  color: var(--civion-ink) !important;
+  font-size: 0.9375rem !important;
+  font-weight: 600 !important;
+}
+
+[data-theme-implementation="civion"] [data-slot="alert"] {
+  margin-bottom: 0.75rem;
+  border-radius: var(--civion-control-radius) !important;
+  padding: 0.75rem !important;
+  font-size: 0.875rem !important;
+}
+
+[data-theme-implementation="civion"] [data-slot="alert"][data-variant="info"],
+[data-theme-implementation="civion"] [data-slot="alert"]:not([data-variant]) {
+  border: 1px solid var(--civion-field-border) !important;
+  background-color: var(--civion-field-bg) !important;
+  color: var(--civion-ink) !important;
+}
+
+[data-theme-implementation="civion"] [data-slot="alert"][data-variant="success"] {
+  border: 1px solid var(--civion-success-border) !important;
+  background-color: var(--civion-success-bg) !important;
+  color: var(--civion-success) !important;
+}
+
+[data-theme-implementation="civion"] [data-slot="alert"][data-variant="warning"] {
+  border: 1px solid var(--civion-warning-border) !important;
+  background-color: var(--civion-warning-bg) !important;
+  color: var(--civion-warning) !important;
+}
+
+[data-theme-implementation="civion"] [data-slot="alert"][data-variant="error"] {
+  border: 1px solid var(--civion-error-border) !important;
+  background-color: var(--civion-error-bg) !important;
+  color: var(--civion-error) !important;
+}
+
+[data-theme-implementation="civion"] .text-destructive,
+[data-theme-implementation="civion"] #input-error,
+[data-theme-implementation="civion"] .kcInputErrorMessageClass,
+[data-theme-implementation="civion"] [role="alert"] {
+  color: var(--civion-error) !important;
+  font-size: 0.8125rem !important;
+  font-weight: 500 !important;
+}
+
+[data-theme-implementation="civion"] #kc-social-providers {
+  margin-bottom: 0.75rem;
+}
+
+[data-theme-implementation="civion"] [data-civion-region="supporting-info"] {
+  margin-top: 2rem;
+  color: #666f73;
+  font-size: 0.75rem;
+  font-weight: 400;
+  line-height: 1.6;
+  text-align: center;
+}
+
+[data-theme-implementation="civion"] [data-civion-region="supporting-info"] a {
+  color: #7f9fa8 !important;
+  text-decoration: underline;
+}
+
+[data-theme-implementation="civion"] [data-civion-region="powered-by"] {
+  margin-top: 2.25rem;
+}
+
+[data-theme-implementation="civion"] [data-civion-region="hero"] {
+  background: #8cb7c0;
+}
+
+[data-theme-implementation="civion"] [data-civion-region="hero-image"] {
+  object-position: center center;
+}
+
+@media (max-width: 1023px) {
+  [data-theme-implementation="civion"] [data-civion-region="form-panel"] {
+    align-items: safe center;
+    min-height: 100svh;
+  }
+
+  [data-theme-implementation="civion"] [data-civion-region="auth-card"] {
+    min-height: 0;
+    padding: 2rem;
+  }
+}
+
+@media (max-width: 380px) {
+  [data-theme-implementation="civion"] [data-civion-region="brand-name"] {
+    font-size: 1.5rem;
+  }
+}

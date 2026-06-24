@@ -25,6 +25,8 @@ import type { ReactNode } from "react";
 import { useEffect } from "react";
 import { useI18n } from "../../i18n";
 import { useKcContext } from "../../KcContext";
+import civionFaviconUrl from "../../themes/civion/assets/civion-logo.svg";
+import { CivionTemplate } from "../../themes/civion/CivionTemplate";
 import ctuiFaviconUrl from "../../themes/ctui/assets/Logo.png";
 import { CtuiTemplate } from "../../themes/ctui/CtuiTemplate";
 import flowcraftFaviconUrl from "../../themes/flowcraft/assets/flowcraft_logo_min.svg";
@@ -55,6 +57,11 @@ const metadataByThemeName = {
     appName: "User Management",
     faviconHref: userManagementFaviconUrl,
     faviconType: "image/png",
+  },
+  civion: {
+    appName: "Civion",
+    faviconHref: civionFaviconUrl,
+    faviconType: "image/svg+xml",
   },
 } as const;
 
@@ -123,6 +130,7 @@ export function Template(props: {
   const isFlowcraft = themeName === "flowcraft";
   const isSwifto = themeName === "swifto";
   const isUserManagement = themeName === "user-management";
+  const isCivion = themeName === "civion";
   const themeMetadata = getMetadataForTheme(themeName);
 
   const { msg, msgStr } = useI18n();
@@ -155,7 +163,8 @@ export function Template(props: {
     !isCtui &&
     !isFlowcraft &&
     !isSwifto &&
-    !isUserManagement
+    !isUserManagement &&
+    !isCivion
   ) {
     throw new Error(`Unsupported Theme Implementation: ${themeName}`);
   }
@@ -298,6 +307,12 @@ export function Template(props: {
         headerContent={headerContent}
         mainContent={mainContent}
       />
+    );
+  }
+
+  if (isCivion) {
+    return (
+      <CivionTemplate headerContent={headerContent} mainContent={mainContent} />
     );
   }
 
