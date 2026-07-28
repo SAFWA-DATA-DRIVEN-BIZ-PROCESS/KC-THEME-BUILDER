@@ -46,6 +46,7 @@ const preview: Preview = {
         }
     },
     parameters: {
+        layout: "fullscreen",
         controls: {
             matchers: {
                 color: /(background|color)$/i,

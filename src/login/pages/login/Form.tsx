@@ -41,6 +41,7 @@ export function Form() {
   const isSwifto = kcContext.themeName === "swifto";
   const isUserManagement = kcContext.themeName === "user-management";
   const isCivion = kcContext.themeName === "civion";
+  const isInfracivic = kcContext.themeName === "infracivic";
   const shouldUsePasswordStepLayout =
     kcContext.usernameHidden &&
     kcContext.auth?.showUsername === true &&
@@ -74,6 +75,8 @@ export function Form() {
                     {shouldUsePasswordStepLayout
                       ? isCivion
                         ? "UserID/Email"
+                        : isInfracivic
+                        ? "UserID/Email"
                         : isSwifto
                         ? "Email/Username"
                         : isUserManagement
@@ -84,6 +87,8 @@ export function Form() {
                             ? msg("usernameOrEmail")
                             : msg("username")
                       : isCivion
+                        ? "UserID/Email"
+                        : isInfracivic
                         ? "UserID/Email"
                         : isSwifto
                         ? "Email/Username"
@@ -105,7 +110,7 @@ export function Form() {
                         id="username"
                         defaultValue={usernameDefaultValue}
                         placeholder={
-                          isCivion || isUserManagement
+                          isCivion || isUserManagement || isInfracivic
                             ? "Please enter your userid"
                             : isFlowcraft || isSwifto
                             ? "Email or phone number"
@@ -148,7 +153,7 @@ export function Form() {
                       id="username"
                       defaultValue={usernameDefaultValue}
                       placeholder={
-                        isCivion || isUserManagement
+                        isCivion || isUserManagement || isInfracivic
                           ? "Please enter your userid"
                           : isFlowcraft || isSwifto
                           ? "Email or phone number"
@@ -200,7 +205,7 @@ export function Form() {
                     placeholder={
                       shouldUsePasswordStepLayout
                         ? undefined
-                        : isCivion || isUserManagement
+                        : isCivion || isUserManagement || isInfracivic
                           ? "Password"
                         : isFlowcraft || isSwifto
                           ? "Enter password"
@@ -252,7 +257,7 @@ export function Form() {
               >
                 {kcContext.realm.rememberMe && !kcContext.usernameHidden && (
                   <div className="flex items-center space-x-2 ">
-                    {isCivion ? (
+                    {isCivion || isInfracivic ? (
                       <Checkbox
                         data-civion-region="remember-me-checkbox"
                         tabIndex={5}
@@ -276,7 +281,7 @@ export function Form() {
                       className="cursor-pointer"
                       data-flowcraft-region="remember-me-label"
                     >
-                      {isCivion ? "Remember Me" : msg("rememberMe")}
+                      {isCivion || isInfracivic ? "Remember Me" : msg("rememberMe")}
                     </Label>
                   </div>
                 )}
@@ -288,7 +293,7 @@ export function Form() {
                         href={kcContext.url.loginResetCredentialsUrl}
                       >
                         <Label className="cursor-pointer">
-                          {isCivion
+                          {isCivion || isInfracivic
                             ? "Forgot Password?"
                             : isSwifto
                               ? "Forgot password?"
@@ -318,7 +323,7 @@ export function Form() {
                   type="submit"
                   value={msgStr("doLogIn")}
                 >
-                  {isCivion || isSwifto ? "Sign in" : msgStr("doLogIn")}
+                  {isCivion || isSwifto || isInfracivic ? "Sign in" : msgStr("doLogIn")}
                 </Button>
               </div>
             </form>

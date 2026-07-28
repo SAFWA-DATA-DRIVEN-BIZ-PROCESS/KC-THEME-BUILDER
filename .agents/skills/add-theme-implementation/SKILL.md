@@ -20,6 +20,7 @@ Before editing, inspect these files and form a local hypothesis about the theme-
 7. `src/login/components/Template/Template.tsx`
 8. Existing examples under `src/login/themes/ctui/` and `src/login/themes/flowcraft/`
 9. `src/login/mocks/getKcContextMock.ts` and `src/main-kc.dev.tsx` for preview behavior
+10. `.storybook/preview.ts` for the Storybook `themeName` toolbar decorator (it reads `themeNames` from `src/kc.gen.tsx`, so a synced kc.gen already includes the new theme name)
 
 Current local hypothesis to verify in code: `kcContext.themeName` selects a Theme Implementation in `Template.tsx`; Keycloakify's `themeName` array in `vite.config.ts` is the source of generated theme names in `src/kc.gen.tsx`.
 
@@ -93,9 +94,15 @@ Run the narrowest useful check after the first substantive edit:
 
 1. `yarn run build` for TypeScript and Vite validation.
 2. `yarn run build-keycloak-theme:ci` when the Keycloak JAR output or generated theme names are affected.
-3. Storybook or browser preview when layout, responsive behavior, or assets changed.
+3. **Storybook visual check** for every new or edited Theme Implementation. Preview the `login/login.ftl` story with the theme selected via the Storybook `themeName` global.
+   - If Storybook is already running (`yarn storybook`, port 6006), use the `keycloak-theme-storybook` MCP server tools (`get-storybook-story-instructions`, then `preview-stories`) with `globals: { themeName: "<themeName>" }` and include every returned preview URL in the user-facing summary.
+   - At minimum, preview the `Default` and `WithInvalidCredential` login variants for the new theme.
+   - Also spot-check one existing theme (e.g. `civion` or `flowcraft`) at the same URL pattern to confirm no cross-theme regression from shared page edits.
+4. Local browser preview via `yarn dev` (`src/main-kc.dev.tsx`) when layout, responsive behavior, or assets changed.
 
 If a validation command exits with a non-zero code, stop further implementation, report the full error output to the user, and do not proceed to the next implementation step until the build passes.
+
+If a Storybook preview shows a visual regression on an existing Theme Implementation (e.g. civion loses its hero, flowcraft loses its shell) the shared page fork has leaked; return to the page component and re-scope the change with `data-<slug>-region` attributes or theme-guarded conditionals before continuing.
 
 If Keycloakify sync changes generated or owned files unexpectedly, inspect those changes before continuing and never discard unrelated user edits.
 

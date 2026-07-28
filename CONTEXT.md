@@ -16,6 +16,9 @@ _Avoid_: Theme folder, skin, structured theme
 **CTUI** — The existing Theme Implementation selected by the Keycloak theme name `CTUI`.
 _Avoid_: CCTUI
 
+**InfraCivic** — The Theme Implementation selected by the Keycloak theme name `infracivic`. Card-only, single-column layout on a white body with a decorative geometric strip rendered at the top and bottom at 20% opacity.
+_Avoid_: Infra-Civic, Infra Civic, C-InfraCivic
+
 **Theme Selection** — The choice of active Theme Implementation from the Keycloak-provided theme name.
 _Avoid_: Mock switch, Storybook switch
 

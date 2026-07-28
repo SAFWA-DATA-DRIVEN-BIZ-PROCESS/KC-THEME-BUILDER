@@ -31,6 +31,8 @@ import ctuiFaviconUrl from "../../themes/ctui/assets/Logo.png";
 import { CtuiTemplate } from "../../themes/ctui/CtuiTemplate";
 import flowcraftFaviconUrl from "../../themes/flowcraft/assets/flowcraft_logo_min.svg";
 import { FlowcraftTemplate } from "../../themes/flowcraft/FlowcraftTemplate";
+import infracivicFaviconUrl from "../../themes/infracivic/assets/infracivic-logo.svg";
+import { InfracivicTemplate } from "../../themes/infracivic/InfracivicTemplate";
 import swiftoFaviconUrl from "../../themes/swifto/assets/Swifto_logo.png";
 import { SwiftoTemplate } from "../../themes/swifto/SwiftoTemplate";
 import userManagementFaviconUrl from "../../themes/user-management/assets/UM_icon.png";
@@ -61,6 +63,11 @@ const metadataByThemeName = {
   civion: {
     appName: "Civion",
     faviconHref: civionFaviconUrl,
+    faviconType: "image/svg+xml",
+  },
+  infracivic: {
+    appName: "InfraCivic",
+    faviconHref: infracivicFaviconUrl,
     faviconType: "image/svg+xml",
   },
 } as const;
@@ -131,6 +138,7 @@ export function Template(props: {
   const isSwifto = themeName === "swifto";
   const isUserManagement = themeName === "user-management";
   const isCivion = themeName === "civion";
+  const isInfracivic = themeName === "infracivic";
   const themeMetadata = getMetadataForTheme(themeName);
 
   const { msg, msgStr } = useI18n();
@@ -164,7 +172,8 @@ export function Template(props: {
     !isFlowcraft &&
     !isSwifto &&
     !isUserManagement &&
-    !isCivion
+    !isCivion &&
+    !isInfracivic
   ) {
     throw new Error(`Unsupported Theme Implementation: ${themeName}`);
   }
@@ -313,6 +322,15 @@ export function Template(props: {
   if (isCivion) {
     return (
       <CivionTemplate headerContent={headerContent} mainContent={mainContent} />
+    );
+  }
+
+  if (isInfracivic) {
+    return (
+      <InfracivicTemplate
+        headerContent={headerContent}
+        mainContent={mainContent}
+      />
     );
   }
 

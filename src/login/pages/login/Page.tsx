@@ -20,6 +20,7 @@ export function Page() {
   const { msg } = useI18n();
   const isFlowcraft = kcContext.themeName === "flowcraft";
   const isUserManagement = kcContext.themeName === "user-management";
+  const isInfracivic = kcContext.themeName === "infracivic";
   const shouldUsePasswordStepLayout =
     kcContext.usernameHidden &&
     kcContext.auth?.showUsername === true &&
@@ -39,6 +40,13 @@ export function Page() {
           <div data-auth-region="login-heading">Nice to see you again</div>
         ) : isUserManagement ? (
           <div data-auth-region="login-heading">Welcome!</div>
+        ) : isInfracivic ? (
+          <div>
+            <div className="text-xl font-semibold">Welcome back</div>
+            <div className="text-sm text-muted-foreground font-light">
+              Sign in to continue.
+            </div>
+          </div>
         ) : (
           <div>
             <div className="text-xl font-semibold">Welcome!</div>

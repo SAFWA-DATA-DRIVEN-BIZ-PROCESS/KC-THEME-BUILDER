@@ -1,0 +1,501 @@
+[data-theme-implementation="infracivic"] {
+  --infracivic-ink: #1f2937;
+  --infracivic-muted: #6b7280;
+  --infracivic-label: #64748b;
+  --infracivic-card-bg: #ffffff;
+  --infracivic-field-bg: #ffffff;
+  --infracivic-field-border: #cbd5e1;
+  --infracivic-placeholder: #cbd5e1;
+  --infracivic-primary: #02b150;
+  --infracivic-primary-hover: #029745;
+  --infracivic-ring: rgba(2, 177, 80, 0.35);
+  --infracivic-link: #e11d48;
+  --infracivic-required: #e11d48;
+  --infracivic-tagline: #4e5a6e;
+  --infracivic-footer-link: #1e40af;
+  --infracivic-checkbox: #1c1454;
+  --infracivic-error: #dc2626;
+  --infracivic-error-bg: #fef2f2;
+  --infracivic-error-border: #fecaca;
+  --infracivic-warning: #b7791f;
+  --infracivic-warning-bg: #fff8e5;
+  --infracivic-warning-border: #f1d48a;
+  --infracivic-success: #15803d;
+  --infracivic-success-bg: #f0fdf4;
+  --infracivic-success-border: #bbf7d0;
+  --infracivic-control-radius: 8px;
+  --infracivic-strip-opacity: 0.2;
+
+  position: relative;
+  min-height: 100svh;
+  background: #ffffff;
+  color: var(--infracivic-ink);
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Decorative geometric strips (top + bottom) at 20% opacity */
+[data-theme-implementation="infracivic"] [data-infracivic-region="strip"] {
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: clamp(4.5rem, 7vh, 5.5rem);
+  object-fit: cover;
+  opacity: var(--infracivic-strip-opacity);
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}
+
+[data-theme-implementation="infracivic"] [data-infracivic-region="strip"][data-infracivic-position="top"] {
+  top: 0;
+}
+
+[data-theme-implementation="infracivic"] [data-infracivic-region="strip"][data-infracivic-position="bottom"] {
+  bottom: 0;
+  transform: scaleY(-1);
+}
+
+/* Form panel */
+[data-theme-implementation="infracivic"] [data-infracivic-region="form-panel"] {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  min-height: 100svh;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(5rem, 11vh, 8rem) 1.5rem;
+}
+
+[data-theme-implementation="infracivic"] [data-infracivic-region="auth-card"] {
+  display: flex;
+  width: 500px;
+  max-width: 100%;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  background: var(--infracivic-card-bg);
+  border-radius: 8px;
+  box-shadow:
+    0px 1px 2px 0px #0f172a0f,
+    0px 1px 3px 0px #0f172a1a;
+  padding: 1.5rem 2rem;
+}
+
+/* Brand lockup */
+[data-theme-implementation="infracivic"] [data-infracivic-region="brand-lockup"] {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+[data-theme-implementation="infracivic"] [data-infracivic-region="logo-mark"] {
+  display: block;
+  height: 4rem;
+  width: auto;
+  max-width: 100%;
+}
+
+/* Heading + subheading */
+[data-theme-implementation="infracivic"] [data-infracivic-region="header"] {
+  width: 100%;
+  text-align: left;
+}
+
+[data-theme-implementation="infracivic"] [data-auth-region="login-heading"] {
+  margin: 0;
+}
+
+[data-theme-implementation="infracivic"] [data-auth-region="login-heading"] > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+[data-theme-implementation="infracivic"] [data-auth-region="login-heading"] .text-xl {
+  color: var(--infracivic-ink) !important;
+  font-size: 1.75rem !important;
+  font-weight: 700 !important;
+  line-height: 1.15 !important;
+}
+
+[data-theme-implementation="infracivic"] [data-auth-region="login-heading"] .text-sm {
+  color: var(--infracivic-muted) !important;
+  font-size: 0.9375rem !important;
+  font-weight: 400 !important;
+  line-height: 1.35 !important;
+}
+
+/* Form wrap */
+[data-theme-implementation="infracivic"] [data-infracivic-region="form-wrap"] {
+  width: 100%;
+}
+
+[data-theme-implementation="infracivic"] #kc-content,
+[data-theme-implementation="infracivic"] #kc-form,
+[data-theme-implementation="infracivic"] #kc-form-wrapper,
+[data-theme-implementation="infracivic"] #kc-form-login {
+  width: 100%;
+}
+
+[data-theme-implementation="infracivic"] #kc-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+[data-theme-implementation="infracivic"] #kc-form-login {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Fields */
+[data-theme-implementation="infracivic"] [data-slot="field"] {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+[data-theme-implementation="infracivic"] [data-slot="field"] + [data-slot="field"] {
+  margin-top: 1rem;
+}
+
+[data-theme-implementation="infracivic"] [data-slot="field-label"] {
+  color: var(--infracivic-label) !important;
+  font-size: 0.875rem !important;
+  font-weight: 500 !important;
+  line-height: 1.2 !important;
+}
+
+/* Inputs */
+[data-theme-implementation="infracivic"] [data-slot="input"],
+[data-theme-implementation="infracivic"] [data-slot="input-group"],
+[data-theme-implementation="infracivic"] input.kcInputClass,
+[data-theme-implementation="infracivic"] input:not([type="hidden"]):not([type="checkbox"]):not([type="radio"]):not([type="file"]):not([type="button"]):not([type="submit"]):not([type="reset"]):not([type="image"]):not([data-slot="input-group-control"]) {
+  width: 100% !important;
+  max-width: 100% !important;
+  height: 44px !important;
+  min-height: 44px !important;
+  border: 1px solid var(--infracivic-field-border) !important;
+  border-radius: var(--infracivic-control-radius) !important;
+  background-color: var(--infracivic-field-bg) !important;
+  color: var(--infracivic-ink) !important;
+  box-shadow: none !important;
+  font-size: 0.9375rem !important;
+  line-height: 1.4 !important;
+}
+
+[data-theme-implementation="infracivic"] [data-slot="input"],
+[data-theme-implementation="infracivic"] input.kcInputClass,
+[data-theme-implementation="infracivic"] input:not([type="hidden"]):not([type="checkbox"]):not([type="radio"]):not([type="file"]):not([type="button"]):not([type="submit"]):not([type="reset"]):not([type="image"]):not([data-slot="input-group-control"]) {
+  padding-inline: 1rem !important;
+  padding-block: 0 !important;
+}
+
+[data-theme-implementation="infracivic"] [data-slot="input-group"] {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) 2.75rem;
+  align-items: stretch;
+  overflow: hidden;
+}
+
+[data-theme-implementation="infracivic"] [data-slot="input-group-control"] {
+  height: 100% !important;
+  min-height: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background-color: transparent !important;
+  color: var(--infracivic-ink) !important;
+  box-shadow: none !important;
+  font-size: 0.9375rem !important;
+  line-height: 1.4 !important;
+  padding-block: 0 !important;
+}
+
+[data-theme-implementation="infracivic"] [data-slot="input-group-addon"] {
+  display: flex !important;
+  height: 100% !important;
+  min-height: 0 !important;
+  width: 2.75rem !important;
+  align-items: center;
+  justify-content: center;
+  padding-block: 0 !important;
+  color: #9ca3af !important;
+}
+
+[data-theme-implementation="infracivic"] [data-slot="input-group-addon"] [data-slot="button"] {
+  width: 2rem !important;
+  height: 2rem !important;
+  min-height: 2rem !important;
+  padding: 0 !important;
+}
+
+[data-theme-implementation="infracivic"] [data-slot="input-group-addon"] [data-slot="button"][data-variant="ghost"],
+[data-theme-implementation="infracivic"] [data-slot="input-group-addon"] [data-slot="button"][data-variant="ghost"]:hover,
+[data-theme-implementation="infracivic"] [data-slot="input-group-addon"] [data-slot="button"][data-variant="ghost"]:focus,
+[data-theme-implementation="infracivic"] [data-slot="input-group-addon"] [data-slot="button"][data-variant="ghost"]:active {
+  border: 0 !important;
+  background: transparent !important;
+  color: #9ca3af !important;
+  box-shadow: none !important;
+}
+
+[data-theme-implementation="infracivic"] [data-slot="input"]::placeholder,
+[data-theme-implementation="infracivic"] [data-slot="input-group-control"]::placeholder,
+[data-theme-implementation="infracivic"] input.kcInputClass::placeholder,
+[data-theme-implementation="infracivic"] input:not([type="hidden"]):not([type="checkbox"]):not([type="radio"]):not([type="file"]):not([type="button"]):not([type="submit"]):not([type="reset"]):not([type="image"]):not([data-slot="input-group-control"])::placeholder {
+  color: var(--infracivic-placeholder) !important;
+}
+
+[data-theme-implementation="infracivic"] [data-slot="input"]:focus,
+[data-theme-implementation="infracivic"] [data-slot="input"]:focus-visible,
+[data-theme-implementation="infracivic"] [data-slot="input-group"]:focus-within,
+[data-theme-implementation="infracivic"] input.kcInputClass:focus,
+[data-theme-implementation="infracivic"] input.kcInputClass:focus-visible,
+[data-theme-implementation="infracivic"] input:not([type="hidden"]):not([type="checkbox"]):not([type="radio"]):not([type="file"]):not([type="button"]):not([type="submit"]):not([type="reset"]):not([type="image"]):not([data-slot="input-group-control"]):focus,
+[data-theme-implementation="infracivic"] input:not([type="hidden"]):not([type="checkbox"]):not([type="radio"]):not([type="file"]):not([type="button"]):not([type="submit"]):not([type="reset"]):not([type="image"]):not([data-slot="input-group-control"]):focus-visible {
+  border-color: var(--infracivic-primary) !important;
+  outline: none !important;
+  box-shadow: 0 0 0 2px var(--infracivic-ring) !important;
+}
+
+[data-theme-implementation="infracivic"] [data-slot="input-group-control"]:focus,
+[data-theme-implementation="infracivic"] [data-slot="input-group-control"]:focus-visible {
+  border: 0 !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Remember Me + Forgot Password row (shared login-options hook) */
+[data-theme-implementation="infracivic"] [data-flowcraft-region="login-options"] {
+  margin-top: 1.25rem;
+  align-items: center;
+  gap: 0.5rem !important;
+}
+
+[data-theme-implementation="infracivic"] [data-flowcraft-region="login-options"] [data-slot="label"],
+[data-theme-implementation="infracivic"] [data-flowcraft-region="remember-me-label"] {
+  color: var(--infracivic-ink) !important;
+  font-size: 0.8125rem !important;
+  font-weight: 500 !important;
+  line-height: 1.2 !important;
+}
+
+/* Navy checkbox */
+[data-theme-implementation="infracivic"] [data-slot="checkbox"] {
+  width: 1rem !important;
+  height: 1rem !important;
+  min-width: 1rem !important;
+  border: 1px solid var(--infracivic-field-border) !important;
+  border-radius: 6px !important;
+  background-color: #ffffff !important;
+  color: #ffffff !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+}
+
+[data-theme-implementation="infracivic"] [data-slot="checkbox"][data-state="checked"] {
+  background-color: var(--infracivic-checkbox) !important;
+  border-color: var(--infracivic-checkbox) !important;
+}
+
+[data-theme-implementation="infracivic"] [data-slot="checkbox-indicator"] svg {
+  width: 0.75rem;
+  height: 0.75rem;
+}
+
+/* Forgot Password link (red) */
+[data-theme-implementation="infracivic"] [data-flowcraft-region="forgot-password-link"] {
+  margin-left: auto;
+  line-height: 1;
+}
+
+[data-theme-implementation="infracivic"] [data-flowcraft-region="forgot-password-link"] a,
+[data-theme-implementation="infracivic"] [data-flowcraft-region="forgot-password-link"] [data-slot="label"] {
+  color: var(--infracivic-link) !important;
+  font-size: 0.8125rem !important;
+  font-weight: 500 !important;
+  line-height: 1.2 !important;
+  text-decoration: underline !important;
+}
+
+/* Sign in button (green) */
+[data-theme-implementation="infracivic"] .kcFormGroupClass {
+  width: 100%;
+}
+
+[data-theme-implementation="infracivic"] [data-flowcraft-region="login-button"] {
+  margin-top: 1.5rem !important;
+}
+
+[data-theme-implementation="infracivic"] [data-slot="button"] {
+  border-radius: var(--infracivic-control-radius) !important;
+  box-shadow: none !important;
+}
+
+[data-theme-implementation="infracivic"] [data-slot="button"][data-variant="default"] {
+  width: 100% !important;
+  height: 32px !important;
+  min-height: 32px !important;
+  padding: 10px 16px !important;
+  gap: 8px !important;
+  background-color: var(--infracivic-primary) !important;
+  color: #ffffff !important;
+  border-radius: 8px !important;
+  font-size: 0.875rem !important;
+  font-weight: 600 !important;
+  line-height: 1 !important;
+}
+
+[data-theme-implementation="infracivic"] [data-slot="button"][data-variant="default"]:hover {
+  background-color: var(--infracivic-primary-hover) !important;
+}
+
+[data-theme-implementation="infracivic"] [data-slot="button"][data-variant="outline"] {
+  width: 100% !important;
+  height: 44px !important;
+  min-height: 44px !important;
+  border-color: var(--infracivic-field-border) !important;
+  color: var(--infracivic-ink) !important;
+  font-size: 0.9375rem !important;
+  font-weight: 600 !important;
+}
+
+/* Alerts */
+[data-theme-implementation="infracivic"] [data-slot="alert"] {
+  margin-bottom: 0.75rem;
+  border-radius: var(--infracivic-control-radius) !important;
+  padding: 0.75rem !important;
+  font-size: 0.875rem !important;
+}
+
+[data-theme-implementation="infracivic"] [data-slot="alert"][data-variant="info"],
+[data-theme-implementation="infracivic"] [data-slot="alert"]:not([data-variant]) {
+  border: 1px solid var(--infracivic-field-border) !important;
+  background-color: var(--infracivic-field-bg) !important;
+  color: var(--infracivic-ink) !important;
+}
+
+[data-theme-implementation="infracivic"] [data-slot="alert"][data-variant="success"] {
+  border: 1px solid var(--infracivic-success-border) !important;
+  background-color: var(--infracivic-success-bg) !important;
+  color: var(--infracivic-success) !important;
+}
+
+[data-theme-implementation="infracivic"] [data-slot="alert"][data-variant="warning"] {
+  border: 1px solid var(--infracivic-warning-border) !important;
+  background-color: var(--infracivic-warning-bg) !important;
+  color: var(--infracivic-warning) !important;
+}
+
+[data-theme-implementation="infracivic"] [data-slot="alert"][data-variant="error"] {
+  border: 1px solid var(--infracivic-error-border) !important;
+  background-color: var(--infracivic-error-bg) !important;
+  color: var(--infracivic-error) !important;
+}
+
+[data-theme-implementation="infracivic"] .text-destructive,
+[data-theme-implementation="infracivic"] #input-error,
+[data-theme-implementation="infracivic"] .kcInputErrorMessageClass,
+[data-theme-implementation="infracivic"] [role="alert"] {
+  color: var(--infracivic-error) !important;
+  font-size: 0.8125rem !important;
+  font-weight: 500 !important;
+}
+
+[data-theme-implementation="infracivic"] #kc-social-providers {
+  margin-bottom: 0.75rem;
+}
+
+/* Supporting info */
+[data-theme-implementation="infracivic"] [data-infracivic-region="supporting-info"] {
+  width: 100%;
+  color: var(--infracivic-muted);
+  font-size: 0.8125rem;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: center;
+}
+
+[data-theme-implementation="infracivic"] [data-infracivic-region="supporting-info"] a {
+  color: var(--infracivic-footer-link) !important;
+  text-decoration: underline;
+}
+
+[data-theme-implementation="infracivic"] [data-infracivic-region="powered-by"] {
+  margin-top: 1.25rem;
+  color: var(--infracivic-muted);
+  font-size: 0.75rem;
+  font-weight: 400;
+}
+
+/* Tablet: shrink strip so decorative bands don't dominate short viewports */
+@media (max-width: 900px) {
+  [data-theme-implementation="infracivic"] [data-infracivic-region="form-panel"] {
+    padding: clamp(4rem, 9vh, 6rem) 1.5rem;
+  }
+
+  [data-theme-implementation="infracivic"] [data-infracivic-region="strip"] {
+    height: clamp(4rem, 6vh, 5rem);
+  }
+
+  [data-theme-implementation="infracivic"] [data-infracivic-region="logo-mark"] {
+    height: 3.5rem;
+  }
+}
+
+/* Phones: compact card padding, gap, and typography so nothing overflows */
+@media (max-width: 640px) {
+  [data-theme-implementation="infracivic"] [data-infracivic-region="form-panel"] {
+    padding: clamp(3.5rem, 8vh, 5rem) 1rem;
+  }
+
+  [data-theme-implementation="infracivic"] [data-infracivic-region="auth-card"] {
+    gap: 1.25rem;
+    padding: 1.25rem 1.25rem;
+  }
+
+  [data-theme-implementation="infracivic"] [data-infracivic-region="logo-mark"] {
+    height: 3rem;
+  }
+
+  [data-theme-implementation="infracivic"] [data-auth-region="login-heading"] .text-xl {
+    font-size: 1.5rem !important;
+  }
+
+  [data-theme-implementation="infracivic"] [data-auth-region="login-heading"] .text-sm {
+    font-size: 0.875rem !important;
+  }
+
+  [data-theme-implementation="infracivic"] [data-infracivic-region="strip"] {
+    height: clamp(3.5rem, 5vh, 4.5rem);
+  }
+
+  [data-theme-implementation="infracivic"] [data-infracivic-region="supporting-info"] {
+    font-size: 0.75rem;
+  }
+}
+
+/* Small phones (< iPhone SE width): tighten further to prevent scroll */
+@media (max-width: 380px) {
+  [data-theme-implementation="infracivic"] [data-infracivic-region="form-panel"] {
+    padding: clamp(3rem, 7vh, 4rem) 0.75rem;
+  }
+
+  [data-theme-implementation="infracivic"] [data-infracivic-region="auth-card"] {
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  [data-theme-implementation="infracivic"] [data-infracivic-region="logo-mark"] {
+    height: 2.75rem;
+  }
+
+  [data-theme-implementation="infracivic"] [data-infracivic-region="strip"] {
+    height: clamp(2rem, 4vh, 3rem);
+  }
+}
