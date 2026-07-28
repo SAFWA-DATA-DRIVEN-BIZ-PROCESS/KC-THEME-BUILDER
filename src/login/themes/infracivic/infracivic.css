@@ -149,7 +149,14 @@
 [data-theme-implementation="infracivic"] #kc-form-login {
   display: flex;
   flex-direction: column;
-  gap: 0;
+  gap: 1rem;
+}
+
+/* Every direct form child is spaced by the flex gap above; neutralize
+   space-y-4 margin stacking so login.ftl (space-y-4) and login-password.ftl
+   (flex flex-col gap-4) end up with the same 1rem rhythm. */
+[data-theme-implementation="infracivic"] #kc-form-login > * {
+  margin-block: 0;
 }
 
 /* Fields */
@@ -158,10 +165,6 @@
   width: 100%;
   flex-direction: column;
   gap: 0.4rem;
-}
-
-[data-theme-implementation="infracivic"] [data-slot="field"] + [data-slot="field"] {
-  margin-top: 1rem;
 }
 
 [data-theme-implementation="infracivic"] [data-slot="field-label"] {
@@ -272,7 +275,6 @@
 
 /* Remember Me + Forgot Password row (shared login-options hook) */
 [data-theme-implementation="infracivic"] [data-flowcraft-region="login-options"] {
-  margin-top: 1.25rem;
   align-items: center;
   gap: 0.5rem !important;
 }

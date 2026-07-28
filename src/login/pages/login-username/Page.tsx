@@ -10,6 +10,7 @@
 /* eslint-disable */
 
 import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
 import { Switch } from "@/components/ui/switch";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -42,6 +43,10 @@ export function Page() {
     const { msg, msgStr } = useI18n();
 
     const [isLoginButtonDisabled, setIsLoginButtonDisabled] = useState(false);
+
+    const isCivion = kcContext.themeName === "civion";
+    const isInfracivic = kcContext.themeName === "infracivic";
+    const useCheckboxRememberMe = isCivion || isInfracivic;
 
 
     return (
@@ -120,19 +125,32 @@ export function Page() {
 
                         {realm.rememberMe && !usernameHidden && (
                             <div className="flex items-center space-x-2 w-full justify-start">
-                                <Switch
-                                    className="data-[state=checked]:bg-primary"
-                                    tabIndex={3}
-                                    id="rememberMe"
-                                    name="rememberMe"
-                                    value="on"
-                                    defaultChecked={!!login.rememberMe}
-                                />
+                                {useCheckboxRememberMe ? (
+                                    <Checkbox
+                                        data-civion-region="remember-me-checkbox"
+                                        tabIndex={3}
+                                        id="rememberMe"
+                                        name="rememberMe"
+                                        value="on"
+                                        defaultChecked={!!login.rememberMe}
+                                    />
+                                ) : (
+                                    <Switch
+                                        className="data-[state=checked]:bg-primary"
+                                        data-flowcraft-region="remember-me-switch"
+                                        tabIndex={3}
+                                        id="rememberMe"
+                                        name="rememberMe"
+                                        value="on"
+                                        defaultChecked={!!login.rememberMe}
+                                    />
+                                )}
                                 <Label
                                     htmlFor="rememberMe"
                                     className="text-sm font-medium cursor-pointer"
+                                    data-flowcraft-region="remember-me-label"
                                 >
-                                    {msg("rememberMe")}
+                                    {useCheckboxRememberMe ? "Remember Me" : msg("rememberMe")}
                                 </Label>
                             </div>
                         )}

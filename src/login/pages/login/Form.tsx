@@ -246,9 +246,7 @@ export function Form() {
               </Field>
 
               <div
-                data-flowcraft-region={
-                  shouldUsePasswordStepLayout ? undefined : "login-options"
-                }
+                data-flowcraft-region="login-options"
                 className={
                   shouldUsePasswordStepLayout
                     ? "flex justify-end"

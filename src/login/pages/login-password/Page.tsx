@@ -142,15 +142,17 @@ export function Page() {
                     )}
                 </Field>
 
-                <div className="flex justify-end" data-flowcraft-region="forgot-password-link">
+                <div className="flex justify-end" data-flowcraft-region="login-options">
                     {kcContext.realm.resetPasswordAllowed && (
-                        <span className=" underline-offset-4 hover:underline">
-                            <a tabIndex={5} href={kcContext.url.loginResetCredentialsUrl}>
-                                <Label className="cursor-pointer">
-                                    {isCivion ? "Forgot Password?" : msg("doForgotPassword")}
-                                </Label>
-                            </a>
-                        </span>
+                        <div className="link-style" data-flowcraft-region="forgot-password-link">
+                            <span className="underline-offset-4 hover:underline">
+                                <a tabIndex={5} href={kcContext.url.loginResetCredentialsUrl}>
+                                    <Label className="cursor-pointer">
+                                        {isCivion ? "Forgot Password?" : msg("doForgotPassword")}
+                                    </Label>
+                                </a>
+                            </span>
+                        </div>
                     )}
                 </div>
 
